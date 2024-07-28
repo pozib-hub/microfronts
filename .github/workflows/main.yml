@@ -20,7 +20,7 @@ jobs:
       - name: Install node modules
         run: npm install --force
       - name: build production project
-        run: npm run build:production
+        run: npm run build:prod
 
       - name: linting typescript
         run: npm run lint:ts
