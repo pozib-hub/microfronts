@@ -1,0 +1,25 @@
+.sidebar {
+  position: absolute;
+  height: calc(100vh - var(--height-navbar));
+  width: 300px;
+  background: var(--inverted-bg-color);
+
+  transform: translateX(calc(-100% + var(--width-close-sidebar)));
+  transition: transform 0.3s ease-in-out;
+
+  &.open {
+    transform: translateX(0%);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-burger {
+    margin-left: auto;
+  }
+
+  .switchers {
+  }
+}
