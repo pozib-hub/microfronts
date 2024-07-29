@@ -11,7 +11,7 @@ export function buildCssLoaders(isDev: boolean) {
                 options: {
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        getLocalIdent: isDev ? getCSSModuleLocalIdent : '[hash:base64:8]',
+                        getLocalIdent: isDev ? getCSSModuleLocalIdent : undefined,
                     },
                 },
             },
