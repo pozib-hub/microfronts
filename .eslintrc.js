@@ -24,6 +24,7 @@ module.exports = {
         'i18next',
     ],
     rules: {
+        camelcase: ['off', { properties: 'never' }],
         'linebreak-style': 'off',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
