@@ -1,4 +1,11 @@
 {
   "extends": "stylelint-config-standard-scss",
-  "rules": {}
+  "rules": {
+    "block-no-empty": null,
+    "declaration-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "property-no-vendor-prefix": null,
+    "value-keyword-case": null,
+    "selector-class-pattern": null
+  }
 }
