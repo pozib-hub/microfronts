@@ -7,21 +7,22 @@ export default function getHashDigest(
     digestType: string,
     maxLength: number,
 ) {
-    algorithm = algorithm || 'xxhash64'
-    maxLength = maxLength || 9999
-
-    let hash
+    const _algorithm = algorithm || 'xxhash64'
+    const _maxLength = maxLength || 9999
 
     if (typeof crypto === 'undefined') {
+        /* eslint-disable global-require */
         crypto = require('crypto')
+
         if (BulkUpdateDecorator === undefined) {
+            /* eslint-disable global-require */
             BulkUpdateDecorator = require('./hash/BulkUpdateDecorator')
         }
     }
 
-    hash = new BulkUpdateDecorator(() => crypto.createHash(algorithm), algorithm)
+    const hash = new BulkUpdateDecorator(() => crypto.createHash(_algorithm), _algorithm)
 
     hash.update(buffer)
 
-    return hash.digest(digestType || 'hex').substr(0, maxLength)
+    return hash.digest(digestType || 'hex').substr(0, _maxLength)
 }

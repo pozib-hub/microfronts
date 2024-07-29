@@ -1,5 +1,4 @@
-import webpack, { LoaderContext } from 'webpack'
-
+/* eslint-disable max-len */
 import path from 'path'
 import getHashDigest from './getHashDigest'
 
@@ -19,9 +18,7 @@ export default function interpolateName(
     name: string,
     options: IOptions,
 ) {
-    let filename
-
-    filename = name || '[hash].[ext]'
+    const filename = name || '[hash].[ext]'
 
     const { context } = options
     const { content } = options
@@ -77,7 +74,7 @@ export default function interpolateName(
     let url = filename
 
     if (content) {
-    // Match hash template
+        // Match hash template
         url = url
         // `hash` and `contenthash` are same in `loader-utils` context
         // let's keep `hash` for backward compatibility
@@ -97,10 +94,11 @@ export default function interpolateName(
     if (regExp && loaderContext.resourcePath) {
         const match = loaderContext.resourcePath.match(new RegExp(regExp))
 
-        match
-      && match.forEach((matched: any, i: any) => {
-          url = url.replace(new RegExp(`\\[${i}\\]`, 'ig'), matched)
-      })
+        if (match) {
+            match.forEach((matched: any, i: any) => {
+                url = url.replace(new RegExp(`\\[${i}\\]`, 'ig'), matched)
+            })
+        }
     }
 
     if (
