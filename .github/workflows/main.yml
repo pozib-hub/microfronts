@@ -31,7 +31,7 @@ jobs:
         run: npm run test:unit
 
       - name: build stotybook
-        run: npm run build stotybook:build
+        run: npm run stotybook:build
 
       - name: screenshot testing
         run: npm run test:ui:ci
