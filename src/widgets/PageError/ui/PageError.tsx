@@ -7,7 +7,7 @@ import { Button } from 'src/shared/ui/Button/Button'
 import style from './PageError.module.scss'
 
 interface IPageErrorProps {
-  className?: string;
+    className?: string;
 }
 
 export const PageError = (props: IPageErrorProps) => {
@@ -16,7 +16,7 @@ export const PageError = (props: IPageErrorProps) => {
     const { t } = useTranslation()
 
     const onReloadPage = () => {
-        // eslint-disable-next-line no-restricted-globals
+
         location.reload()
     }
 

@@ -7,7 +7,7 @@ import { Button } from 'src/shared/ui/Button/Button'
 import styles from './LanguageSwitcher.module.scss'
 
 interface ILanguageSwitcherProps {
-  className?: string;
+    className?: string;
 }
 
 export const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {

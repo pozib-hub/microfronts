@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, {
     Component, ErrorInfo, FC, Suspense,
 } from 'react'
@@ -35,7 +34,7 @@ class ErrorBoundary extends Component<IProps & WithTranslation, IState> {
         const { hasError } = this.state
 
         if (hasError) {
-        // You can render any custom fallback UI
+            // You can render any custom fallback UI
             return (
                 <PageError />
             )

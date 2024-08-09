@@ -11,11 +11,11 @@ export default function getHashDigest(
     const _maxLength = maxLength || 9999
 
     if (typeof crypto === 'undefined') {
-        /* eslint-disable global-require */
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         crypto = require('crypto')
 
         if (BulkUpdateDecorator === undefined) {
-            /* eslint-disable global-require */
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
             BulkUpdateDecorator = require('./hash/BulkUpdateDecorator')
         }
     }

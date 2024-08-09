@@ -9,7 +9,7 @@ import { iconByTheme } from '../utils'
 import style from './ThemeSwitcher.module.scss'
 
 interface IThemeSwitcherProps {
-  className?: string;
+    className?: string;
 }
 
 export const ThemeSwitcher: FC<IThemeSwitcherProps> = (props) => {

@@ -1,8 +1,8 @@
 /* eslint-disable no-use-before-define */
 export type Value = string | boolean | undefined | null;
 export type Mapping = Record<string, any>;
-export interface ArgumentArray extends Array<Argument> {}
-export interface ReadonlyArgumentArray extends ReadonlyArray<Argument> {}
+export type ArgumentArray = Array<Argument>
+export type ReadonlyArgumentArray = ReadonlyArray<Argument>
 export type Argument = Value | Mapping | ArgumentArray | ReadonlyArgumentArray;
 
 export default function classNames(...args: ArgumentArray): string {
