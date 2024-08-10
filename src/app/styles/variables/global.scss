@@ -9,8 +9,13 @@
   --font-line-l: 32px;
   --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
-  // Размеры -------------------------
-
+  // Размеры
   --height-navbar: 50px;
   --width-close-sidebar: 50px;
+
+  // Z - Индексы
+  --z-index-modal: 10;
+
+  // Цвета
+  --color-overlay: rgba(0 0 0 / 60%);
 }

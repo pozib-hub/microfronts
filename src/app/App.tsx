@@ -6,21 +6,20 @@ import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { PageLoader } from 'widgets/PageLoader'
 
-import useTheme from './providers/ThemeProvider/lib/useTheme'
 
-import './index.scss'
-import './styles/index.scss'
 
 // TODO:
 // 1. сделать приттер на пре-коммит
 // 2. на линтер поставить правило на сортировку импортов
 // 4. научись делать снипиты для создания компонентов
+// 5. попробовать всем классам в сервере сделать контекст с бд
+// 6. сделать автоматическую типизацию по серверу
+
 
 const App = () => {
-    const { theme } = useTheme()
 
     return (
-        <div className={cn('app', theme)}>
+        <div className={cn('app')}>
             <Suspense fallback={<PageLoader />}>
                 <Navbar />
                 <Sidebar />

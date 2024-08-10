@@ -7,6 +7,9 @@ import { ErrorBoundary } from './app/providers/ErrorBoundary'
 
 import 'shared/config/i18n/i18n'
 
+import './app/index.scss'
+import './app/styles/index.scss'
+
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
 

@@ -21,16 +21,21 @@ const getSaveTheme = async () => {
 
 interface IThemeProviderProps {
     children?: React.ReactNode
+    initialTheme?: Theme
 }
 
-const ThemeProvider: FC<IThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>(Theme.LIGHT)
+const ThemeProvider: FC<IThemeProviderProps> = ({ children, initialTheme }) => {
+    const [theme, setTheme] = useState<Theme>(initialTheme || Theme.LIGHT)
 
     useEffect(() => {
         getSaveTheme()
-            .then((t) => setTheme(t))
+            .then((t) => {
+                const _theme = theme || t
+                setTheme(_theme)
+                document.body.className = _theme
+            })
             .catch(() => {})
-    }, [])
+    }, [theme])
 
     const defaultProps = useMemo(
         () => ({

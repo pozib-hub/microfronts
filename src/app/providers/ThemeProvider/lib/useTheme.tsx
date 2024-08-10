@@ -8,9 +8,10 @@ export default () => {
     const { theme, setTheme } = useContext(ThemeContext)
 
     const toggleTheme = () => {
-        const nextTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
-        BrowserStorage.set(KEY_THEME_BROWSER_STORAGE, nextTheme)
-        setTheme(nextTheme)
+        const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+        BrowserStorage.set(KEY_THEME_BROWSER_STORAGE, newTheme)
+        document.body.className = newTheme
+        setTheme(newTheme)
     }
 
     return {
