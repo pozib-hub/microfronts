@@ -4,17 +4,17 @@ import path from 'path'
 import * as loaderUtils from './loader-utils'
 
 interface IOptions {
-  context: string;
-  hashSalt?: string;
-  hashFunction?: string;
-  hashDigest?: string;
-  hashDigestLength?: number;
-  hashStrategy?: string;
-  regExp?: string;
+    context: string;
+    hashSalt?: string;
+    hashFunction?: string;
+    hashDigest?: string;
+    hashDigestLength?: number;
+    hashStrategy?: string;
+    regExp?: string;
 }
 
 export default function getCSSModuleLocalIdent(
-    context: LoaderContext<{}>,
+    context: LoaderContext<any>,
     localIdentName: string,
     localName: string,
     options: IOptions,

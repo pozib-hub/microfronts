@@ -1,8 +1,8 @@
-const BULK_SIZE = 2000;
+const BULK_SIZE = 2000
 
 // We are using an object instead of a Map as this will stay static during the runtime
 // so access to it can be optimized by v8
-const digestCaches = {};
+const digestCaches = {}
 
 class BulkUpdateDecorator {
   /**
@@ -10,17 +10,17 @@ class BulkUpdateDecorator {
    * @param {string=} hashKey key for caching
    */
   constructor(hashOrFactory, hashKey) {
-    this.hashKey = hashKey;
+    this.hashKey = hashKey
 
     if (typeof hashOrFactory === "function") {
-      this.hashFactory = hashOrFactory;
-      this.hash = undefined;
+      this.hashFactory = hashOrFactory
+      this.hash = undefined
     } else {
-      this.hashFactory = undefined;
-      this.hash = hashOrFactory;
+      this.hashFactory = undefined
+      this.hash = hashOrFactory
     }
 
-    this.buffer = "";
+    this.buffer = ""
   }
 
   /**
@@ -36,29 +36,29 @@ class BulkUpdateDecorator {
       data.length > BULK_SIZE
     ) {
       if (this.hash === undefined) {
-        this.hash = this.hashFactory();
+        this.hash = this.hashFactory()
       }
 
       if (this.buffer.length > 0) {
-        this.hash.update(this.buffer);
-        this.buffer = "";
+        this.hash.update(this.buffer)
+        this.buffer = ""
       }
 
-      this.hash.update(data, inputEncoding);
+      this.hash.update(data, inputEncoding)
     } else {
-      this.buffer += data;
+      this.buffer += data
 
       if (this.buffer.length > BULK_SIZE) {
         if (this.hash === undefined) {
-          this.hash = this.hashFactory();
+          this.hash = this.hashFactory()
         }
 
-        this.hash.update(this.buffer);
-        this.buffer = "";
+        this.hash.update(this.buffer)
+        this.buffer = ""
       }
     }
 
-    return this;
+    return this
   }
 
   /**
@@ -67,41 +67,41 @@ class BulkUpdateDecorator {
    * @returns {string|Buffer} digest
    */
   digest(encoding) {
-    let digestCache;
+    let digestCache
 
-    const buffer = this.buffer;
+    const buffer = this.buffer
 
     if (this.hash === undefined) {
       // short data for hash, we can use caching
-      const cacheKey = `${this.hashKey}-${encoding}`;
+      const cacheKey = `${this.hashKey}-${encoding}`
 
-      digestCache = digestCaches[cacheKey];
+      digestCache = digestCaches[cacheKey]
 
       if (digestCache === undefined) {
-        digestCache = digestCaches[cacheKey] = new Map();
+        digestCache = digestCaches[cacheKey] = new Map()
       }
 
-      const cacheEntry = digestCache.get(buffer);
+      const cacheEntry = digestCache.get(buffer)
 
       if (cacheEntry !== undefined) {
-        return cacheEntry;
+        return cacheEntry
       }
 
-      this.hash = this.hashFactory();
+      this.hash = this.hashFactory()
     }
 
     if (buffer.length > 0) {
-      this.hash.update(buffer);
+      this.hash.update(buffer)
     }
 
-    const digestResult = this.hash.digest(encoding);
+    const digestResult = this.hash.digest(encoding)
 
     if (digestCache !== undefined) {
-      digestCache.set(buffer, digestResult);
+      digestCache.set(buffer, digestResult)
     }
 
-    return digestResult;
+    return digestResult
   }
 }
 
-module.exports = BulkUpdateDecorator;
+module.exports = BulkUpdateDecorator

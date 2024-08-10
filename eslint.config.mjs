@@ -1,14 +1,13 @@
-
 import globals from "globals"
+import { fixupPluginRules } from "@eslint/compat"
+import esLint from '@eslint/js'
+import tsLint from "typescript-eslint"
 import tsParser from "@typescript-eslint/parser"
-import eslint from '@eslint/js'
-import tseslint from "typescript-eslint"
-import pluginReact from "eslint-plugin-react"
-import airbnb from "eslint-config-airbnb"
-import react from "eslint-plugin-react"
-import storybook from "eslint-plugin-storybook"
-import i18next from 'eslint-plugin-i18next'
-import hooks from "eslint-plugin-react-hooks"
+import airbnbPlugin from "eslint-config-airbnb"
+import reactPlugin from "eslint-plugin-react"
+import storybookPlugin from "eslint-plugin-storybook"
+import i18nextPlugin from 'eslint-plugin-i18next'
+import hooksPlugin from "eslint-plugin-react-hooks"
 
 const jsRules = {
   // indent: ['error', 4],
@@ -64,12 +63,11 @@ const i18nextRules = {
     }],
 }
 
-
 export default [
-  { files: ["**/*.{js,ts,jsx,tsx}"] },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  esLint.configs.recommended,
+  ...tsLint.configs.recommended,
+  reactPlugin.configs.flat.recommended,
+  { files: ["**/*.{js,ts,jsx}"] },
   {
     languageOptions: {
       parser: tsParser,
@@ -89,11 +87,11 @@ export default [
   },
   {
     plugins: {
-      react,
-      airbnb,
-      storybook,
-      i18next,
-      "react-hooks": hooks
+      react: reactPlugin,
+      airbnb: airbnbPlugin,
+      storybook: storybookPlugin,
+      i18next: i18nextPlugin,
+      "react-hooks": fixupPluginRules(hooksPlugin)
     },
   },
   {
@@ -108,11 +106,20 @@ export default [
   },
   {
     // overrides
-    files: ['**/src/**/*.{test,stories}.{ts,tsx}', ''],
+    files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
     rules: {
       'max-len': 'off',
       'i18next/no-literal-string': 'off',
     },
+  },
+  {
+    ignores: [
+      "!node_modules/",
+      "node_modules/*",
+      "storybook-static/*",
+      "extractedTranslations/*",
+      "loki/*"
+    ]
   }
 ]
 

@@ -32,7 +32,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-    // exclude: /node_modules/,
+        // exclude: /node_modules/,
     }
 
     const cssLoader = buildCssLoaders(isDev)

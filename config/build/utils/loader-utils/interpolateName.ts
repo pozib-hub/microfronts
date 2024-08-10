@@ -1,16 +1,16 @@
-/* eslint-disable max-len */
+
 import path from 'path'
 import getHashDigest from './getHashDigest'
 
 interface IOptions {
-  context: string;
-  hashSalt?: string;
-  hashFunction?: string;
-  hashDigest?: string;
-  hashDigestLength?: number;
-  hashStrategy?: string;
-  regExp?: string;
-  content?: string;
+    context: string;
+    hashSalt?: string;
+    hashFunction?: string;
+    hashDigest?: string;
+    hashDigestLength?: number;
+    hashStrategy?: string;
+    regExp?: string;
+    content?: string;
 }
 
 export default function interpolateName(
@@ -76,11 +76,12 @@ export default function interpolateName(
     if (content) {
         // Match hash template
         url = url
-        // `hash` and `contenthash` are same in `loader-utils` context
-        // let's keep `hash` for backward compatibility
+            // `hash` and `contenthash` are same in `loader-utils` context
+            // let's keep `hash` for backward compatibility
             .replace(
                 /\[(?:([^[:\]]+):)?(?:hash|contenthash)(?::([a-z]+\d*(?:safe)?))?(?::(\d+))?\]/gi,
-                (all, hashType, digestType, maxLength) => getHashDigest(content, hashType, digestType, parseInt(maxLength, 10)),
+                (all, hashType, digestType, maxLength) =>
+                    getHashDigest(content, hashType, digestType, parseInt(maxLength, 10)),
             )
     }
 
@@ -103,7 +104,7 @@ export default function interpolateName(
 
     if (
         typeof loaderContext.options === 'object'
-    && typeof loaderContext.options.customInterpolateName === 'function'
+        && typeof loaderContext.options.customInterpolateName === 'function'
     ) {
         url = loaderContext.options.customInterpolateName.call(
             loaderContext,

@@ -7,8 +7,8 @@
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "lint:ts": "eslint ./src",
-    "lint:ts:fix": "eslint ./src --fix",
+    "lint:ts": "eslint",
+    "lint:ts:fix": "eslint --fix",
     "lint:css": "npx stylelint  \"**/*.scss\"",
     "lint:css:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
@@ -31,6 +31,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@chromatic-com/storybook": "^1.6.1",
     "@conarti/eslint-plugin-feature-sliced": "^1.0.5",
+    "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.8.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@storybook/addon-essentials": "^8.2.6",
@@ -111,7 +112,9 @@
   },
   "overrides": {
     "eslint": "^9.8.0",
-    "storybook": "^8.2.6"
+    "loki": {
+      "@storybook/react@": "^8.0.0"
+    }
   },
   "loki": {
     "configurations": {

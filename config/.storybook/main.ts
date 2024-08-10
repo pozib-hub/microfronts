@@ -1,11 +1,11 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
+import type { StorybookConfig } from "@storybook/react-webpack5"
 
 
 const config: StorybookConfig = {
   stories: [
-      "../../src/**/*.mdx",
-      "../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
-    ],
+    "../../src/**/*.mdx",
+    "../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",
@@ -25,5 +25,5 @@ const config: StorybookConfig = {
       }
     }
   }),
-};
-export default config;
+}
+export default config
