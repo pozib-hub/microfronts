@@ -1,7 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 
-export function buildAliases(basePath: string): webpack.Configuration['resolve']['alias'] {
+export function buildAliases(basePath: string): Record<string, string> {
     return {
         src: basePath,
         entries: path.join(basePath, 'entries'),

@@ -11,7 +11,7 @@ export default () => {
         const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
         BrowserStorage.set(KEY_THEME_BROWSER_STORAGE, newTheme)
         document.body.className = newTheme
-        setTheme(newTheme)
+        setTheme?.(newTheme)
     }
 
     return {

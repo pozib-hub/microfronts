@@ -77,7 +77,9 @@ const Notification: FC<INotificationProps> = (props) => {
         }
 
         return () => {
-            clearTimeout(timer.current)
+            if (timer.current) {
+                clearTimeout(timer.current)
+            }
         }
     }, [id, requestHide, timeOut])
 

@@ -6,7 +6,7 @@ import { buildAliases } from '../build/alias/buildAliases'
 import { buildCssLoaders } from '../build/loaders/buildCssLoaders'
 
 
-export default ({config} : {config: webpack.Configuration}) => {
+export default ({ config }: { config: webpack.Configuration }) => {
 
     const paths: BuildPaths = {
         build: "",
@@ -18,11 +18,14 @@ export default ({config} : {config: webpack.Configuration}) => {
     const rules = [
         // тут мы разворачиваем существующие И исключаем правила для svg
         ...(config.module?.rules || []).map((rule) => {
-            if (rule && typeof rule === "object" && rule.test instanceof RegExp && rule.test.test('.svg')) {
-                return {...rule, exclude: /\.svg$/i}
+            if (rule && typeof rule === "object"
+                && rule.test instanceof RegExp
+                && rule.test.test('.svg')
+            ) {
+                return { ...rule, exclude: /\.svg$/i }
             }
             return rule
-        }), 
+        }),
         {
             test: /\.svg$/,
             use: "@svgr/webpack"
@@ -31,13 +34,19 @@ export default ({config} : {config: webpack.Configuration}) => {
     ]
 
     const resolve: webpack.Configuration["resolve"] = {
-            modules: [...(config.resolve?.modules || []), paths.src],
-            extensions: [...(config.resolve?.extensions || []), '.tsx', '.ts', '.js'],
-            alias:{
-                ...config.resolve?.alias,
-                ...buildAliases(paths.src)
-            }
+        modules: [...(config.resolve?.modules || []), paths.src],
+        extensions: [...(config.resolve?.extensions || []), '.tsx', '.ts', '.js'],
+        alias: {
+            ...config.resolve?.alias,
+            ...buildAliases(paths.src)
+        }
     }
+
+    const plugins = [
+        new webpack.DefinePlugin({
+            __IS_DEV__: true,
+        }),
+    ]
 
     const modifyConfig: webpack.Configuration = {
         ...config,
@@ -48,10 +57,14 @@ export default ({config} : {config: webpack.Configuration}) => {
         module: {
             ...config.module,
             rules: rules
-        }
+        },
+        plugins: [
+            ...config.plugins as any,
+            ...plugins
+        ],
     }
 
-    return modifyConfig 
+    return modifyConfig
 }
 
 // import webpack, { RuleSetRule } from 'webpack';
