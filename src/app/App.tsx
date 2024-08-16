@@ -6,7 +6,7 @@ import { AppRouter } from 'src/app/providers/router'
 import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { PageLoader } from 'widgets/PageLoader'
-
+import { userActions } from 'entities/user'
 
 
 // TODO:
@@ -19,6 +19,11 @@ import { PageLoader } from 'widgets/PageLoader'
 
 
 const App = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(userActions.initAuthData())
+    }, [dispatch])
 
     return (
         <div className={cn('app')}>

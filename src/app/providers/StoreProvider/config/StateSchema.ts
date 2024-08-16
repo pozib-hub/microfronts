@@ -21,6 +21,9 @@ import { GlobalSettingsSchema } from 'entities/globalSettings'
 export interface StateSchema {
     globalSettings: GlobalSettingsSchema
     user: UserSchema
+
+    // async reducers
+    loginForm?: LoginSchema
 }
 
 

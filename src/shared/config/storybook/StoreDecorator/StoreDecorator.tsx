@@ -5,6 +5,7 @@ import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
 
 const defaultReducers: PartialDeep<ReducersMapObject<StateSchema>> = {
+    loginForm: loginReducer,
 }
 
 export const StoreDecorator = (
