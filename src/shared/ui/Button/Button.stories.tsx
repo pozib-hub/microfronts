@@ -14,22 +14,22 @@ export default meta
 
 type Story = StoryObj<typeof Button>;
 
-export const Transparent: Story = {
+export const Default: Story = {
     args: {
-        theme: 'transparent', children: 'Text',
-    },
-    decorators: [CenterDecorator],
-}
-
-export const Outline: Story = {
-    args: {
-        theme: 'outline',
         children: 'Text',
     },
     decorators: [CenterDecorator],
 }
 
-export const OutlineThemeDark: Story = {
-    ...Outline,
+export const Primary: Story = {
+    args: {
+        variant: 'primary',
+        children: 'Text',
+    },
+    decorators: [CenterDecorator],
+}
+
+export const DefaultThemeDark: Story = {
+    ...Default,
     decorators: [CenterDecorator, ThemeDecorator(Theme.DARK)],
 }

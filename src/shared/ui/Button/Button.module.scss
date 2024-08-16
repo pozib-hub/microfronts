@@ -1,5 +1,32 @@
 .button {
   cursor: pointer;
+  position: relative;
+
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--primary-color);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+  }
+}
+
+.button.loading .content {
+  opacity: 0.3;
 }
 
 .transparent {
@@ -12,7 +39,23 @@
 
 .outline {
   padding: 10px;
-  border: 1px  solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   color: var(--primary-color);
   background: none;
+}
+
+.text {
+  padding: 20px;
+}
+
+.link {}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
