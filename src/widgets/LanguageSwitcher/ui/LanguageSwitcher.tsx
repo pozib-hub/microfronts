@@ -24,7 +24,7 @@ export const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
 
     return (
         <div className={cn(styles.languageSwitcher, className)}>
-            <Button onClick={toggle}>{invertLang}</Button>
+            <Button onClick={toggle} variant='transparent'>{invertLang}</Button>
         </div>
     )
 }
