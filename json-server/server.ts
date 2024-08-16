@@ -16,9 +16,11 @@ server.use(jsonServer.bodyParser)
 server.use(requestDelay)
 
 // проверяем, авторизован ли пользователь
-server.use(checkAuthorization)
-server.use(DataBaseJSON)
+// server.use(checkAuthorization)
+
 server.use('/api', router)
+
+server.use(DataBaseJSON)
 
 // запуск сервера
 server.listen(8000, () => {
