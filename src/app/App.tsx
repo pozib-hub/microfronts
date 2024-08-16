@@ -1,4 +1,5 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 import cn from 'shared/lib/classNames/classNames'
 import { AppRouter } from 'src/app/providers/router'
@@ -14,6 +15,7 @@ import { PageLoader } from 'widgets/PageLoader'
 // 4. научись делать снипиты для создания компонентов
 // 5. попробовать всем классам в сервере сделать контекст с бд
 // 6. сделать автоматическую типизацию по серверу
+// 7. семантическая  верстка
 
 
 const App = () => {
@@ -23,7 +25,7 @@ const App = () => {
             <Suspense fallback={<PageLoader />}>
                 <Navbar />
                 <Sidebar />
-                <div className="content-page">
+                <div className="layout">
                     <AppRouter />
                 </div>
             </Suspense>

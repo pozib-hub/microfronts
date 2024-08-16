@@ -30,11 +30,11 @@ const ThemeProvider: FC<IThemeProviderProps> = ({ children, initialTheme }) => {
     useEffect(() => {
         getSaveTheme()
             .then((t) => {
-                const _theme = theme || t
+                const _theme = t || theme
                 setTheme(_theme)
                 document.body.className = _theme
             })
-            .catch(() => {})
+            .catch(() => { })
     }, [theme])
 
     const defaultProps = useMemo(
