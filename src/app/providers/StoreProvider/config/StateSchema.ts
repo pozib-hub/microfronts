@@ -24,6 +24,7 @@ export interface StateSchema {
 
     // async reducers
     loginForm?: LoginSchema
+    profile?: ProfileSchema
 }
 
 
