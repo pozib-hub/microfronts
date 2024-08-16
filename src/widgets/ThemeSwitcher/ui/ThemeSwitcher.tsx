@@ -4,7 +4,7 @@ import cn from 'src/shared/lib/classNames/classNames'
 import { useTheme } from 'src/app/providers/ThemeProvider'
 import { Button } from 'src/shared/ui/Button/Button'
 
-import { iconByTheme } from '../utils'
+import { getIconByTheme } from '../utils'
 
 import style from './ThemeSwitcher.module.scss'
 
@@ -16,9 +16,11 @@ export const ThemeSwitcher: FC<IThemeSwitcherProps> = (props) => {
     const { className } = props
     const { theme, toggleTheme } = useTheme()
 
+    const Icon = getIconByTheme(theme)
+
     return (
         <div className={cn(style.className, className)}>
-            <Button onClick={toggleTheme}>{iconByTheme[theme]}</Button>
+            <Button variant='transparent' onClick={toggleTheme}>{<Icon />}</Button>
         </div>
     )
 }
