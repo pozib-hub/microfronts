@@ -5,23 +5,23 @@ import cn from 'src/shared/lib/classNames/classNames'
 
 import style from './AppLink.module.scss'
 
-type Themes = 'primary' | 'secondary'
+type Variants = 'primary' | 'secondary'
 
 interface IAppLinkProps extends LinkProps {
-  theme?: Themes;
+    variant?: Variants;
 }
 
 export const AppLink: FC<IAppLinkProps> = (props) => {
     const {
         className,
         children,
-        theme = 'primary',
+        variant = 'primary',
         ...otherProps
     } = props
 
     return (
         <Link
-            className={cn(style.appLink, style[theme], className)}
+            className={cn(style.appLink, style[variant], className)}
             {...otherProps}
         >
             {children}

@@ -20,28 +20,28 @@ type Story = StoryObj<typeof AppLink>;
 
 export const PrimaryThemeLight: Story = {
     args: {
-        theme: 'primary',
+        variant: 'primary',
     },
     decorators: [CenterDecorator],
 }
 
 export const SecondaryThemeLight: Story = {
     args: {
-        theme: 'secondary',
+        variant: 'secondary',
     },
     decorators: [CenterDecorator],
 }
 
 export const PrimaryThemeDark: Story = {
     args: {
-        theme: 'primary',
+        variant: 'primary',
     },
     decorators: [CenterDecorator, ThemeDecorator(Theme.DARK)],
 }
 
 export const SecondaryThemeDark: Story = {
     args: {
-        theme: 'secondary',
+        variant: 'secondary',
     },
     decorators: [CenterDecorator, ThemeDecorator(Theme.DARK)],
 }
