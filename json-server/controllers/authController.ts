@@ -6,7 +6,7 @@ import ApiError from '../exceptions/ApiError'
 const isPasswordEquals = (p1: string, p2: string) =>
     p1 === p2
 
-class UserController {
+class AuthController {
 
     async login(
         req: Request,
@@ -28,9 +28,10 @@ class UserController {
 
             return res.json(userFromBd)
         } catch (error) {
-            return res.status(500).json({ message: error.message })
+            const err = error as any //strick
+            return res.status(500).json({ message: err.message })
         }
     }
 }
 
-export default new UserController()
+export default new AuthController()
