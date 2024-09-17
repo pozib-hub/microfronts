@@ -37,7 +37,6 @@ export function buildPlugins({
     if (isDev) {
         const dev_plugins = [
             new ReactRefreshWebpackPlugin(),
-            new webpack.HotModuleReplacementPlugin(),
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
             }),
