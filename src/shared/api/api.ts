@@ -21,6 +21,9 @@ const $api = axios.create({
     },
 })
 
+console.log(process.env.URL_API)
+
+
 $api.interceptors.request.use(cbConfig)
 
 export { $api }
