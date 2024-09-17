@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cn from 'src/shared/lib/classNames/classNames'
 
 import styles from './AboutPage.module.scss'
+
 
 interface IAboutPage {
     className?: string
@@ -14,7 +15,10 @@ const AboutPage = (props: IAboutPage) => {
 
     const { t } = useTranslation()
 
-    return <div className={cn(styles.page, className)}>{t('About')}</div>
+
+    return <div className={cn(styles.page, className)}>
+
+    </div >
 }
 
 export default AboutPage

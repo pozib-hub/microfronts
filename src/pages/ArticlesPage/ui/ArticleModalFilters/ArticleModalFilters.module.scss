@@ -1,0 +1,11 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px 40px 24px;
+}
+
+.bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,27 @@
+.wrapper {
+    margin-bottom: 80px;
+}
+
+
+
+.title {
+    margin-bottom: 20px;
+}
+
+.block_recommendations {
+    margin-top: 25px;
+
+    .recommendations {
+        flex-wrap: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+}
+
+.comments {
+    margin-top: 30px;
+
+    &__list {
+        margin-top: 20px;
+    }
+}

@@ -106,7 +106,7 @@ export default [
   },
   {
     // overrides
-    files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+    files: ['**/src/**/*.{test,stories}.{ts,tsx}', '**/assets/icons/svg/*'],
     rules: {
       'max-len': 'off',
       'i18next/no-literal-string': 'off',

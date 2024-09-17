@@ -10,7 +10,33 @@ body {
   color: var(--primary-color);
 }
 
+#root {
+  height: 100%;
+}
+
 .app {
   background: var(--bg-color);
   min-height: 100vh;
+}
+
+
+
+*::-webkit-scrollbar {
+  width: 6px;
+  /* ширина scrollbar */
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  /* цвет дорожки */
+  background: var(--card-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  /* цвет плашки */
+  background-color: var(--inverted-primary-color);
+  /* закругления плашки */
+  border-radius: 20px;
+  /* padding вокруг плашки */
+  border: 2px solid var(--primary-color);
 }

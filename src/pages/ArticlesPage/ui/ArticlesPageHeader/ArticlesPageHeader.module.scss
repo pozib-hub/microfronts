@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.btn {
+    &-view {
+        &.selected {
+            fill: var(--inverted-bg-color)
+        }
+
+        :hover {
+            fill: var(--inverted-bg-color)
+        }
+    }
+}
+
+.left,
+.right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}

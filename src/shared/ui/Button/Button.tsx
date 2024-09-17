@@ -4,7 +4,7 @@ import cn from 'shared/lib/classNames/classNames'
 
 import styles from './Button.module.scss'
 
-type Variants = 'primary' | 'dashed' | 'transparent' | 'link'
+type Variants = 'primary' | 'dashed' | 'transparent' | 'outline' | "danger"
 type Sizes = 'small' | 'medium' | 'large'
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

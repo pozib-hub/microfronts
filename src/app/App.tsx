@@ -7,7 +7,7 @@ import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { PageLoader } from 'widgets/PageLoader'
 import { userActions } from 'entities/user'
-
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
 
 // TODO:
 // 1. сделать приттер на пре-коммит
@@ -16,10 +16,14 @@ import { userActions } from 'entities/user'
 // 5. попробовать всем классам в сервере сделать контекст с бд
 // 6. сделать автоматическую типизацию по серверу
 // 7. семантическая  верстка
+// 8. свой json server
+// 9. авторизация по сертификату
 
 
 const App = () => {
     const dispatch = useDispatch()
+
+    const inited = useAppSelector(state => state.user._inited)
 
     useEffect(() => {
         dispatch(userActions.initAuthData())
@@ -30,8 +34,8 @@ const App = () => {
             <Suspense fallback={<PageLoader />}>
                 <Navbar />
                 <Sidebar />
-                <div className="layout">
-                    <AppRouter />
+                <div id="scroll-layout">
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

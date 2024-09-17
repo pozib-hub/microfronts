@@ -22,7 +22,7 @@ declare module '*.svg' {
 }
 
 declare const __IS_DEV__: boolean
-
+declare const __PROJECT__: "frontend" | "storybook" | "jest"
 // declare module '*.svg' {
 //   const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
 //   const content: string;

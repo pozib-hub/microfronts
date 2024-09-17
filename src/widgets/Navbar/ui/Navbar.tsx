@@ -55,7 +55,11 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
                     {t('signIn')}
                 </Button>
             </div>
-            <LoginModal isOpen={isOpenAuthModal} onClose={onCloseModal} />
+            <LoginModal
+                isOpen={isOpenAuthModal}
+                onClose={onCloseModal}
+            // onChangeClose={setIsOpenAuthModal}
+            />
         </header>
     )
 })

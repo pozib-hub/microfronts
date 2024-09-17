@@ -5,6 +5,7 @@ import cn from 'shared/lib/classNames/classNames'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { Text } from 'shared/ui/Text/Text'
 import { ISidebarItem } from 'widgets/Sidebar/model/items'
+import { Icon } from 'shared/ui/Icon/Icon'
 
 import styles from './SidebarItem.module.scss'
 
@@ -23,7 +24,7 @@ export const SidebarItem: FC<ISidebarItemProps> = memo(function SidebarItem(prop
 
     const { t } = useTranslation()
 
-    const { path, text, Icon } = item
+    const { path, text, iconId } = item
 
     return (
         <AppLink
@@ -31,7 +32,7 @@ export const SidebarItem: FC<ISidebarItemProps> = memo(function SidebarItem(prop
             className={cn(styles.SidebarItem, className)}
             to={path}
         >
-            <Icon />
+            <Icon id={iconId} size={20} />
             {!collapsed && <Text>{t(text)}</Text>}
         </AppLink>
     )

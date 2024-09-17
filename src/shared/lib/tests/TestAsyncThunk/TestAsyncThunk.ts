@@ -9,6 +9,8 @@ jest.mock('axios', () => {
     return {
         post: jest.fn(),
         get: jest.fn(),
+        put: jest.fn(),
+        delete: jest.fn(),
         // create: () => {
         //     return {
         //         interceptors: {
@@ -28,14 +30,17 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     getState: () => StateSchema
     actionCreator: ActionCreatorThunk<Return, Arg, RejectedValue>
     api: jest.MockedFunctionDeep<AxiosStatic>
-    navigate: jest.MockedFunction<any>
+    // navigate: jest.MockedFunction<any>
 
-    constructor(actionCreator: ActionCreatorThunk<Return, Arg, RejectedValue>) {
+    constructor(
+        actionCreator: ActionCreatorThunk<Return, Arg, RejectedValue>,
+        state?: PartialDeep<StateSchema>
+    ) {
         this.actionCreator = actionCreator
         this.dispatch = jest.fn()
-        this.getState = jest.fn()
+        this.getState = jest.fn(() => state as StateSchema)
         this.api = mockedAxios
-        this.navigate = jest.fn()
+        // this.navigate = jest.fn()
     }
 
     async callThunk(arg: Arg) {
@@ -46,7 +51,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
             this.getState,
             {
                 api: this.api,
-                navigate: this.navigate
+                // navigate: this.navigate
             }
         )
 

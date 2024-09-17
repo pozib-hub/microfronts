@@ -19,7 +19,8 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
                             // keyAsDefaultValue: true,
                         },
                     ],
-                ],
+                    isDev && require.resolve("react-refresh/babel")
+                ].filter(Boolean),
             },
         },
     }
@@ -35,7 +36,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         // exclude: /node_modules/,
     }
 
-    const cssLoader = buildCssLoaders(isDev)
+    const cssLoaders = buildCssLoaders(isDev)
 
     // Если не используем тайпскрипт - нужен babel-loader
     const typescriptLoader = {
@@ -44,5 +45,5 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     }
 
-    return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader]
+    return [fileLoader, svgLoader, babelLoader, typescriptLoader, ...cssLoaders]
 }

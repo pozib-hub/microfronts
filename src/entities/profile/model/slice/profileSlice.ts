@@ -1,16 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { IProfile, ProfileSchema } from '../types/profile'
-import { fetchProfileData } from '../services/fetchProfileData'
-import { updateProfileData } from '../services/updateProfileData'
+import { IProfile, ProfileSchema, ValidateProfileError } from '../types/profile'
+import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
+import { updateProfileData } from '../services/updateProfileData/updateProfileData'
+import { API_Errors } from 'shared/api/types'
+import builderReducersByProject from 'utils/builderReducersByProject'
 
 const initialState: ProfileSchema = {
     data: undefined,
     readonly: true,
     isLoading: false,
     error: undefined,
+    validateErrors: undefined,
+    form: undefined,
 }
-
 export const profileSlice = createSlice({
     name: 'profile',
     initialState,
@@ -24,14 +27,19 @@ export const profileSlice = createSlice({
         cancelEdit: (state) => {
             state.readonly = true
             state.form = state.data
+            state.validateErrors = undefined
+            state.error = undefined
         },
         setError: (state, action: PayloadAction<string | undefined>) => {
             state.error = action.payload || ""
         },
+        setValidateErrors: (state, action: PayloadAction<ValidateProfileError[] | undefined>) => {
+            state.validateErrors = action.payload
+        },
         updateProfile: (state, action: PayloadAction<IProfile>) => {
             // state.data = action.payload
             state.form = {
-                ...state.data,
+                ...state.form,
                 ...action.payload
             }
         },
@@ -42,7 +50,7 @@ export const profileSlice = createSlice({
         // getProfileForm: (state) => state.form
     },
     extraReducers: (builder) => {
-        builder.addCase(
+        builderReducersByProject(builder)?.addCase(
             fetchProfileData.pending,
             (state) => {
                 state.error = undefined
@@ -62,6 +70,7 @@ export const profileSlice = createSlice({
                     state.error = action.payload
                 })
             .addCase(updateProfileData.pending, (state) => {
+                state.validateErrors = undefined
                 state.error = undefined
                 state.isLoading = true
             })
@@ -69,14 +78,14 @@ export const profileSlice = createSlice({
                 state,
                 action: PayloadAction<IProfile>,
             ) => {
-                state.isLoading = false
                 state.data = action.payload
                 state.form = action.payload
+                state.isLoading = false
                 state.readonly = true
             })
             .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false
-                state.error = action.payload
+                state.validateErrors = action.payload
             })
     },
 })

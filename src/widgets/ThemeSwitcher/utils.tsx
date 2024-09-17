@@ -1,27 +1,33 @@
 import React from 'react'
+import { Icon } from 'shared/ui/Icon/Icon'
 
 import { Theme } from 'src/app/providers/ThemeProvider'
-import IconDark from 'src/shared/assets/icons/theme-dark.svg'
-import IconLight from 'src/shared/assets/icons/theme-light.svg'
+// import IconDark from 'src/shared/assets/icons/theme-dark.svg'
+// import IconLight from 'src/shared/assets/icons/theme-light.svg'
+// import IconOrange from 'src/shared/assets/icons/theme-orange.svg'
 
 export const getIconByTheme = (theme?: Theme) => {
     switch (theme) {
         case Theme.DARK:
-            return IconDark
+            return <Icon id='ThemeDark' />
         case Theme.LIGHT:
-            return IconLight
+            return <Icon id='ThemeLight' />
+        case Theme.ORANGE:
+            return <Icon id='ThemeOrange' />
         default:
-            return IconLight
+            return <Icon id='ThemeLight' />
     }
 }
 export const getInversionIconByTheme = (theme?: Theme) => {
     switch (theme) {
         case Theme.DARK:
-            return IconLight
+            return <Icon id='ThemeLight' />
         case Theme.LIGHT:
-            return IconDark
+            return <Icon id='ThemeDark' />
+        case Theme.ORANGE:
+            return <Icon id='ThemeOrange' />
         default:
-            return IconLight
+            return <Icon id='ThemeLight' />
     }
 }
 

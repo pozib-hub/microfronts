@@ -1,13 +1,11 @@
 import { routePath } from 'shared/config/routerConfig/routerConfig'
-import IconMain from 'shared/assets/icons/main-20-20.svg'
-import IconProfile from 'shared/assets/icons/profile-20-20.svg'
-import IconAbout from 'shared/assets/icons/about-20-20.svg'
-
+import { IconId } from 'shared/ui/Icon/Icon'
 export interface ISidebarItem {
     path: string
     text: string
     authOnly?: boolean
-    Icon: React.FC<React.SVGProps<SVGSVGElement>>
+    // Icon: React.FC<React.SVGProps<SVGSVGElement>>
+    iconId: IconId
     onClick?: (path?: string) => void
 }
 
@@ -16,17 +14,29 @@ export const sidebarLinkItems: ISidebarItem[] = [
     {
         path: routePath.main,
         text: 'main',
-        Icon: IconMain,
+        iconId: 'Main',
     },
     {
         path: routePath.about,
         text: 'about',
-        Icon: IconAbout,
+        iconId: 'About'
     },
     {
-        path: routePath.profile,
+        path: routePath.profile(),
         text: 'profile',
-        Icon: IconProfile,
+        iconId: 'Profile',
+        authOnly: true
+    },
+    {
+        path: routePath.articles,
+        text: 'articles',
+        iconId: 'Article',
+        authOnly: true
+    },
+    {
+        path: routePath.articleCreate,
+        text: 'articles.create',
+        iconId: 'Tiles',
         authOnly: true
     }
 ]

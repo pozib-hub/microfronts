@@ -31,7 +31,7 @@ export const Sidebar: FC<ISidebarProps> = memo(function Sidebar(props) {
     }, [isAuth])
 
     return (
-        <nav
+        <menu
             data-testid="sidebar"
             className={cn(
                 styles.sidebar,
@@ -58,6 +58,6 @@ export const Sidebar: FC<ISidebarProps> = memo(function Sidebar(props) {
                     <ThemeSwitcher className={styles.bottom_item} />
                 </div>
             </div>
-        </nav>
+        </menu>
     )
 })

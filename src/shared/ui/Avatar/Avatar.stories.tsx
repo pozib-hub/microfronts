@@ -2,7 +2,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { CenterDecorator } from 'shared/config/storybook/CenterDecorator/CenterDecorator'
-import AvatarImg from './storybook.jpg'
+import AvatarImg from 'src/shared/assets/tests/Avatar.jpg'
 import { Avatar } from './Avatar'
 
 const meta: Meta<typeof Avatar> = {

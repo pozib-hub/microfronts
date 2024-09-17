@@ -19,8 +19,8 @@ export const ThemeSwitcher: FC<IThemeSwitcherProps> = (props) => {
     const Icon = getIconByTheme(theme)
 
     return (
-        <div className={cn(style.className, className)}>
-            <Button variant='transparent' onClick={toggleTheme}>{<Icon />}</Button>
+        <div className={cn(style.themeSwitcher, className)}>
+            <Button variant='transparent' onClick={toggleTheme}>{Icon}</Button>
         </div>
     )
 }

@@ -15,8 +15,10 @@ import { ProfileSchema } from 'entities/profile'
 import { UserSchema } from 'entities/user'
 import { LoginSchema } from 'features/AuthByUsername'
 import { GlobalSettingsSchema } from 'entities/globalSettings'
-
-
+import { ArticleDetailsSchema } from 'entities/Article'
+import { AddCommentFormSchema } from 'features/addCommentForm'
+import { ArticlesPageSchema } from 'pages/ArticlesPage'
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage'
 
 export interface StateSchema {
     globalSettings: GlobalSettingsSchema
@@ -25,8 +27,11 @@ export interface StateSchema {
     // async reducers
     loginForm?: LoginSchema
     profile?: ProfileSchema
+    addCommentForm?: AddCommentFormSchema
+    articlesPage?: ArticlesPageSchema
+    articleDetails?: ArticleDetailsSchema
+    articleDetailsPage?: ArticleDetailsPageSchema
 }
-
 
 export interface IReduceManager<State> {
     getReducerMap: () => ReducersMapObject<State>,
