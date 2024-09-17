@@ -18,7 +18,8 @@ const AppRouter = () => {
 
         return <Route
             key={route.path}
-            {...route}
+            // {...route}
+
             element={
                 route.authOnly
                     ? <RequireAuth>{element}</RequireAuth>
@@ -29,9 +30,9 @@ const AppRouter = () => {
     return <>
         <Suspense fallback={<PageLoader />}>
             <Routes>
-                {/* {routeConfig.map(route => route.children?.length
+                {routeConfig.map(route => route.children?.length
                     ? route.children.map(renderWithWrapper)
-                    : renderWithWrapper(route))} */}
+                    : renderWithWrapper(route))}
             </Routes>
         </Suspense>
     </>

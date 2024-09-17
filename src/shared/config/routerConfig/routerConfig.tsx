@@ -12,7 +12,7 @@ import { ArticleEditPage } from 'pages/ArticleEditPage'
 
 export type AppRoutesProps = Omit<RouteProps, "children"> & {
     authOnly?: boolean
-    children?: RouteProps[]
+    children?: AppRoutesProps[]
 }
 
 export const routePath = {
@@ -23,7 +23,6 @@ export const routePath = {
     "articleDetail": (id: string) => `/articles/${id}`,
     "articleEdit": (id: string) => `/ articles / ${id}/edit`,
     "articleCreate": '/articles/create',
-
 
     "CharacteristicsUVHD": '/CharacteristicsUVHD',
     "test": '/test',
