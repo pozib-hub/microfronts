@@ -10,9 +10,8 @@ import { CharacteristicsUVHDPage } from 'pages/CharacteristicsUVHD'
 import { Test } from 'pages/Tests'
 import { ArticleEditPage } from 'pages/ArticleEditPage'
 
-export type AppRoutesProps = Omit<RouteProps, "children"> & {
+export type AppRoutesProps = RouteProps & {
     authOnly?: boolean
-    children?: AppRoutesProps[]
 }
 
 export const routePath = {
@@ -27,12 +26,7 @@ export const routePath = {
     "CharacteristicsUVHD": '/CharacteristicsUVHD',
     "test": '/test',
 }
-
 export const routeConfig: AppRoutesProps[] = [
-    {
-        path: '*',
-        element: <NotFoundPage />,
-    },
     {
         path: routePath.main,
         element: <MainPage />,
@@ -42,32 +36,26 @@ export const routeConfig: AppRoutesProps[] = [
         element: <AboutPage />,
     },
     {
-        path: routePath.profile() + ":id?",
+        path: routePath.profile() + "/:id?",
         element: <ProfilePage />,
         authOnly: true,
     },
     {
         path: routePath.articles,
         authOnly: true,
-        // element: <ProfilePage />,
-        children: [
-            {
-                path: "/",
-                element: <ArticlesPage />,
-            },
-            {
-                path: ":id?",
-                element: <ArticleDetailsPage />,
-            },
-            {
-                path: ":id/edit",
-                element: <ArticleEditPage />,
-            },
-            // {
-            //     path: "create",
-            //     element: <ArticleCreat />,
-            // },
-        ],
+        element: <ArticlesPage />,
+    },
+    {
+        path: routePath.articles + "/:id",
+        element: <ArticleDetailsPage />,
+    },
+    {
+        path: routePath.articles + "/:id/edit",
+        element: <ArticleEditPage />,
+    },
+    {
+        path: routePath.articles + "/create",
+        element: <ArticleEditPage />,
     },
     {
         path: routePath.CharacteristicsUVHD,
@@ -78,5 +66,9 @@ export const routeConfig: AppRoutesProps[] = [
         path: routePath.test,
         element: <Test />,
         authOnly: true,
+    },
+    {
+        path: '*',
+        element: <NotFoundPage />,
     },
 ]

@@ -74,7 +74,7 @@ export const ArticleItem: FC<IArticleItemProps> =
                         <div className={styles.footer}>
                             <AppLink
                                 target={target}
-                                to={routePath.articles + item.id}>
+                                to={routePath.articleDetail(item.id)}>
                                 читать далее...
                             </AppLink>
                             {item.views}

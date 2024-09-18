@@ -5,11 +5,8 @@ import { PageLoader } from 'src/widgets/PageLoader'
 import { AppRoutesProps, routeConfig } from 'src/shared/config/routerConfig/routerConfig'
 import RequireAuth from './RequireAuth'
 
-
-
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-
         const element = (
             <Suspense fallback={<PageLoader />}>
                 {route.element}
@@ -18,8 +15,7 @@ const AppRouter = () => {
 
         return <Route
             key={route.path}
-            // {...route}
-
+            {...route}
             element={
                 route.authOnly
                     ? <RequireAuth>{element}</RequireAuth>
@@ -27,12 +23,28 @@ const AppRouter = () => {
             } />
     }, [])
 
+    // const renderRouter = (routeConfig: AppRoutesProps[]): JSX.Element[] => {
+    //     return routeConfig.map(route => {
+    //         if (route.children) {
+    //             // Создаем родительский маршрут с логикой
+    //             const Parent = renderWithWrapper(route)
+
+    //             // Клонируем родительский элемент и добавляем к нему дочерние маршруты
+    //             return React.cloneElement(
+    //                 Parent,
+    //                 { key: route.path },
+    //                 renderRouter(route.children) // Дочерние маршруты
+    //             )
+    //         } else {
+    //             return renderWithWrapper(route)
+    //         }
+    //     })
+    // }
+
     return <>
         <Suspense fallback={<PageLoader />}>
             <Routes>
-                {routeConfig.map(route => route.children?.length
-                    ? route.children.map(renderWithWrapper)
-                    : renderWithWrapper(route))}
+                {routeConfig.map(renderWithWrapper)}
             </Routes>
         </Suspense>
     </>
