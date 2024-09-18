@@ -11,18 +11,16 @@ const cbConfig =
             })
         }
 
+        if (config.headers) {
+            config.headers.Authorization = localStorage.getItem(USER_LOCALSTORAGE_KEY) || ''
+        }
+
         return config
     }
 
 const $api = axios.create({
     baseURL: process.env.URL_API,
-    headers: {
-        authorization: localStorage.getItem(USER_LOCALSTORAGE_KEY) || '',
-    },
 })
-
-console.log({ URL_API: process.env.URL_API })
-
 
 $api.interceptors.request.use(cbConfig)
 
