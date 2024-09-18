@@ -22,6 +22,7 @@ export function buildPlugins({
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
         new webpack.DefinePlugin({
+            "process.env": JSON.stringify(process.env),
             __IS_DEV__: JSON.stringify(isDev),
             __PROJECT__: JSON.stringify("frontend"),
         }),
