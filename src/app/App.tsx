@@ -34,9 +34,9 @@ const App = () => {
             <Suspense fallback={<PageLoader />}>
                 <Navbar />
                 <Sidebar />
-                <div id="scroll-layout">
+                <main id="scroll-layout">
                     {inited && <AppRouter />}
-                </div>
+                </main>
             </Suspense>
         </div>
     )

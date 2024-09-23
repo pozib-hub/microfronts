@@ -5,11 +5,12 @@ import cn from 'src/shared/lib/classNames/classNames'
 import { Button } from 'src/shared/ui/Button/Button'
 import { ThemeSwitcher } from 'src/widgets/ThemeSwitcher'
 import { LanguageSwitcher } from 'src/widgets/LanguageSwitcher'
-import { sidebarLinkItems } from 'widgets/Sidebar/model/items'
+import { sidebarLinkItems } from '../../model/items'
 
 import styles from './Sidebar.module.scss'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
+import { VStack } from 'shared/ui/Stack'
 
 interface ISidebarProps {
     className?: string
@@ -31,7 +32,7 @@ export const Sidebar: FC<ISidebarProps> = memo(function Sidebar(props) {
     }, [isAuth])
 
     return (
-        <menu
+        <aside
             data-testid="sidebar"
             className={cn(
                 styles.sidebar,
@@ -47,17 +48,17 @@ export const Sidebar: FC<ISidebarProps> = memo(function Sidebar(props) {
                 >
                     {open ? "<" : ">"}
                 </Button>
-                <div className={cn(styles.linksItems, styleCollapsed)}>
+                <VStack role='navigation' gap='8' padding='16' align={open ? "start" : "end"} >
                     {
                         linksItems.map(item =>
                             <SidebarItem key={item.path} item={item} collapsed={!open} />)
                     }
-                </div>
+                </VStack>
                 <div className={cn(styles.bottom, styleCollapsed)}>
                     <LanguageSwitcher className={styles.bottom_item} />
                     <ThemeSwitcher className={styles.bottom_item} />
                 </div>
             </div>
-        </menu>
+        </aside>
     )
 })

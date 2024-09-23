@@ -42,7 +42,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     const isEditProfile = currentUserId == data?.id
 
     return (
-        <div className={cn(styles.ProfilePageHeader, className)}>
+        <div className={cn(styles.wrapper, className)}>
             <Text title={t('Профиль')} />
 
             {isEditProfile && <>
