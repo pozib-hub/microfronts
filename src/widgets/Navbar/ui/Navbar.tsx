@@ -6,6 +6,8 @@ import cn from 'src/shared/lib/classNames/classNames'
 import { routePath } from 'shared/config/routerConfig/routerConfig'
 import { AppLink } from 'src/shared/ui/AppLink/AppLink'
 import { Button } from 'shared/ui/Button/Button'
+import { Menu } from 'shared/ui/Menu/Menu'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { LoginModal } from 'features/AuthByUsername'
 import { getUserAuthData, userActions } from 'entities/user'
 
@@ -40,9 +42,21 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
         return <header className={cn(style.navbar, className)}>
             <div className={style.links}>
                 <AppLink to={routePath.about}>{t('about')}</AppLink>
-                <Button variant='transparent' onClick={onLogout}>
-                    {t('logOut')}
-                </Button>
+                <Menu
+                    className={style.menu}
+                    trigger={<Avatar size={28} src={authData.avatar} />}
+                    direction='bottom left'
+                    items={[
+                        {
+                            content: t('profile'),
+                            // onClick: onLogout,
+                        },
+                        {
+                            content: t('logOut'),
+                            onClick: onLogout,
+                        }
+                    ]}
+                />
             </div>
         </header>
     }
@@ -51,6 +65,7 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
         <header className={cn(style.navbar, className)}>
             <div className={style.links}>
                 <AppLink to={routePath.about}>{t('about')}</AppLink>
+
                 <Button variant='transparent' onClick={onOpenModal}>
                     {t('signIn')}
                 </Button>
