@@ -2,9 +2,11 @@ import React, { FC, memo } from 'react'
 
 import cn from 'shared/lib/classNames/classNames'
 
-import styles from './ArticleCodeBlock.module.scss'
-import { ICodeBlock } from 'entities/Article/model/types/article'
 import { Code } from 'shared/ui/Code/Code'
+
+import { ICodeBlock } from '../../model/types/article'
+
+import styles from './ArticleCodeBlock.module.scss'
 
 interface IArticleCodeBlockProps {
     className?: string

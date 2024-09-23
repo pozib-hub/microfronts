@@ -3,19 +3,21 @@ import { useTranslation } from 'react-i18next'
 
 import cn from 'shared/lib/classNames/classNames'
 
-import styles from './ArticleDetails.module.scss'
 import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetalsSlice'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById'
+import { Icon } from 'shared/ui/Icon/Icon'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import { ArticleBlock, IArticle } from 'entities/Article/model/types/article'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
+
+import { articleDetailsReducer } from '../../model/slice/articleDetalsSlice'
+import { ArticleBlock, IArticle } from '../../model/types/article'
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import { Icon } from 'shared/ui/Icon/Icon'
+
+
+
+import styles from './ArticleDetails.module.scss'
+
 
 const reducers = {
     articleDetails: articleDetailsReducer

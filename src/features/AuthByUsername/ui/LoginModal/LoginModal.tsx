@@ -2,9 +2,9 @@ import React, { FC, Suspense } from 'react'
 
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import cn from 'shared/lib/classNames/classNames'
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { Loader } from 'shared/ui/Loader/Loader'
+import { loginActions } from '../../model/slice/loginSlice'
 import { LoginFormLazy } from '../LoginForm/LoginForm.lazy'
 
 import styles from './LoginModal.module.scss'

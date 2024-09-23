@@ -3,7 +3,7 @@ import React, { FC, memo } from 'react'
 import cn from 'shared/lib/classNames/classNames'
 
 import styles from './CommentList.module.scss'
-import { IComment } from 'entities/Comment/model/types/comment'
+import { IComment } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
 
 interface ICommentListProps {

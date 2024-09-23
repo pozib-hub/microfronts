@@ -93,11 +93,12 @@ const ProfilePage: FC<IProfilePage> = (props) => {
 
     return <DynamicModuleLoader reducers={reducers}>
         <div className={cn(styles.page, className)}>
-            {location.state?.article && <AppLink to={routePath.articles + location.state.article.id}>
-                {"<"}
-                {" "}
-                {location.state.article.title}
-            </AppLink>}
+            {location.state?.article
+                && <AppLink to={routePath.articles + location.state.article.id}>
+                    {"<"}
+                    {" "}
+                    {location.state.article.title}
+                </AppLink>}
             <ProfilePageHeader />
             {
                 validateErrors?.map(err =>

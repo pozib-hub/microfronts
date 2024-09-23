@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next'
 import cn from 'shared/lib/classNames/classNames'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { Text } from 'shared/ui/Text/Text'
-import { ISidebarItem } from 'widgets/Sidebar/model/items'
 import { Icon } from 'shared/ui/Icon/Icon'
+
+import { ISidebarItem } from '../../model/items'
 
 import styles from './SidebarItem.module.scss'
 

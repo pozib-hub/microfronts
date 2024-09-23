@@ -11,10 +11,16 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
 import { AddCommentForm } from 'features/addCommentForm'
-import { fetchArticleRecommendations, fetchCommentsByArticleId } from 'pages/ArticleDetailsPage'
+
+import {
+    fetchCommentsByArticleId
+} from '../../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import {
+    fetchArticleRecommendations,
+} from '../../../model/services/fetchArticleRecommendations/fetchArticleRecommendations'
 import {
     addCommentForArticle
-} from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
+} from '../../../model/services/addCommentForArticle/addCommentForArticle'
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById'
 import {
     getArticleComments
@@ -22,7 +28,7 @@ import {
 import {
     getRecommendations
 } from '../../../model/slices/articleDetailsRecommendationsSlice'
-import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices'
+import { articleDetailsPageReducer } from '../../../model/slices'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 
 const reducers: ReducersList = {

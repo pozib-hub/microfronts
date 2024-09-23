@@ -8,6 +8,8 @@ import reactPlugin from "eslint-plugin-react"
 import storybookPlugin from "eslint-plugin-storybook"
 import i18nextPlugin from 'eslint-plugin-i18next'
 import hooksPlugin from "eslint-plugin-react-hooks"
+import pozibPlugin from "eslint-plugin-pozib-plugin"
+
 
 const jsRules = {
   // indent: ['error', 4],
@@ -32,6 +34,7 @@ const importRules = {
   'import/prefer-default-export': 'off',
   'import/extensions': 'off',
   'import/no-extraneous-dependencies': 'off',
+  "pozib-plugin/path-checker": "error"
 }
 
 const reactRules = {
@@ -91,7 +94,8 @@ export default [
       airbnb: airbnbPlugin,
       storybook: storybookPlugin,
       i18next: i18nextPlugin,
-      "react-hooks": fixupPluginRules(hooksPlugin)
+      "react-hooks": fixupPluginRules(hooksPlugin),
+      "pozib-plugin": pozibPlugin,
     },
   },
   {
@@ -114,6 +118,7 @@ export default [
   },
   {
     ignores: [
+      "build",
       "!node_modules/",
       "node_modules/*",
       "storybook-static/*",

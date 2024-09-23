@@ -5,18 +5,16 @@ import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import cn from 'shared/lib/classNames/classNames'
-
+import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
 import { Input } from 'shared/ui/Input/Input'
 import { Button } from 'shared/ui/Button/Button'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { loginActions, loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
-import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState'
-import {
-    loginByUsername,
-} from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername'
-
 import { Text } from 'shared/ui/Text/Text'
-import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
+import { getLoginState } from '../../model/selectors/getLoginState'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+
 import styles from './LoginForm.module.scss'
 
 const asyncReducers = {
