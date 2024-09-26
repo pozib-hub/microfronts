@@ -95,6 +95,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                 <div className={styles.col}>
                     <div className={styles.row}>
                         <Input
+                            data-testid="ProfileCart.firstname"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
                             label={t('Ваше имя')}
@@ -102,6 +103,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                             onChange={(e) => onChangeFirstname(e.target.value)}
                         />
                         <Input
+                            data-testid="ProfileCart.lastname"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
                             label={t('Ваша фамилия')}
@@ -109,6 +111,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                             onChange={(e) => onChangeLastname(e.target.value)}
                         />
                         <Input
+                            data-testid="ProfileCart.age"
                             classNameWrapper={styles.input}
                             type='number'
                             readOnly={readonly}
@@ -120,6 +123,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
 
                     <div className={styles.row}>
                         <Input
+                            data-testid="ProfileCart.city"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
                             label={t('Город')}
@@ -127,6 +131,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                             onChange={(e) => onChangeCity(e.target.value)}
                         />
                         <Input
+                            data-testid="ProfileCart.username"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
                             label={t('Введите имя пользователя')}
@@ -134,6 +139,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                             onChange={(e) => onChangeUsername(e.target.value)}
                         />
                         <Input
+                            data-testid="ProfileCart.avatar"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
                             label={t('Введите ссылку на аватар')}

@@ -19,6 +19,7 @@ interface ITextProps extends HTMLAttributes<HTMLSpanElement> {
         width: string | number,
     }
     children?: React.ReactNode
+    "data-testid"?: string
 }
 
 export const Text: FC<ITextProps> = (props) => {
@@ -32,6 +33,8 @@ export const Text: FC<ITextProps> = (props) => {
         bold,
         ellipsis,
         style,
+
+        "data-testid": dataTestId = ""
     } = props
 
     const classes = [

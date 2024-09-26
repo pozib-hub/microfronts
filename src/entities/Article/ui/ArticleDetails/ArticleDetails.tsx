@@ -8,7 +8,7 @@ import { Icon } from 'shared/ui/Icon/Icon'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 
-import { articleDetailsReducer } from '../../model/slice/articleDetalsSlice'
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { ArticleBlock, IArticle } from '../../model/types/article'
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'

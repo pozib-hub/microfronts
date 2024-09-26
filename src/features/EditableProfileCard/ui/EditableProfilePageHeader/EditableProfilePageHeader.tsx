@@ -2,20 +2,20 @@ import { Text } from 'shared/ui/Text/Text'
 import { Button } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { useCallback } from 'react'
-import styles from './ProfilePageHeader.module.scss'
 import cn from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { profileActions } from 'entities/profile'
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import {
-    updateProfileData
-} from 'entities/profile/model/services/updateProfileData/updateProfileData'
 
-interface ProfilePageHeaderProps {
+import { editProfileActions } from '../../model/slice/profileSlice'
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
+
+import styles from './EditableProfilePageHeader.module.scss'
+
+interface EditableProfilePageHeaderProps {
     className?: string;
 }
 
-export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
+export const EditableProfilePageHeader = (props: EditableProfilePageHeaderProps) => {
     const {
         className,
     } = props
@@ -23,16 +23,16 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     const { t } = useTranslation('profile')
 
     // const readonly = useSelector(getProfileReadonly)
-    const { readonly, data } = useAppSelector(state => state.profile) || {}
+    const { readonly, data } = useAppSelector(state => state.editProfile) || {}
     const { id: currentUserId } = useAppSelector(state => state.user.authData) || {}
     const dispatch = useAppDispatch()
 
     const onEdit = useCallback(() => {
-        dispatch(profileActions.setReadonly(false))
+        dispatch(editProfileActions.setReadonly(false))
     }, [dispatch])
 
     const onCancelEdit = useCallback(() => {
-        dispatch(profileActions.cancelEdit())
+        dispatch(editProfileActions.cancelEdit())
     }, [dispatch])
 
     const onSave = useCallback(() => {
@@ -49,6 +49,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                 {readonly
                     ? (
                         <Button
+                            data-testid="EditableProfileCardHeader.EditButton"
                             className={styles.editBtn}
                             variant='dashed'
                             onClick={onEdit}
@@ -59,6 +60,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                     : (
                         <>
                             <Button
+                                data-testid="EditableProfileCardHeader.CancelButton"
                                 className={styles.editBtn}
                                 variant='primary'
                                 onClick={onCancelEdit}
@@ -66,6 +68,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                                 {t('Отменить')}
                             </Button>
                             <Button
+                                data-testid="EditableProfileCardHeader.SaveButton"
                                 className={styles.saveBtn}
                                 variant='primary'
                                 onClick={onSave}

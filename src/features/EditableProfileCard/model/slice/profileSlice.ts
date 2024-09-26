@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { IProfile, ProfileSchema, ValidateProfileError } from '../types/profile'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 import { API_Errors } from 'shared/api/types'
 import builderReducersByProject from 'utils/builderReducersByProject'
+import { IProfile } from 'entities/profile'
 
-const initialState: ProfileSchema = {
+import { EditableProfileSchema, ValidateProfileError } from '../types/editableProfileCard'
+
+const initialState: EditableProfileSchema = {
     data: undefined,
     readonly: true,
     isLoading: false,
@@ -69,11 +71,13 @@ export const profileSlice = createSlice({
                     state.isLoading = false
                     state.error = action.payload
                 })
-            .addCase(updateProfileData.pending, (state) => {
-                state.validateErrors = undefined
-                state.error = undefined
-                state.isLoading = true
-            })
+
+
+        builder.addCase(updateProfileData.pending, (state) => {
+            state.validateErrors = undefined
+            state.error = undefined
+            state.isLoading = true
+        })
             .addCase(updateProfileData.fulfilled, (
                 state,
                 action: PayloadAction<IProfile>,
@@ -90,6 +94,6 @@ export const profileSlice = createSlice({
     },
 })
 
-export const { actions: profileActions } = profileSlice
-export const { reducer: profileReducer } = profileSlice
-export const { selectors: profileSelectors } = profileSlice
+export const { actions: editProfileActions } = profileSlice
+export const { reducer: editProfileReducer } = profileSlice
+export const { selectors: editProfileSelectors } = profileSlice

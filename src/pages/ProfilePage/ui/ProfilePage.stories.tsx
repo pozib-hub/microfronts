@@ -10,7 +10,7 @@ const meta: Meta<typeof ProfilePage> = {
     title: 'pages/ProfilePage',
     component: ProfilePage,
     decorators: [StoreDecorator({
-        profile: {
+        editProfile: {
             data: {
                 username: 'John Doe',
                 firstname: 'John',

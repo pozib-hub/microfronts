@@ -1,6 +1,7 @@
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk"
 import { updateProfileData } from "./updateProfileData"
-import { IProfile, ValidateProfileError } from "../../types/profile"
+import { IProfile } from "entities/profile"
+import { ValidateProfileError } from "../../types/editableProfileCard"
 
 describe('updateProfileData.test', () => {
     const validData: IProfile = {
@@ -20,7 +21,7 @@ describe('updateProfileData.test', () => {
         const thunk = new TestAsyncThunk(
             updateProfileData,
             {
-                profile: {
+                editProfile: {
                     form: validData
                 }
             })
@@ -37,7 +38,7 @@ describe('updateProfileData.test', () => {
         const thunk = new TestAsyncThunk(
             updateProfileData,
             {
-                profile: {
+                editProfile: {
                     form: { ...validData, address: undefined }
                 }
             }
@@ -54,7 +55,7 @@ describe('updateProfileData.test', () => {
         const thunk = new TestAsyncThunk(
             updateProfileData,
             {
-                profile: {
+                editProfile: {
                     form: validData
                 }
             }

@@ -1,6 +1,7 @@
+import { IProfile } from "entities/profile"
 import { updateProfileData } from "../services/updateProfileData/updateProfileData"
-import { IProfile, ProfileSchema, ValidateProfileError } from "../types/profile"
-import { profileActions, profileReducer } from "./profileSlice"
+import { editProfileActions, editProfileReducer } from "./profileSlice"
+import { EditableProfileSchema, ValidateProfileError } from "../types/editableProfileCard"
 
 const validData: IProfile = {
     username: "admin",
@@ -17,60 +18,60 @@ const validData: IProfile = {
 describe('profileSlice.test', () => {
 
     test('test set data', () => {
-        const state: PartialDeep<ProfileSchema> = {
+        const state: PartialDeep<EditableProfileSchema> = {
             data: undefined
         }
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.setData(validData))
+        expect(editProfileReducer(
+            state as EditableProfileSchema,
+            editProfileActions.setData(validData))
         )
             .toEqual({ data: validData })
     })
 
     // test('test update profile', () => {
-    //     const state: PartialDeep<ProfileSchema> = {
+    //     const state: PartialDeep<EditableProfileSchema> = {
     //         data: validData
     //     }
     //     expect(profileReducer(
-    //         state as ProfileSchema,
+    //         state as EditableProfileSchema,
     //         profileActions.updateProfile(validData))
     //     )
     //         .toEqual(validData)
     // })
 
     test('test set Error', () => {
-        const state: PartialDeep<ProfileSchema> = {
+        const state: PartialDeep<EditableProfileSchema> = {
             error: undefined
         }
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.setError("error"))
+        expect(editProfileReducer(
+            state as EditableProfileSchema,
+            editProfileActions.setError("error"))
         )
             .toEqual({ error: "error" })
     })
 
     test('test set readonly', () => {
-        const state: PartialDeep<ProfileSchema> = {
+        const state: PartialDeep<EditableProfileSchema> = {
             readonly: false
         }
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.setReadonly(true))
+        expect(editProfileReducer(
+            state as EditableProfileSchema,
+            editProfileActions.setReadonly(true))
         )
             .toEqual({ readonly: true })
     })
 
     test('test clear Data', () => {
-        const state: PartialDeep<ProfileSchema> = {
+        const state: PartialDeep<EditableProfileSchema> = {
             data: validData,
             error: "error",
             form: validData,
             readonly: false,
             isLoading: true,
         }
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.clearData())
+        expect(editProfileReducer(
+            state as EditableProfileSchema,
+            editProfileActions.clearData())
         )
             .toEqual({
                 data: undefined,
@@ -83,12 +84,12 @@ describe('profileSlice.test', () => {
 
     // text extra reducer
     test('test update profile service pending', () => {
-        const state: PartialDeep<ProfileSchema> = {
+        const state: PartialDeep<EditableProfileSchema> = {
             isLoading: false,
             validateErrors: [ValidateProfileError.SERVER_ERROR],
         }
-        expect(profileReducer(
-            state as ProfileSchema,
+        expect(editProfileReducer(
+            state as EditableProfileSchema,
             updateProfileData.pending("1", ""),
         ))
             .toEqual({
@@ -98,12 +99,12 @@ describe('profileSlice.test', () => {
     })
 
     test('test update profile service fullfiled', () => {
-        const state: PartialDeep<ProfileSchema> = {
+        const state: PartialDeep<EditableProfileSchema> = {
             isLoading: true,
         }
 
-        expect(profileReducer(
-            state as ProfileSchema,
+        expect(editProfileReducer(
+            state as EditableProfileSchema,
             updateProfileData.fulfilled(validData, '1', ''),
         )).toEqual({
             isLoading: false,

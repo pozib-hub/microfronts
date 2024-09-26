@@ -1,11 +1,11 @@
 import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
-import { NavigateOptions, To } from 'react-router-dom'
 import { userReducer } from 'entities/user'
 
 import { $api } from 'shared/api/api'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { createReducerManager } from './reducerManager'
 import { globalSettingsReducer } from 'entities/globalSettings'
+import { rtkApi } from 'shared/api/rtkApi'
 
 export const staticReducers = {
     user: userReducer,
@@ -15,18 +15,17 @@ export const staticReducers = {
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-    // navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        ...staticReducers
+        ...staticReducers,
+        [rtkApi.reducerPath]: rtkApi.reducer
     }
 
     const reducerManager = createReducerManager<StateSchema>(rootReducers)
 
     const extraArg: ThunkExtraArg = {
         api: $api,
-        // navigate,
     }
 
     const store = configureStore({
@@ -37,7 +36,7 @@ export function createReduxStore(
             thunk: {
                 extraArgument: extraArg,
             },
-        }),
+        }).concat(rtkApi.middleware),
     })
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -1,6 +1,6 @@
 import { StateSchema } from "app/providers/StoreProvider"
 import Avatar from 'src/shared/assets/tests/Avatar.jpg'
-import { IProfile } from "../types/profile"
+import { IProfile } from "entities/profile"
 import { getProfileFormSelector } from "./getProfileFormSelector"
 
 describe("getProfileForm.test", () => {
@@ -12,7 +12,7 @@ describe("getProfileForm.test", () => {
             // avatar: Avatar,
         }
         const state: PartialDeep<StateSchema> = {
-            profile: {
+            editProfile: {
                 form: form
             }
         }

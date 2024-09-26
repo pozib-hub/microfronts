@@ -3,14 +3,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import parseApiErrors from 'shared/api/parseApiErrors'
 import { API_Errors } from 'shared/api/types'
+import { IProfile } from 'entities/profile'
 
-import { IProfile } from '../../types/profile'
-import { profileActions } from '../../slice/profileSlice'
+import { editProfileActions } from '../../slice/profileSlice'
 
 interface IProps {
     id?: string
 }
-
 
 export const fetchProfileData = createAsyncThunk<
     IProfile, IProps, ThunkConfig<API_Errors | string>
@@ -29,7 +28,7 @@ export const fetchProfileData = createAsyncThunk<
                 throw new Error('error')
             }
 
-            dispatch(profileActions.setData(response.data))
+            dispatch(editProfileActions.setData(response.data))
 
             return response.data
         } catch (error) {
