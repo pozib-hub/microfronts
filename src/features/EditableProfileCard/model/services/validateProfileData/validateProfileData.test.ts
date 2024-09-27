@@ -1,6 +1,6 @@
 import { IProfile } from "entities/profile"
 import { validateProfileData } from "./validateProfileData"
-import { ValidateProfileError } from "../../types/editableProfileCard"
+import { ValidateProfileError } from '../../../model/const/const'
 
 describe("validateProfileData", () => {
     test("ok", () => {

@@ -1,4 +1,4 @@
-import { ArticleSortField } from "entities/Article/model/types/article"
+import { ArticleSortField } from "entities/Article"
 import { ArticleDisplayType } from "shared/const/articles"
 import { OrderType } from "shared/const/common"
 

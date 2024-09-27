@@ -1,7 +1,8 @@
 import { IProfile } from "entities/profile"
 import { updateProfileData } from "../services/updateProfileData/updateProfileData"
 import { editProfileActions, editProfileReducer } from "./profileSlice"
-import { EditableProfileSchema, ValidateProfileError } from "../types/editableProfileCard"
+import { EditableProfileSchema } from "../types/editableProfileCard"
+import { ValidateProfileError } from '../../model/const/const'
 
 const validData: IProfile = {
     username: "admin",

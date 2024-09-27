@@ -3,7 +3,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 import { IProfile } from 'entities/profile'
 import { getProfileFormSelector } from '../../selectors'
 import { validateProfileData } from '../validateProfileData/validateProfileData'
-import { ValidateProfileError } from '../../types/editableProfileCard'
+import { ValidateProfileError } from '../../../model/const/const'
 
 const prepareProfileData = (profile?: IProfile) => {
     if (!profile) {

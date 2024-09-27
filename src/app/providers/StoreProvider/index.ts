@@ -1,6 +1,6 @@
 export { StoreProvider } from './ui/StoreProvider'
 export { createReducerManager } from './config/reducerManager'
-export {
+export type {
     StateSchema,
     IReduceManager,
     ReduxStoreWithManager,
@@ -9,8 +9,11 @@ export {
 } from './config/StateSchema'
 export {
     createReduxStore,
+    staticReducers
+} from './config/store'
+
+export type {
     AppStore,
     AppDispatch,
     AppState,
-    staticReducers
-} from './config/store'
+} from './types/appStore'

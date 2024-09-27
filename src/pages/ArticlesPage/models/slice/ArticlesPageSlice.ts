@@ -11,7 +11,7 @@ import { ArticlesPageSchema } from '../types/articlesPage'
 import { fetchArticlesList } from '../service/fetchArticlesList/fetchArticlesList'
 import BrowserStorage from 'utils/BrowserStorage'
 import { OrderType } from 'shared/const/common'
-import { ArticleFilters, ArticleSortField } from 'entities/Article/model/types/article'
+import { ArticleFilters, ArticleSortField } from 'entities/Article'
 import { getLimitByView, getOrder, getSortField, getView } from '../helpers'
 
 const articlesAdapter = createEntityAdapter({

@@ -1,3 +1,3 @@
 export { CommentList } from './ui/CommentList/CommentList'
 
-export { IComment } from './model/types/comment'
+export type { IComment } from './model/types/comment'

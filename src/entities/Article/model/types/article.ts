@@ -1,4 +1,5 @@
 import { IUser } from "entities/user"
+import { ArticleType } from "../consts/consts"
 
 interface IBaseBlock {
     id: string
@@ -21,16 +22,6 @@ export interface ITextBlock extends IBaseBlock {
     type: "TEXT"
     title?: string
 }
-
-export enum ArticleType {
-    SCIENCE = "Science",
-    FRONTEND = "Frontend",
-    TECH = "Tech",
-    IT = "IT",
-    BACKEND = "Backend",
-    DEVELOPMENT = "Development",
-}
-
 export type ArticleBlock = ICodeBlock | IImageBlock | ITextBlock
 
 export interface IArticle {
@@ -43,13 +34,6 @@ export interface IArticle {
     type: ArticleType[]
     blocks: ArticleBlock[]
     user: IUser | null
-}
-
-export enum ArticleSortField {
-    ID = "id",
-    TITLE = "title",
-    VIEWS = "views",
-    CREATED_AT = "createdAt"
 }
 
 export type ArticleFilters = {

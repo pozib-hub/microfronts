@@ -14,7 +14,7 @@ import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/Dynam
 
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
 import { editProfileActions, editProfileReducer } from '../../model/slice/profileSlice'
-import { ValidateProfileError } from '../../model/types/editableProfileCard'
+import { ValidateProfileError } from '../../model/const/const'
 import { EditableProfilePageHeader } from '../EditableProfilePageHeader/EditableProfilePageHeader'
 
 import styles from './EditableProfileCard.module.scss'

@@ -1,7 +1,7 @@
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk"
 import { updateProfileData } from "./updateProfileData"
 import { IProfile } from "entities/profile"
-import { ValidateProfileError } from "../../types/editableProfileCard"
+import { ValidateProfileError } from '../../../model/const/const'
 
 describe('updateProfileData.test', () => {
     const validData: IProfile = {

@@ -1,2 +1,2 @@
 export { globalSettingsActions, globalSettingsReducer } from './model/slice/globalSettingsSlice'
-export { GlobalSettingsSchema } from './model/types/globalSettings'
+export type { GlobalSettingsSchema } from './model/types/globalSettings'

@@ -6,7 +6,8 @@ import { API_Errors } from 'shared/api/types'
 import builderReducersByProject from 'utils/builderReducersByProject'
 import { IProfile } from 'entities/profile'
 
-import { EditableProfileSchema, ValidateProfileError } from '../types/editableProfileCard'
+import { EditableProfileSchema } from '../types/editableProfileCard'
+import { ValidateProfileError } from '../../model/const/const'
 
 const initialState: EditableProfileSchema = {
     data: undefined,
