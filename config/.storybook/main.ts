@@ -13,6 +13,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    'storybook-addon-mock',
   ],
   framework: "@storybook/react-webpack5",
   // делает в .jsx импорт реакта не обязательным 

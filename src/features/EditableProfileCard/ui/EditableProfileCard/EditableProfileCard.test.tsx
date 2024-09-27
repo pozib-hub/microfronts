@@ -71,8 +71,7 @@ describe('feature/EditableProfileCard', () => {
 
         await userEvent.click(screen.getByTestId("EditableProfileCardHeader.SaveButton"))
 
-        const options = screen.getAllByTestId('EditableProfileCard.Error')
-        expect(options.length).toBeGreaterThan(0)
+        expect(screen.getAllByTestId('EditableProfileCard.Error').length).toBeGreaterThan(0)
     })
 
     test('success form validate and sent put request', async () => {
