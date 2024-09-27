@@ -9,19 +9,25 @@ import { ArticleDetailsPage } from 'pages/ArticleDetailsPage'
 import { CharacteristicsUVHDPage } from 'pages/CharacteristicsUVHD'
 import { Test } from 'pages/Tests'
 import { ArticleEditPage } from 'pages/ArticleEditPage'
+import { AdminPanelPage } from 'pages/AdminPanelPage'
+import { UserRole } from 'entities/user'
+import { ForbiddenPage } from 'pages/ForbiddenPage'
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean
+    roles?: UserRole[]
 }
 
 export const routePath = {
     "main": '/',
+    "forbidden": "/forbidden",
     "about": '/about',
     "profile": (id?: string) => `/profile${id ? `/${id}` : ""}`,
     "articles": '/articles',
     "articleDetail": (id: string) => `/articles/${id}`,
     "articleEdit": (id: string) => `/ articles / ${id}/edit`,
     "articleCreate": '/articles/create',
+    "adminPanel": "admin/panel",
 
     "CharacteristicsUVHD": '/CharacteristicsUVHD',
     "test": '/test',
@@ -30,6 +36,10 @@ export const routeConfig: AppRoutesProps[] = [
     {
         path: routePath.main,
         element: <MainPage />,
+    },
+    {
+        path: routePath.forbidden,
+        element: <ForbiddenPage />,
     },
     {
         path: routePath.about,
@@ -66,6 +76,12 @@ export const routeConfig: AppRoutesProps[] = [
         path: routePath.test,
         element: <Test />,
         authOnly: true,
+    },
+    {
+        path: routePath.adminPanel,
+        element: <AdminPanelPage />,
+        authOnly: true,
+        roles: [UserRole.ADMIN]
     },
     {
         path: '*',

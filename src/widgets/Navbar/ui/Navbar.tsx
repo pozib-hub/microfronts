@@ -6,10 +6,10 @@ import cn from 'src/shared/lib/classNames/classNames'
 import { routePath } from 'shared/config/routerConfig/routerConfig'
 import { AppLink } from 'src/shared/ui/AppLink/AppLink'
 import { Button } from 'shared/ui/Button/Button'
-import { Menu } from 'shared/ui/Menu/Menu'
+import { Menu, MenuItem } from 'shared/ui/Menu/Menu'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { LoginModal } from 'features/AuthByUsername'
-import { getUserAuthData, userActions } from 'entities/user'
+import { getUserAuthData, userActions, UserRole } from 'entities/user'
 
 import style from './Navbar.module.scss'
 interface INavbarProps {
@@ -37,6 +37,23 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
         setIsOpenAuthModal(true)
     }, [])
 
+    const optionsMenu: MenuItem[] = [
+        {
+            content: t('profile'),
+            // onClick: onLogout,
+        },
+        {
+            content: t('logOut'),
+            onClick: onLogout,
+        }
+    ]
+
+    if (authData?.roles?.has(UserRole.ADMIN)) {
+        optionsMenu.push({
+            content: t('adminPanel'),
+            href: routePath.adminPanel,
+        })
+    }
 
     if (authData) {
         return <header className={cn(style.navbar, className)}>
@@ -46,16 +63,7 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
                     className={style.menu}
                     trigger={<Avatar size={28} src={authData.avatar} />}
                     direction='bottom left'
-                    items={[
-                        {
-                            content: t('profile'),
-                            // onClick: onLogout,
-                        },
-                        {
-                            content: t('logOut'),
-                            onClick: onLogout,
-                        }
-                    ]}
+                    items={optionsMenu}
                 />
             </div>
         </header>

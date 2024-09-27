@@ -21,6 +21,10 @@ export const userSlice = createSlice({
 
             if (user) {
                 state.authData = JSON.parse(user)
+
+                if (state.authData) {
+                    state.authData.roles = new Set(state.authData?.roles)
+                }
             }
 
             state._inited = true

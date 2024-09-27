@@ -1,0 +1,1 @@
+export { ForbiddenPageLazy as ForbiddenPage } from './ui/Forbidden/ForbiddenPage.lazy'
