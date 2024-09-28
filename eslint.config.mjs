@@ -15,7 +15,6 @@ const jsRules = {
   // indent: ['error', 4],
   camelcase: ['off', { properties: 'never' }],
   semi: ['error', 'never'],
-  'linebreak-style': ['error', 'windows'],
   'no-shadow': 'off',
   'no-underscore-dangle': 'off',
   'max-len': ['error', { code: 100, ignoreComments: true }],
@@ -50,6 +49,7 @@ const reactRules = {
     { extensions: ['.js', '.jsx', '.tsx'] },
   ],
   'jsx-a11y/click-events-have-key-events': 'off',
+  "react/display-name": "off",
 }
 
 const reactHookRules = {
