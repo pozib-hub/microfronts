@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { CenterDecorator } from 'shared/config/storybook/CenterDecorator/CenterDecorator'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
+import { ThemeDecorator } from '@shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@app/providers/ThemeProvider'
 import { PageLoader } from './PageLoader'
 
 const meta: Meta<typeof PageLoader> = {

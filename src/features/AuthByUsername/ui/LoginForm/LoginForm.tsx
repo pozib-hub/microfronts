@@ -4,12 +4,12 @@ import React, {
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
-import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Input } from 'shared/ui/Input/Input'
-import { Button } from 'shared/ui/Button/Button'
-import { Text } from 'shared/ui/Text/Text'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+import cn from '@shared/lib/classNames/classNames'
+import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { Input } from '@shared/ui/Input/Input'
+import { Button } from '@shared/ui/Button/Button'
+import { Text } from '@shared/ui/Text/Text'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { getLoginState } from '../../model/selectors/getLoginState'

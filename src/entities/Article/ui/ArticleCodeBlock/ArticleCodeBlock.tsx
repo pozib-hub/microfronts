@@ -1,8 +1,8 @@
 import React, { FC, memo } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
-import { Code } from 'shared/ui/Code/Code'
+import { Code } from '@shared/ui/Code/Code'
 
 import { ICodeBlock } from '../../model/types/article'
 

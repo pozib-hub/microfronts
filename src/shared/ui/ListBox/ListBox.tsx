@@ -1,7 +1,7 @@
 import { Fragment, ReactNode, useState } from 'react'
 import { Listbox as HListBox } from '@headlessui/react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import { HStack } from '../Stack'
 import { Button } from '../Button/Button'

@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import parseApiErrors from 'shared/api/parseApiErrors'
-import { API_Errors } from 'shared/api/types'
-import { IProfile } from 'entities/profile'
+import { ThunkConfig } from '@app/providers/StoreProvider'
+import parseApiErrors from '@shared/api/parseApiErrors'
+import { API_Errors } from '@shared/api/types'
+import { IProfile } from '@entities/profile'
 
 import { editProfileActions } from '../../slice/profileSlice'
 

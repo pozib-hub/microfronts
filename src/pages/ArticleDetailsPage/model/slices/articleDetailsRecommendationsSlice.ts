@@ -3,11 +3,11 @@ import {
     createSlice, PayloadAction,
 } from '@reduxjs/toolkit'
 
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@app/providers/StoreProvider'
 
-import builderReducersByProject from 'utils/builderReducersByProject'
+import builderReducersByProject from '@utils/builderReducersByProject'
+import { IArticle } from '@entities/Article'
 import { ArticleDetailsRecommendationsSchema } from '../types/ArticleDetailsRecommendationsSchema'
-import { IArticle } from 'entities/Article'
 import {
     fetchArticleRecommendations
 } from '../services/fetchArticleRecommendations/fetchArticleRecommendations'

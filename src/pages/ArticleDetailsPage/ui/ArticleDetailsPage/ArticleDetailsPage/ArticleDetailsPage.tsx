@@ -1,18 +1,18 @@
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 import { memo, useCallback, useEffect } from 'react'
-import { ArticleDetails, ArticleList } from 'entities/Article'
+import { ArticleDetails, ArticleList } from '@entities/Article'
 import { useParams } from 'react-router-dom'
 import {
     DynamicModuleLoader,
     ReducersList
-} from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { fetchArticleById } from 'entities/Article'
+} from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { fetchArticleById } from '@entities/Article'
 
 import { articleDetailsPageReducer } from '../../../model/slices'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
-import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList'
+import { ArticleRecommendationsList } from '@features/ArticleRecommendationsList'
 import { ArticleDetailsComments } from '../../ArticleDetailsComments/ArticleDetailsComments'
 
 import styles from './ArticleDetailsPage.module.scss'

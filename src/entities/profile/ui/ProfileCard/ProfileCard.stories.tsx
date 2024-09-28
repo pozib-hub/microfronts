@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import Avatar from 'src/shared/assets/tests/Avatar.jpg'
+import Avatar from '@shared/assets/tests/Avatar.jpg'
 import { ProfileCard } from './ProfileCard'
 
 const meta: Meta<typeof ProfileCard> = {

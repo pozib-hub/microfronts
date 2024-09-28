@@ -3,7 +3,7 @@ import React, {
 } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
-import { PageError } from 'widgets/PageError'
+import { PageError } from '@widgets/PageError'
 
 interface IProps {
     children?: React.ReactNode

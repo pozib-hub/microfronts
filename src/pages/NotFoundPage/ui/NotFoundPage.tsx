@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './NotFoundPage.module.scss'
 

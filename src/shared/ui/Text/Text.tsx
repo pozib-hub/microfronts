@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, FC, CSSProperties } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Text.module.scss'
 

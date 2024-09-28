@@ -1,12 +1,12 @@
 import React, { FC, useEffect, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
-import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Icon } from 'shared/ui/Icon/Icon'
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { Icon } from '@shared/ui/Icon/Icon'
+import { Skeleton } from '@shared/ui/Skeleton/Skeleton'
+import { Avatar } from '@shared/ui/Avatar/Avatar'
 
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { ArticleBlock, IArticle } from '../../model/types/article'

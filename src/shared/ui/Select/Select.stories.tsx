@@ -1,7 +1,7 @@
 
 
 import { Meta, StoryObj } from '@storybook/react'
-import { CenterDecorator } from 'shared/config/storybook/CenterDecorator/CenterDecorator'
+import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
 import { Select } from './Select'
 
 const meta: Meta<typeof Select> = {

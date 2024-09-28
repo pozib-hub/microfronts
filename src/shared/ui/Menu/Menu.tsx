@@ -1,7 +1,7 @@
 import { Fragment, ReactNode } from 'react'
 import { Menu as HMenu } from '@headlessui/react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 // import { MenuDirection } from 'shared/types/ui'
 import { AppLink } from '../AppLink/AppLink'
 

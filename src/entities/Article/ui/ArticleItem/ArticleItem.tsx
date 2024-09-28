@@ -1,19 +1,19 @@
 import React, { FC, HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
+import { Icon } from '@shared/ui/Icon/Icon'
+import { Card } from '@shared/ui/Card/Card'
+import { useHover } from '@shared/lib/hooks/useHover'
+import { Avatar } from '@shared/ui/Avatar/Avatar'
+import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { AppLink } from '@shared/ui/AppLink/AppLink'
+import { ArticleDisplayType } from '@shared/const/articles'
+
+import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
+import { IArticle } from '../../model/types/article'
 
 import styles from './ArticleItem.module.scss'
-import { IArticle } from '../../model/types/article'
-import { Icon } from 'shared/ui/Icon/Icon'
-import { Card } from 'shared/ui/Card/Card'
-import { useHover } from 'shared/lib/hooks/useHover'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
-import { Button } from 'shared/ui/Button/Button'
-import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import { routePath } from 'shared/config/routerConfig/routerConfig'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { ArticleDisplayType } from 'shared/const/articles'
 
 interface IArticleItemProps {
     className?: string

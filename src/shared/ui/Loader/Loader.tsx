@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import cn from 'src/shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import './Loader.scss'
 

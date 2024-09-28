@@ -3,10 +3,10 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useParams } from 'react-router-dom'
 
-import cn from 'src/shared/lib/classNames/classNames'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { routePath } from 'shared/config/routerConfig/routerConfig'
-import { EditableProfileCard } from 'features/EditableProfileCard'
+import cn from '@shared/lib/classNames/classNames'
+import { AppLink } from '@shared/ui/AppLink/AppLink'
+import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { EditableProfileCard } from '@features/EditableProfileCard'
 
 import styles from './ProfilePage.module.scss'
 

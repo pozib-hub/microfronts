@@ -3,12 +3,12 @@ import webpack from 'webpack'
 
 export function buildAliases(basePath: string): Record<string, string> {
     return {
-        src: basePath,
-        entries: path.join(basePath, 'entries'),
-        features: path.join(basePath, 'features'),
-        widgets: path.join(basePath, 'widgets'),
-        shared: path.join(basePath, 'shared'),
-        slice: path.join(basePath, 'slice'),
-        hooks: path.join(basePath, 'hooks'),
+        "@app": path.join(basePath, "app"),
+        "@entities": path.join(basePath, 'entities'),
+        "@features": path.join(basePath, 'features'),
+        "@pages": path.join(basePath, 'pages'),
+        "@shared": path.join(basePath, 'shared'),
+        "@widgets": path.join(basePath, 'widgets'),
+        "@utils": path.join(basePath, 'utils'),
     }
 }

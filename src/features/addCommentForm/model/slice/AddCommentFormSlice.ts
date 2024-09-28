@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import builderReducersByProject from '@utils/builderReducersByProject'
 import { AddCommentFormSchema } from '../types/addCommentForm'
-import builderReducersByProject from 'utils/builderReducersByProject'
 import {
     addCommentForArticle
 
-} from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
+} from '@pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
 
 const initialState: AddCommentFormSchema = {
     text: '',

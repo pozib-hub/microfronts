@@ -11,15 +11,15 @@ import {
     UnknownAction
 } from '@reduxjs/toolkit'
 
-import { UserSchema } from 'entities/user'
-import { LoginSchema } from 'features/AuthByUsername'
-import { GlobalSettingsSchema } from 'entities/globalSettings'
-import { ArticleDetailsSchema } from 'entities/Article'
-import { AddCommentFormSchema } from 'features/addCommentForm'
-import { EditableProfileSchema } from 'features/EditableProfileCard'
-import { ArticlesPageSchema } from 'pages/ArticlesPage'
-import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage'
-import { rtkApi } from 'shared/api/rtkApi'
+import { UserSchema } from '@entities/user'
+import { LoginSchema } from '@features/AuthByUsername'
+import { GlobalSettingsSchema } from '@entities/globalSettings'
+import { ArticleDetailsSchema } from '@entities/Article'
+import { AddCommentFormSchema } from '@features/addCommentForm'
+import { EditableProfileSchema } from '@features/EditableProfileCard'
+import { ArticlesPageSchema } from '@pages/ArticlesPage'
+import { ArticleDetailsPageSchema } from '@pages/ArticleDetailsPage'
+import { rtkApi } from '@shared/api/rtkApi'
 
 export interface StateSchema {
     globalSettings: GlobalSettingsSchema

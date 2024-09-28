@@ -1,4 +1,4 @@
-import { AppDispatch, StateSchema } from "app/providers/StoreProvider"
+import { AppDispatch, StateSchema } from "@app/providers/StoreProvider"
 import { useDispatch } from "react-redux"
 
 // export const useAppDispatch: () => AppDispatch = useDispatch

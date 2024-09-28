@@ -1,14 +1,14 @@
 import React, { FC, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './ArticlesPageHeader.module.scss'
-import { Button } from 'shared/ui/Button/Button'
-import { Icon } from 'shared/ui/Icon/Icon'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { Input } from 'shared/ui/Input/Input'
+import { Button } from '@shared/ui/Button/Button'
+import { Icon } from '@shared/ui/Icon/Icon'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Input } from '@shared/ui/Input/Input'
 import { articlesPageActions } from '../../models/slice/ArticlesPageSlice'
 import { ArticleModalFilters } from '../ArticleModalFilters/ArticleModalFilters'
 

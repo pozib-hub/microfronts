@@ -1,13 +1,13 @@
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { memo, useCallback, useEffect, useState } from 'react'
-import { ArticleList } from 'entities/Article'
-import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { useDebounce } from 'shared/lib/hooks/useDebounce'
+import { ArticleList } from '@entities/Article'
+import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { useDebounce } from '@shared/lib/hooks/useDebounce'
 
-import { ScrollActionsLayout } from 'widgets/ScrollActionsLayout/ScrollActionsLayout'
+import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout/ScrollActionsLayout'
 import {
     articlesPageActions,
     articlesPageReducer,

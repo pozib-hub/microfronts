@@ -1,10 +1,10 @@
 import React, { FC, memo } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
-import { Icon } from 'shared/ui/Icon/Icon'
-import { Popover } from 'shared/ui/Popover/Popover'
-import { NotificationList } from 'entities/Notification'
-import { Button } from 'shared/ui/Button/Button'
+import cn from '@shared/lib/classNames/classNames'
+import { Icon } from '@shared/ui/Icon/Icon'
+import { Popover } from '@shared/ui/Popover/Popover'
+import { NotificationList } from '@entities/Notification'
+import { Button } from '@shared/ui/Button/Button'
 
 import styles from './NotificationButton.module.scss'
 

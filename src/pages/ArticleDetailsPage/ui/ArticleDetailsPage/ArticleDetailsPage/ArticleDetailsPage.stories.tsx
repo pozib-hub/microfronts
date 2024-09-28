@@ -1,12 +1,12 @@
 
 import { Meta, StoryObj } from '@storybook/react'
 
-import { ThemeDecorator } from 'src/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'src/app/providers/ThemeProvider'
+import { ThemeDecorator } from '@shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@app/providers/ThemeProvider'
 import ArticleDetailsPage from './ArticleDetailsPage'
-import { IArticle } from 'entities/Article'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
-import { ArticleType } from 'entities/Article'
+import { IArticle } from '@entities/Article'
+import { StoreDecorator } from '@shared/config/storybook/StoreDecorator/StoreDecorator'
+import { ArticleType } from '@entities/Article'
 
 const article: IArticle = {
     id: '1',

@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import builderReducersByProject from '@utils/builderReducersByProject'
+
 import { IArticle, ArticleDetailsSchema } from '../types/article'
-import builderReducersByProject from 'utils/builderReducersByProject'
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
 
 

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 
-import cn from 'src/shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import style from './AppLink.module.scss'
 

@@ -1,4 +1,4 @@
-import { IProfile } from "entities/profile"
+import { IProfile } from "@entities/profile"
 import { ValidateProfileError } from '../../../model/const/const'
 
 export const validateProfileData = (profile?: IProfile) => {

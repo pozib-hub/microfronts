@@ -6,7 +6,7 @@ import React, {
     useState,
 } from 'react'
 
-import cn from 'src/shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Input.module.scss'
 

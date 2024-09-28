@@ -1,4 +1,4 @@
-import { IProfile } from "entities/profile"
+import { IProfile } from "@entities/profile"
 import { updateProfileData } from "../services/updateProfileData/updateProfileData"
 import { editProfileActions, editProfileReducer } from "./profileSlice"
 import { EditableProfileSchema } from "../types/editableProfileCard"

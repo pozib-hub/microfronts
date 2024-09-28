@@ -2,11 +2,11 @@ import React, { FC, memo, useCallback } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { Tags } from 'shared/ui/Tags/Tags'
-import { ArticleType } from 'entities/Article'
+import cn from '@shared/lib/classNames/classNames'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Tags } from '@shared/ui/Tags/Tags'
+import { ArticleType } from '@entities/Article'
 
 import { articlesPageActions } from '../../models/slice/ArticlesPageSlice'
 

@@ -2,9 +2,9 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'src/shared/lib/classNames/classNames'
-import { Card } from 'shared/ui/Card/Card'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
+import cn from '@shared/lib/classNames/classNames'
+import { Card } from '@shared/ui/Card/Card'
+import { AppLink } from '@shared/ui/AppLink/AppLink'
 
 import { INotification } from '../../model/types/Notification'
 

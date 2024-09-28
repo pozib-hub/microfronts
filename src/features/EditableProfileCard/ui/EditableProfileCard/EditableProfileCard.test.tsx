@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import componentRender from 'shared/lib/tests/componentRender/componentRender'
-import { IProfile } from 'entities/profile'
+import componentRender from '@shared/lib/tests/componentRender/componentRender'
+import { IProfile } from '@entities/profile'
 import { EditableProfileCard } from './EditableProfileCard'
 import {
     editProfileReducer
 } from '../../model/slice/profileSlice'
-import { $api } from 'shared/api/api'
+import { $api } from '@shared/api/api'
 
 const profile: IProfile = {
     id: "1",

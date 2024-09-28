@@ -4,8 +4,8 @@ import { MemoryRouter } from 'react-router-dom'
 
 import { I18nextProvider } from 'react-i18next'
 
-import i18nForTests from 'src/shared/config/i18n/i18nForTests'
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import i18nForTests from '@shared/config/i18n/i18nForTests'
+import { StateSchema, StoreProvider } from '@app/providers/StoreProvider'
 import { ReducersMapObject } from '@reduxjs/toolkit'
 
 interface IOptions {

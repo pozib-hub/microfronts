@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Loader } from 'src/shared/ui/Loader/Loader'
+import { Loader } from '@shared/ui/Loader/Loader'
 
-import cn from 'src/shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import style from './PageLoader.module.scss'
 

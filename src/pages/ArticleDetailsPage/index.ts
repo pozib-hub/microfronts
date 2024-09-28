@@ -1,8 +1,4 @@
-export { getCanEditArticle } from './model/selectors/article'
-
-export {
-    fetchCommentsByArticleId
-} from './model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+// export { getCanEditArticle } from './model/selectors/article'
 
 export {
     ArticleDetailsPageAsync as ArticleDetailsPage,
@@ -13,10 +9,6 @@ export type {
     ArticleDetailsRecommendationsSchema
 } from './model/types/ArticleDetailsRecommendationsSchema'
 
-export {
-    fetchArticleRecommendations
-} from './model/services/fetchArticleRecommendations/fetchArticleRecommendations'
-
 export type {
     ArticleDetailsPageSchema
-} from './model/types/index'
+} from './model/types'

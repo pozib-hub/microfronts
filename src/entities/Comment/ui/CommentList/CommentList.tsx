@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './CommentList.module.scss'
 import { IComment } from '../../model/types/comment'

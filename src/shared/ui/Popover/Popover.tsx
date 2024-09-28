@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Popover as HPopover, PopoverPanel, PopoverButton } from '@headlessui/react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Popover.module.scss'
 

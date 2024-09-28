@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import parseApiErrors from 'shared/api/parseApiErrors'
-import { API_Errors } from 'shared/api/types'
+import { ThunkConfig } from '@app/providers/StoreProvider'
+import parseApiErrors from '@shared/api/parseApiErrors'
+import { API_Errors } from '@shared/api/types'
 
 import { IArticle } from '../../types/article'
 import { articleDetailsActions } from '../../slice/articleDetailsSlice'

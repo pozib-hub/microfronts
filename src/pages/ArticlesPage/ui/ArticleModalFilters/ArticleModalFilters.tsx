@@ -1,12 +1,12 @@
 import React, { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './ArticleModalFilters.module.scss'
-import { Modal } from 'shared/ui/Modal/Modal'
+import { Modal } from '@shared/ui/Modal/Modal'
 import { ArticleFormFilters } from '../ArticleFormFilters/ArticleFormFilters'
-import { Button } from 'shared/ui/Button/Button'
+import { Button } from '@shared/ui/Button/Button'
 
 interface IArticlePageFiltersProps {
     className?: string

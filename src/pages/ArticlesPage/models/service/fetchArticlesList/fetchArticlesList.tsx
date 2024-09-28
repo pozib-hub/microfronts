@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import { IArticle } from 'entities/Article'
-import parseApiErrors from 'shared/api/parseApiErrors'
-import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams'
+import { ThunkConfig } from '@app/providers/StoreProvider'
+import { IArticle } from '@entities/Article'
+import parseApiErrors from '@shared/api/parseApiErrors'
+import { addQueryParams } from '@shared/lib/url/addQueryParams/addQueryParams'
 
 interface IFetchArticlesListProps {
     replace?: boolean

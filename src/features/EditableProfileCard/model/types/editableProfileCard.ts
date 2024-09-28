@@ -1,4 +1,4 @@
-import { IProfile } from "entities/profile"
+import { IProfile } from "@entities/profile"
 import { ValidateProfileError } from "../const/const"
 
 export interface EditableProfileSchema {

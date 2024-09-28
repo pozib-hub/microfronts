@@ -2,7 +2,7 @@ import React, {
     useCallback, useEffect, useRef, FC,
 } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 // import { NewSuccessIcon } from 'cscore/src/icons/NewSuccessIcon'
 // import { NewErrorIcon } from 'cscore/src/icons/NewErrorIcon'

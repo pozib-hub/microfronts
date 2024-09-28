@@ -1,10 +1,10 @@
 import { ReactNode, FC, useMemo } from "react"
 import { Navigate, useLocation } from 'react-router-dom'
 
-import { useAppSelector } from "shared/lib/hooks/useAppSelector"
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector"
 
-import { routePath } from "shared/config/routerConfig/routerConfig"
-import { getUserRoles, UserRole } from "entities/user"
+import { routePath } from "@shared/config/routerConfig/routerConfig"
+import { getUserRoles, UserRole } from "@entities/user"
 
 
 interface IRoleAuthProps {

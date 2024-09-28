@@ -1,15 +1,15 @@
 import React, { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './AddCommentForm.module.scss'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { DynamicModuleLoader } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Input } from 'shared/ui/Input/Input'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { Input } from '@shared/ui/Input/Input'
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/AddCommentFormSlice'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { Button } from 'shared/ui/Button/Button'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Button } from '@shared/ui/Button/Button'
 
 const reducers = {
     addCommentForm: addCommentFormReducer,

@@ -1,7 +1,7 @@
 import { CSSProperties, useMemo } from 'react'
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
-import * as Icons from './icons'
+import * as Icons from '../../assets/icons/svg'
 
 import styles from './Icon.module.scss'
 

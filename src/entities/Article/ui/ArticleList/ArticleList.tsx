@@ -1,13 +1,14 @@
 import React, { FC, HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
+import { ArticleDisplayType } from '@shared/const/articles'
 
-import styles from './ArticleList.module.scss'
 import { IArticle } from '../../model/types/article'
 import { ArticleItem } from '../ArticleItem/ArticleItem'
 import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton'
-import { ArticleDisplayType } from 'shared/const/articles'
+
+import styles from './ArticleList.module.scss'
 
 interface IArticleListProps {
     className?: string

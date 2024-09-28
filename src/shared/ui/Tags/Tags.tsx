@@ -1,4 +1,4 @@
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 import { memo, ReactNode, useCallback } from 'react'
 import styles from './Tags.module.scss'
 import _ from 'lodash'

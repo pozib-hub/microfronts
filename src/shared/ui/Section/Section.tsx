@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, useRef } from 'react'
 
-import useResizeObserver from 'shared/lib/hooks/useResizeObserver'
-import cn from 'shared/lib/classNames/classNames'
+import useResizeObserver from '@shared/lib/hooks/useResizeObserver'
+import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Section.module.scss'
 

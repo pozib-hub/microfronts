@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 import { Button } from '../Button/Button'
 
 import styles from './Code.module.scss'

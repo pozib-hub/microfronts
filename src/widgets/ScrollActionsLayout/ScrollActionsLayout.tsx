@@ -2,12 +2,12 @@ import React, { FC, memo, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import _ from 'lodash'
 
-import cn from 'shared/lib/classNames/classNames'
-import useInfiniteScroll from 'shared/lib/hooks/useInfiniteScroll'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { globalSettingsActions } from 'entities/globalSettings'
-import { getScrollPage } from 'entities/globalSettings/model/selectors/getScrollPage'
+import cn from '@shared/lib/classNames/classNames'
+import useInfiniteScroll from '@shared/lib/hooks/useInfiniteScroll'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { globalSettingsActions } from '@entities/globalSettings'
+import { getScrollPage } from '@entities/globalSettings/model/selectors/getScrollPage'
 
 import styles from './ScrollActionsLayout.module.scss'
 

@@ -3,7 +3,7 @@ import React, {
     useState,
 } from 'react'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 import { Portal } from '../Portal/Portal'
 
 import Dialog from 'rc-dialog'

@@ -1,6 +1,6 @@
-import { ArticleSortField } from "entities/Article"
-import { ArticleDisplayType } from "shared/const/articles"
-import { OrderType } from "shared/const/common"
+import { ArticleSortField } from "@entities/Article"
+import { ArticleDisplayType } from "@shared/const/articles"
+import { OrderType } from "@shared/const/common"
 
 export const getSortField = (): ArticleSortField => {
     return localStorage.getItem("articles-sort") as ArticleSortField || ArticleSortField.CREATED_AT

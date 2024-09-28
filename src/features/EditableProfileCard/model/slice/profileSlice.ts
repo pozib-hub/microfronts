@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
-import { API_Errors } from 'shared/api/types'
-import builderReducersByProject from 'utils/builderReducersByProject'
-import { IProfile } from 'entities/profile'
+import { API_Errors } from '@shared/api/types'
+import builderReducersByProject from '@utils/builderReducersByProject'
+import { IProfile } from '@entities/profile'
 
 import { EditableProfileSchema } from '../types/editableProfileCard'
 import { ValidateProfileError } from '../../model/const/const'

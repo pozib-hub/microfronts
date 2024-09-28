@@ -2,8 +2,8 @@
 
 const templateServiceFetch = (nameSlice, nameService) => `
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import parseApiErrors from 'shared/api/parseApiErrors'
+import { ThunkConfig } from '@app/providers/StoreProvider'
+import parseApiErrors from '@shared/api/parseApiErrors'
 
 interface IFetch${nameService}Props {
 }
@@ -41,8 +41,8 @@ export const fetch${nameService} = createAsyncThunk<
 const templateSlice = (name) => `
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import builderReducersByProject from '@utils/builderReducersByProject'
 import { I${name}Schema } from '../types/'
-import builderReducersByProject from 'utils/builderReducersByProject'
 import { fetch${name} } from '../services/fetch${name}'
 
 const initialState: ${name}Schema = {
@@ -91,7 +91,7 @@ const templateComponent = (name) => `
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import cn from 'src/shared/lib/classNames/classNames';
+import cn from '@shared/lib/classNames/classNames';
 
 import styles from './${name}.module.scss';
 

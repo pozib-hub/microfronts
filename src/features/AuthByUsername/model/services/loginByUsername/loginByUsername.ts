@@ -1,11 +1,10 @@
+import { AxiosInstance } from 'axios'
 import { createAsyncThunk, } from '@reduxjs/toolkit'
 
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import { AxiosInstance } from 'axios'
-import { IUser, userActions } from 'entities/user'
-
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
-import BrowserStorage from 'utils/BrowserStorage'
+import { ThunkConfig } from '@app/providers/StoreProvider'
+import { IUser, userActions } from '@entities/user'
+import { USER_LOCALSTORAGE_KEY } from '@shared/const/localstorage'
+import BrowserStorage from '@utils/BrowserStorage'
 
 interface IProps {
     username: string

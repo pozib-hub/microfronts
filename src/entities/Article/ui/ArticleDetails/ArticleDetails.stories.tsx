@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import { StoreDecorator } from '@shared/config/storybook/StoreDecorator/StoreDecorator'
 import { ArticleDetails } from './ArticleDetails'
 import { IArticle } from '../../model/types/article'
 import { ArticleType } from '../../model/consts/consts'

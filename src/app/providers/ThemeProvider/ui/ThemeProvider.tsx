@@ -3,7 +3,7 @@ import React, {
 } from 'react'
 
 // import BrowserStorage from "src/utils/BrowserStorage";
-import BrowserStorage from 'src/utils/BrowserStorage'
+import BrowserStorage from '@utils/BrowserStorage'
 
 import {
     Theme,

@@ -1,13 +1,13 @@
 import React, { Suspense, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import cn from 'shared/lib/classNames/classNames'
-import { AppRouter } from 'src/app/providers/router'
-import { Navbar } from 'widgets/Navbar'
-import { Sidebar } from 'widgets/Sidebar'
-import { PageLoader } from 'widgets/PageLoader'
-import { userActions } from 'entities/user'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
+import cn from '@shared/lib/classNames/classNames'
+import { AppRouter } from '@app/providers/router'
+import { Navbar } from '@widgets/Navbar'
+import { Sidebar } from '@widgets/Sidebar'
+import { PageLoader } from '@widgets/PageLoader'
+import { userActions } from '@entities/user'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 
 // TODO:
 // 1. сделать приттер на пре-коммит

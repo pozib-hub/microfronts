@@ -3,15 +3,15 @@ import {
     createSlice, PayloadAction,
 } from '@reduxjs/toolkit'
 
-import { StateSchema } from 'app/providers/StoreProvider'
-import builderReducersByProject from 'utils/builderReducersByProject'
-import { IArticle } from 'entities/Article'
-import { ArticleDisplayType } from 'shared/const/articles'
+import { StateSchema } from '@app/providers/StoreProvider'
+import builderReducersByProject from '@utils/builderReducersByProject'
+import BrowserStorage from '@utils/BrowserStorage'
+import { IArticle } from '@entities/Article'
+import { ArticleDisplayType } from '@shared/const/articles'
 import { ArticlesPageSchema } from '../types/articlesPage'
 import { fetchArticlesList } from '../service/fetchArticlesList/fetchArticlesList'
-import BrowserStorage from 'utils/BrowserStorage'
-import { OrderType } from 'shared/const/common'
-import { ArticleFilters, ArticleSortField } from 'entities/Article'
+import { OrderType } from '@shared/const/common'
+import { ArticleFilters, ArticleSortField } from '@entities/Article'
 import { getLimitByView, getOrder, getSortField, getView } from '../helpers'
 
 const articlesAdapter = createEntityAdapter({

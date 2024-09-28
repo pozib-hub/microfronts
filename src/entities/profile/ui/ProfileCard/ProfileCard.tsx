@@ -1,16 +1,16 @@
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { Button } from 'shared/ui/Button/Button'
-import { Text } from 'shared/ui/Text/Text'
-import { Loader } from 'shared/ui/Loader/Loader'
+import cn from '@shared/lib/classNames/classNames'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Button } from '@shared/ui/Button/Button'
+import { Text } from '@shared/ui/Text/Text'
+import { Loader } from '@shared/ui/Loader/Loader'
 
 import { IProfile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
-import { Input } from 'shared/ui/Input/Input'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { Input } from '@shared/ui/Input/Input'
+import { Avatar } from '@shared/ui/Avatar/Avatar'
 
 interface IProfileCardProps {
     className?: string

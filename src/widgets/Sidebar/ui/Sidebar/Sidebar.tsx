@@ -1,16 +1,16 @@
 import React, { memo, useState, FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'src/shared/lib/classNames/classNames'
-import { Button } from 'src/shared/ui/Button/Button'
-import { ThemeSwitcher } from 'src/widgets/ThemeSwitcher'
-import { LanguageSwitcher } from 'src/widgets/LanguageSwitcher'
+import cn from '@shared/lib/classNames/classNames'
+import { Button } from '@shared/ui/Button/Button'
+import { ThemeSwitcher } from '@widgets/ThemeSwitcher'
+import { LanguageSwitcher } from '@widgets/LanguageSwitcher'
 import { sidebarLinkItems } from '../../model/items'
 
 import styles from './Sidebar.module.scss'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { VStack } from 'shared/ui/Stack'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { VStack } from '@shared/ui/Stack'
 
 interface ISidebarProps {
     className?: string

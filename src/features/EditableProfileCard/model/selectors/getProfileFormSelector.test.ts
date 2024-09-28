@@ -1,6 +1,6 @@
-import { StateSchema } from "app/providers/StoreProvider"
-import Avatar from 'src/shared/assets/tests/Avatar.jpg'
-import { IProfile } from "entities/profile"
+import { StateSchema } from "@app/providers/StoreProvider"
+import Avatar from '@shared/assets/tests/Avatar.jpg'
+import { IProfile } from "@entities/profile"
 import { getProfileFormSelector } from "./getProfileFormSelector"
 
 describe("getProfileForm.test", () => {

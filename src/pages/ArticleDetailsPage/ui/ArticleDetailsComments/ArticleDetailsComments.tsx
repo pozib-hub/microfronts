@@ -1,12 +1,12 @@
 import React, { FC, memo, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector'
-import { Loader } from 'shared/ui/Loader/Loader'
-import { AddCommentForm } from 'features/addCommentForm'
-import { CommentList } from 'entities/Comment'
+import cn from '@shared/lib/classNames/classNames'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Loader } from '@shared/ui/Loader/Loader'
+import { AddCommentForm } from '@features/addCommentForm'
+import { CommentList } from '@entities/Comment'
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice'
 import {
     addCommentForArticle

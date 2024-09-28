@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import cn from 'shared/lib/classNames/classNames'
+import cn from '@shared/lib/classNames/classNames'
 
-import { Button } from 'shared/ui/Button/Button'
-import { routePath } from 'shared/config/routerConfig/routerConfig'
-import { getArticleDetailsData } from 'entities/Article'
+import { Button } from '@shared/ui/Button/Button'
+import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { getArticleDetailsData } from '@entities/Article'
 import { getCanEditArticle } from '../../../model/selectors/article'
 
 // import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetails'
 // import { getCanEditArticle } from 'pages/ArticleDetailsPage/model/selectors/article'
 
 import styles from './ArticleDetailsPageHeader.module.scss'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { AppLink } from '@shared/ui/AppLink/AppLink'
 
 interface ArticleDetailsPageHeaderProps {
     className?: string;

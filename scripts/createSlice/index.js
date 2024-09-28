@@ -11,8 +11,8 @@ const createModel = require("./createModel")
 const createUI = require("./createUI")
 const createPublicApi = require("./createPublicApi")
 
-const sliceName = process.argv[2]
-const layer = process.argv[3]
+const layer = process.argv[2]
+const sliceName = process.argv[3]
 
 const layers = ["features", "entities", "pages"]
 
