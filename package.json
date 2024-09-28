@@ -113,6 +113,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.8",
     "axios": "^1.7.3",
     "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",
