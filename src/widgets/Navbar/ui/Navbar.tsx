@@ -10,8 +10,10 @@ import { Menu, MenuItem } from 'shared/ui/Menu/Menu'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { LoginModal } from 'features/AuthByUsername'
 import { getUserAuthData, userActions, UserRole } from 'entities/user'
+import { NotificationButton } from 'features/NotificationButton'
 
 import style from './Navbar.module.scss'
+
 interface INavbarProps {
     className?: string;
 }
@@ -56,22 +58,28 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
     }
 
     if (authData) {
-        return <header className={cn(style.navbar, className)}>
-            <div className={style.links}>
-                <AppLink to={routePath.about}>{t('about')}</AppLink>
-                <Menu
-                    className={style.menu}
-                    trigger={<Avatar size={28} src={authData.avatar} />}
-                    direction='bottom left'
-                    items={optionsMenu}
-                />
-            </div>
-        </header>
+        return (
+            <header className={cn(style.navbar, className)}>
+                <div className={style.links}>
+                    <NotificationButton />
+
+                    <AppLink to={routePath.about}>{t('about')}</AppLink>
+                    <Menu
+                        className={style.menu}
+                        trigger={<Avatar size={28} src={authData.avatar} />}
+                        direction='bottom left'
+                        items={optionsMenu}
+                    />
+
+                </div>
+            </header>
+        )
     }
 
     return (
         <header className={cn(style.navbar, className)}>
             <div className={style.links}>
+
                 <AppLink to={routePath.about}>{t('about')}</AppLink>
 
                 <Button variant='transparent' onClick={onOpenModal}>
