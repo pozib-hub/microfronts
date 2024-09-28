@@ -28,7 +28,7 @@ export const fetchProfileData = createAsyncThunk<
                 throw new Error('error')
             }
 
-            dispatch(editProfileActions.setData(response.data))
+            // dispatch(editProfileActions.setData(response.data))
 
             return response.data
         } catch (error) {

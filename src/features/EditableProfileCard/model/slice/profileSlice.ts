@@ -97,4 +97,4 @@ export const profileSlice = createSlice({
 
 export const { actions: editProfileActions } = profileSlice
 export const { reducer: editProfileReducer } = profileSlice
-export const { selectors: editProfileSelectors } = profileSlice
+// export const { selectors: editProfileSelectors } = profileSlice

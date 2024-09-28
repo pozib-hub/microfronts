@@ -28,7 +28,7 @@ export const fetchArticleById = createAsyncThunk<
                 throw new Error('error')
             }
 
-            dispatch(articleDetailsActions.setData(response.data))
+            // dispatch(articleDetailsActions.setData(response.data))
 
             return response.data
         } catch (error) {
