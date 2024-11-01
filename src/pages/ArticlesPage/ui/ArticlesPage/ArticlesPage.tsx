@@ -7,7 +7,7 @@ import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { useDebounce } from '@shared/lib/hooks/useDebounce'
 
-import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout/ScrollActionsLayout'
+import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout'
 import {
     articlesPageActions,
     articlesPageReducer,

@@ -69,6 +69,13 @@ const config: Config = {
         //   '<rootDir>/__mocks__/fileMock.js'
         '\\.(s?css)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
+        '^@app(.*)$': path.join('<rootDir>', 'src/app$1'),
+        '^@entities(.*)$': path.join('<rootDir>', 'src/entities$1'),
+        '^@features(.*)$': path.join('<rootDir>', 'src/features$1'),
+        '^@pages(.*)$': path.join('<rootDir>', 'src/pages$1'),
+        '^@shared(.*)$': path.join('<rootDir>', 'src/shared$1'),
+        '^@widgets(.*)$': path.join('<rootDir>', 'src/widgets$1'),
+        '^@utils(.*)$': path.join('<rootDir>', 'src/utils$1'),
     },
 
     reporters: [

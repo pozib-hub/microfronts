@@ -5,12 +5,13 @@ import cn from '@shared/lib/classNames/classNames'
 import { Button } from '@shared/ui/Button/Button'
 import { ThemeSwitcher } from '@widgets/ThemeSwitcher'
 import { LanguageSwitcher } from '@widgets/LanguageSwitcher'
-import { sidebarLinkItems } from '../../model/items'
-
-import styles from './Sidebar.module.scss'
-import { SidebarItem } from '../SidebarItem/SidebarItem'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { VStack } from '@shared/ui/Stack'
+
+import { sidebarLinkItems } from '../../model/items'
+import { SidebarItem } from '../SidebarItem/SidebarItem'
+
+import styles from './Sidebar.module.scss'
 
 interface ISidebarProps {
     className?: string
@@ -18,7 +19,6 @@ interface ISidebarProps {
 
 export const Sidebar: FC<ISidebarProps> = memo(function Sidebar(props) {
     const { className } = props
-    const { t } = useTranslation()
 
     const isAuth = useAppSelector(state => state.user.authData)
     const [open, setOpen] = useState(false)

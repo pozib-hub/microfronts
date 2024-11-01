@@ -10,7 +10,6 @@ import i18nextPlugin from 'eslint-plugin-i18next'
 import hooksPlugin from "eslint-plugin-react-hooks"
 import pozibPlugin from "eslint-plugin-pozib-plugin"
 
-
 const jsRules = {
   // indent: ['error', 4],
   camelcase: ['off', { properties: 'never' }],
@@ -33,7 +32,14 @@ const importRules = {
   'import/prefer-default-export': 'off',
   'import/extensions': 'off',
   'import/no-extraneous-dependencies': 'off',
-  "pozib-plugin/path-checker": "error"
+  "pozib-plugin/path-checker": ['error', { alias: "@" }],
+  "pozib-plugin/public-api-imports": [
+    'error',
+    {
+      alias: "@",
+      testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx']
+    }
+  ],
 }
 
 const reactRules = {
@@ -95,7 +101,7 @@ export default [
       storybook: storybookPlugin,
       i18next: i18nextPlugin,
       "react-hooks": fixupPluginRules(hooksPlugin),
-      "pozib-plugin": pozibPlugin,
+      "pozib-plugin": pozibPlugin
     },
   },
   {

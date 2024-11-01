@@ -6,5 +6,7 @@
     "main": "main",
     "filters": "Filters",
     "close": "Close",
-    "save": "Save"
+    "save": "Save",
+    "articles": "articles",
+    "articles.create": "Create article"
 }

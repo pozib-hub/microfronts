@@ -86,7 +86,7 @@ interface IModalProps {
     animationDelay?: number
     isMobile?: boolean
     isOpen: boolean
-    onClose: () => void
+    onClose?: () => void
     onChangeClose?: (open: boolean) => void
     children?: React.ReactNode
 }

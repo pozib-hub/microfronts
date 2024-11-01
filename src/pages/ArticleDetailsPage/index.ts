@@ -3,6 +3,7 @@
 export {
     ArticleDetailsPageAsync as ArticleDetailsPage,
 } from './ui/ArticleDetailsPage/ArticleDetailsPage/ArticleDetailsPage.async'
+export { articleDetailsPageReducer } from './model/slices'
 
 export type { ArticleDetailsCommentsSchema } from './model/types/ArticleDetailsCommentsSchema'
 export type {
@@ -12,3 +13,7 @@ export type {
 export type {
     ArticleDetailsPageSchema
 } from './model/types'
+
+export {
+    addCommentForArticle
+} from './model/services/addCommentForArticle/addCommentForArticle'

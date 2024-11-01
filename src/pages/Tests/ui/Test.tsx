@@ -4,7 +4,7 @@ import React, { FC, memo, useState } from 'react'
 import styles from './Test.module.scss'
 
 import { TagItem, Tags } from '@shared/ui/Tags/Tags'
-import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout/ScrollActionsLayout'
+import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout'
 import { Tabs } from '@shared/ui/Tabs/Tabs/Tabs'
 
 export const Test: FC =

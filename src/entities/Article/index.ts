@@ -13,3 +13,4 @@ export type {
 } from "./model/types/article"
 
 export { ArticleSortField, ArticleType } from "./model/consts/consts"
+export { articleDetailsReducer } from './model/slice/articleDetailsSlice'

@@ -1,0 +1,1 @@
+export { editProfileReducer } from "./model/slice/profileSlice"

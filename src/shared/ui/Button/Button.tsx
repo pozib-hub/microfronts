@@ -11,6 +11,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: Variants
     size?: Sizes
     isLoading?: boolean
+    fullWidth?: boolean
 }
 
 export const Button: FC<IButtonProps> = (props) => {
@@ -20,12 +21,14 @@ export const Button: FC<IButtonProps> = (props) => {
         variant = 'primary',
         size = 'medium',
         isLoading,
+        fullWidth,
         ...buttonProps
     } = props
 
     const classes = [
         styles.button,
         {
+
             [styles.disabled]: buttonProps.disabled,
             [styles.loading]: isLoading,
         },
@@ -34,12 +37,19 @@ export const Button: FC<IButtonProps> = (props) => {
         className,
     ]
 
+    const style: React.CSSProperties = {}
+
+    if (fullWidth) {
+        style.width = "100%"
+    }
+
     return (
         <button
             data-testid="button"
             type="button"
             {...buttonProps}
             className={cn(classes)}
+            style={style}
         >
             {isLoading && <div className={styles.loader} ><div /></div>}
             <div className={cn(styles.content)}>

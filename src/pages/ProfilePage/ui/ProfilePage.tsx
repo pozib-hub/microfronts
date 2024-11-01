@@ -5,7 +5,7 @@ import { useLocation, useParams } from 'react-router-dom'
 
 import cn from '@shared/lib/classNames/classNames'
 import { AppLink } from '@shared/ui/AppLink/AppLink'
-import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { routePath } from '@shared/const/router'
 import { EditableProfileCard } from '@features/EditableProfileCard'
 
 import styles from './ProfilePage.module.scss'

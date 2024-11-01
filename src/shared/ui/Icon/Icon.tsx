@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo } from 'react'
+import { CSSProperties, useMemo, HTMLAttributes } from 'react'
 import cn from '@shared/lib/classNames/classNames'
 
 import * as Icons from '../../assets/icons/svg'
@@ -7,7 +7,7 @@ import styles from './Icon.module.scss'
 
 export type IconId = keyof typeof Icons
 
-interface IProps {
+interface IProps extends HTMLAttributes<HTMLElement> {
     className?: string;
     size?: number;
     id: IconId
@@ -18,6 +18,7 @@ export const Icon = (props: IProps) => {
         id,
         className,
         size,
+        ...divProps
     } = props
 
 
@@ -32,14 +33,9 @@ export const Icon = (props: IProps) => {
         <div
             className={cn(styles.wrapper, className)}
             style={inlineStyles}
+            {...divProps}
         >
             <Icon />
         </div>
-        // <img
-        //     src={src}
-        //     alt={alt}
-        //     style={inlineStyles}
-        //     className={cn(styles.Avatar, className)}
-        // />
     )
 }

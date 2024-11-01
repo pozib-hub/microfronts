@@ -86,7 +86,7 @@ export default (
     () => () => {
       cancelNextFrame()
     },
-    [],
+    [cancelNextFrame],
   )
 
   return [startQueue, step]

@@ -1,4 +1,3 @@
-/* eslint-disable no-bitwise */
 import { EventEmitter } from 'events'
 
 import createNotificationsWrapper from './createNotificationsWrapper'

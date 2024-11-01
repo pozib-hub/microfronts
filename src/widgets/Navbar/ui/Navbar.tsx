@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 
 import cn from '@shared/lib/classNames/classNames'
-import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { routePath } from '@shared/const/router'
 import { AppLink } from '@shared/ui/AppLink/AppLink'
 import { Button } from '@shared/ui/Button/Button'
 import { Menu, MenuItem } from '@shared/ui/Menu/Menu'

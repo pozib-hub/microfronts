@@ -1,4 +1,4 @@
-import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { routePath } from '@shared/const/router'
 import { IconId } from '@shared/ui/Icon/Icon'
 export interface ISidebarItem {
     path: string

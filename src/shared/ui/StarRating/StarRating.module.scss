@@ -1,0 +1,19 @@
+.wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.starIcon {
+    fill: none;
+}
+
+.normal {}
+
+.hovered svg {
+    fill: var(--primary-color);
+}
+
+.selected svg {
+    cursor: auto;
+}

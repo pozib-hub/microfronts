@@ -6,7 +6,7 @@ import { Icon } from '@shared/ui/Icon/Icon'
 import { Card } from '@shared/ui/Card/Card'
 import { useHover } from '@shared/lib/hooks/useHover'
 import { Avatar } from '@shared/ui/Avatar/Avatar'
-import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { routePath } from '@shared/const/router'
 import { AppLink } from '@shared/ui/AppLink/AppLink'
 import { ArticleDisplayType } from '@shared/const/articles'
 

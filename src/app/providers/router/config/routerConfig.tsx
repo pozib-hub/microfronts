@@ -1,4 +1,3 @@
-import { RouteProps } from 'react-router-dom'
 
 import { UserRole } from '@entities/user'
 
@@ -13,26 +12,9 @@ import { CharacteristicsUVHDPage } from '@pages/CharacteristicsUVHD'
 import { ArticleEditPage } from '@pages/ArticleEditPage'
 import { AdminPanelPage } from '@pages/AdminPanelPage'
 import { ForbiddenPage } from '@pages/ForbiddenPage'
+import { routePath } from '@shared/const/router'
+import { AppRoutesProps } from '@shared/types/router'
 
-export type AppRoutesProps = RouteProps & {
-    authOnly?: boolean
-    roles?: UserRole[]
-}
-
-export const routePath = {
-    "main": '/',
-    "forbidden": "/forbidden",
-    "about": '/about',
-    "profile": (id?: string) => `/profile${id ? `/${id}` : ""}`,
-    "articles": '/articles',
-    "articleDetail": (id: string) => `/articles/${id}`,
-    "articleEdit": (id: string) => `/ articles / ${id}/edit`,
-    "articleCreate": '/articles/create',
-    "adminPanel": "admin/panel",
-
-    "CharacteristicsUVHD": '/CharacteristicsUVHD',
-    "test": '/test',
-}
 export const routeConfig: AppRoutesProps[] = [
     {
         path: routePath.main,

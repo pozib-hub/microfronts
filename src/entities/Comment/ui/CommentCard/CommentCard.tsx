@@ -5,7 +5,7 @@ import cn from '@shared/lib/classNames/classNames'
 import { Skeleton } from '@shared/ui/Skeleton/Skeleton'
 import { Avatar } from '@shared/ui/Avatar/Avatar'
 import { AppLink } from '@shared/ui/AppLink/AppLink'
-import { routePath } from '@shared/config/routerConfig/routerConfig'
+import { routePath } from '@shared/const/router'
 
 import { IComment } from '../../model/types/comment'
 import styles from './CommentCard.module.scss'

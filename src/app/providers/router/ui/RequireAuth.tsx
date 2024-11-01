@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector"
 
-import { routePath } from "@shared/config/routerConfig/routerConfig"
+import { routePath } from '@shared/const/router'
 
 
 interface IRequireAuthProps {
