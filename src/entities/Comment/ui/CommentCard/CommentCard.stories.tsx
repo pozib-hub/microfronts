@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { ThemeDecorator } from '@shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
-import { Theme } from '@app/providers/ThemeProvider'
+import { Theme } from '@shared/const/them'
 import { CommentCard } from './CommentCard'
 
 const meta: Meta<typeof CommentCard> = {

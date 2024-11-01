@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '@shared/ui/Icon/Icon'
 
-import { Theme } from '@app/providers/ThemeProvider'
+import { Theme } from '@shared/const/them'
 // import IconDark from 'src/shared/assets/icons/theme-dark.svg'
 // import IconLight from 'src/shared/assets/icons/theme-light.svg'
 // import IconOrange from 'src/shared/assets/icons/theme-orange.svg'

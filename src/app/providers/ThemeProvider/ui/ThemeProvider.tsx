@@ -6,10 +6,10 @@ import React, {
 import BrowserStorage from '@utils/BrowserStorage'
 
 import {
-    Theme,
     ThemeContext,
-    KEY_THEME_BROWSER_STORAGE,
-} from '../lib/ThemeContext'
+} from '../../../../shared/lib/context/ThemeContext'
+import { KEY_THEME_BROWSER_STORAGE } from '@shared/const/localstorage'
+import { Theme } from '@shared/const/them'
 
 const getSaveTheme = async () => {
     try {

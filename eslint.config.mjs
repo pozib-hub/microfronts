@@ -40,6 +40,13 @@ const importRules = {
       testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx']
     }
   ],
+  "pozib-plugin/layer-imports": [
+    'error',
+    {
+      alias: "@",
+      testFilesPatterns: ['**/StoreProvider']
+    }
+  ],
 }
 
 const reactRules = {

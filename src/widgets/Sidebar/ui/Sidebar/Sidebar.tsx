@@ -1,10 +1,9 @@
 import React, { memo, useState, FC, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
 import { Button } from '@shared/ui/Button/Button'
-import { ThemeSwitcher } from '@widgets/ThemeSwitcher'
-import { LanguageSwitcher } from '@widgets/LanguageSwitcher'
+import { ThemeSwitcher } from '@features/ThemeSwitcher'
+import { LanguageSwitcher } from '@features/LanguageSwitcher'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { VStack } from '@shared/ui/Stack'
 

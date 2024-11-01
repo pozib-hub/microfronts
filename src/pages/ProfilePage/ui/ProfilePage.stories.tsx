@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import Avatar from '@shared/assets/tests/Avatar.jpg'
 import { ThemeDecorator } from '@shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from '@app/providers/ThemeProvider'
+import { Theme } from '@shared/const/them'
 import ProfilePage from './ProfilePage'
 import { StoreDecorator } from '@shared/config/storybook/StoreDecorator/StoreDecorator'
 

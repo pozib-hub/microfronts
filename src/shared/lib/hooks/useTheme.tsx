@@ -2,7 +2,11 @@ import { useContext } from 'react'
 
 import BrowserStorage from '@utils/BrowserStorage'
 
-import { Theme, ThemeContext, KEY_THEME_BROWSER_STORAGE } from './ThemeContext'
+import {
+    ThemeContext
+} from '../context/ThemeContext'
+import { KEY_THEME_BROWSER_STORAGE } from '../../const/localstorage'
+import { Theme } from '../../const/them'
 
 const getNextTheme = (theme?: Theme) => {
     switch (theme) {

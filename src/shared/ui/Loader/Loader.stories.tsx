@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { ThemeDecorator } from '@shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
-import { Theme } from '@app/providers/ThemeProvider'
+import { Theme } from '@shared/const/them'
 import { Loader } from './Loader'
 
 const meta: Meta<typeof Loader> = {

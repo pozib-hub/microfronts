@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
-import { useTheme } from '@app/providers/ThemeProvider'
 import { Button } from '@shared/ui/Button/Button'
+import useTheme from '@shared/lib/hooks/useTheme'
 
 import { getIconByTheme } from '../utils'
 
