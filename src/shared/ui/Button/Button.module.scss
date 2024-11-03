@@ -1,6 +1,11 @@
 .button {
   cursor: pointer;
   position: relative;
+  border-radius: 4px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
 
   .loader {
     position: absolute;
@@ -29,33 +34,89 @@
   opacity: 0.3;
 }
 
+// types --------------------
+
 .primary {
-  color: var(--bg-color);
   background: var(--inverted-bg-color);
-  border: 1px solid var(--primary-color);
-  padding: 10px;
+  border: var(--inverted-bg-color);
+  color: var(--text-color);
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.danger {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+    color: white;
+  }
+}
+
+.dashed {
+  border: 1px dashed var(--inverted-bg-color);
+  color: var(--inverted-bg-color);
+  background: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &.danger {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+  }
 }
 
 .transparent {
-  padding: 0;
-  margin: 0;
-  border: none;
   background: none;
-  outline: none;
+  color: var(--inverted-bg-color);
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+
+  &.danger {
+    color: var(--red-light);
+
+    &:hover {
+      color: var(--red-dark);
+    }
+  }
 }
 
 .outline {
-  padding: 10px;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 1px solid var(--inverted-bg-color);
+  color: var(--inverted-bg-color);
   background: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &.danger {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+  }
 }
 
-.text {
-  padding: 20px;
+// sizes --------------------
+
+.small {
+  padding: 2px 8px;
+  font-size: 0.7em;
 }
 
-.link {}
+.medium {
+  padding: 4px 14px;
+  font-size: 1em;
+}
+
+.large {
+  padding: 8px 20px;
+  font-size: 1.3em;
+}
+
+// others --------------------
 
 @keyframes rotation {
   0% {

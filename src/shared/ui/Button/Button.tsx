@@ -4,12 +4,14 @@ import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Button.module.scss'
 
-type Variants = 'primary' | 'dashed' | 'transparent' | 'outline' | "danger"
+type Variants = 'primary' | 'dashed' | 'transparent' | 'outline'
 type Sizes = 'small' | 'medium' | 'large'
+type Color = 'danger' | 'primary ' | 'default '
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: Variants
     size?: Sizes
+    color?: Color
     isLoading?: boolean
     fullWidth?: boolean
 }
@@ -20,6 +22,7 @@ export const Button: FC<IButtonProps> = (props) => {
         children,
         variant = 'primary',
         size = 'medium',
+        color = "default",
         isLoading,
         fullWidth,
         ...buttonProps
@@ -34,6 +37,7 @@ export const Button: FC<IButtonProps> = (props) => {
         },
         styles[variant],
         styles[size],
+        styles[color],
         className,
     ]
 
