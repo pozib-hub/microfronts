@@ -3,12 +3,13 @@ import { Link, LinkProps } from 'react-router-dom'
 
 import cn from '@shared/lib/classNames/classNames'
 
-import style from './AppLink.module.scss'
+import styles from './AppLink.module.scss'
 
 type Variants = 'primary' | 'secondary'
 
 interface IAppLinkProps extends LinkProps {
     variant?: Variants;
+    disabled?: boolean
 }
 
 export const AppLink: FC<IAppLinkProps> = (props) => {
@@ -16,12 +17,22 @@ export const AppLink: FC<IAppLinkProps> = (props) => {
         className,
         children,
         variant = 'primary',
+        disabled,
         ...otherProps
     } = props
 
+    const classes = [
+        styles.appLink,
+        {
+            [styles.disabled]: disabled,
+        },
+        styles[variant],
+        className,
+    ]
+
     return (
         <Link
-            className={cn(style.appLink, style[variant], className)}
+            className={cn(classes)}
             {...otherProps}
         >
             {children}
