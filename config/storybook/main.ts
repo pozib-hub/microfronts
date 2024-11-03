@@ -1,6 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-webpack5"
 
-
 const config: StorybookConfig = {
   stories: [
     "../../src/**/*.mdx",
@@ -11,9 +10,7 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
-    'storybook-addon-mock',
+
   ],
   framework: "@storybook/react-webpack5",
   // делает в .jsx импорт реакта не обязательным 

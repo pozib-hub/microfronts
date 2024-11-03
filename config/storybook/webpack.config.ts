@@ -13,9 +13,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
         html: "",
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
+        locales: "",
+        buildLocales: "",
     }
 
-    const rules = [
+    const rules: RuleSetRule[] = [
         // тут мы разворачиваем существующие И исключаем правила для svg
         ...(config.module?.rules || []).map((rule) => {
             if (rule && typeof rule === "object"
@@ -24,14 +26,14 @@ export default ({ config }: { config: webpack.Configuration }) => {
             ) {
                 return { ...rule, exclude: /\.svg$/i }
             }
-            return rule
+            return rule as RuleSetRule
         }),
         {
             test: /\.svg$/,
             use: "@svgr/webpack"
         },
-        buildCssLoaders(true),
-    ]
+        ...buildCssLoaders(true) as RuleSetRule[],
+    ].filter(Boolean)
 
     const resolve: webpack.Configuration["resolve"] = {
         modules: [...(config.resolve?.modules || []), paths.src],
@@ -60,45 +62,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
             rules: rules
         },
         plugins: [
-            ...config.plugins as any,
+            ...(config.plugins?.filter(Boolean) || []),
             ...plugins
         ],
     }
 
     return modifyConfig
 }
-
-// import webpack, { RuleSetRule } from 'webpack';
-// import path from 'path';
-// import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
-// import { BuildPaths } from '../build/types/config';
-// import { buildAliases } from '../build/alias/buildAliases'
-
-// export default ({ config }) => {
-//     const paths = {
-//         build: '',
-//         html: '',
-//         entry: '',
-//         src: path.resolve(__dirname, '..', '..', 'src'),
-//     };
-//     config.resolve.modules.push(paths.src);
-//     config.resolve.extensions.push('.ts', '.tsx');
-//     config.resolve.alias = buildAliases(paths.src)
-
-//     // eslint-disable-next-line no-param-reassign
-//     config.module.rules = config.module.rules.map((rule) => {
-//         if (/svg/.test(rule.test)) {
-//             return { ...rule, exclude: /\.svg$/i };
-//         }
-
-//         return rule;
-//     });
-
-//     config.module.rules.push({
-//         test: /\.svg$/,
-//         use: ['@svgr/webpack'],
-//     });
-//     config.module.rules.push(buildCssLoaders(true));
-
-//     return config;
-// };

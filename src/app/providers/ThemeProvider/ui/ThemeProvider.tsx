@@ -7,7 +7,7 @@ import BrowserStorage from '@utils/BrowserStorage'
 
 import {
     ThemeContext,
-} from '../../../../shared/lib/context/ThemeContext'
+} from '@shared/lib/context/ThemeContext'
 import { KEY_THEME_BROWSER_STORAGE } from '@shared/const/localstorage'
 import { Theme } from '@shared/const/them'
 
