@@ -14,6 +14,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     color?: Color
     isLoading?: boolean
     fullWidth?: boolean
+    disabled?: boolean
 }
 
 export const Button: FC<IButtonProps> = (props) => {
@@ -25,6 +26,7 @@ export const Button: FC<IButtonProps> = (props) => {
         color = "default",
         isLoading,
         fullWidth,
+        disabled,
         ...buttonProps
     } = props
 
@@ -32,7 +34,7 @@ export const Button: FC<IButtonProps> = (props) => {
         styles.button,
         {
 
-            [styles.disabled]: buttonProps.disabled,
+            [styles.disabled]: disabled,
             [styles.loading]: isLoading,
         },
         styles[variant],
@@ -52,6 +54,7 @@ export const Button: FC<IButtonProps> = (props) => {
             data-testid="button"
             type="button"
             {...buttonProps}
+            disabled={disabled || isLoading}
             className={cn(classes)}
             style={style}
         >
