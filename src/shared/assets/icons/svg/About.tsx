@@ -2,7 +2,7 @@ import React from 'react'
 
 export function About() {
     return (
-        <svg width="100%" height="100%" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" fill='currentColor' viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M8.33333 6.66667H13.3333V7.77778H8.33333V6.66667Z" />
             <path d="M8.33333 8.88889H13.3333V10H8.33333V8.88889Z" />
             <path d="M8.33333 11.1111H13.3333V12.2222H8.33333V11.1111Z" />

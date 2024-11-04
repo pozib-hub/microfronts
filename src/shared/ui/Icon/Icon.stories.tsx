@@ -2,30 +2,33 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
-import { Icon } from './Icon'
+
+import * as Icons from '../../assets/icons/svg'
+import { Icon, IconId } from './Icon'
 
 const meta: Meta<typeof Icon> = {
     title: 'shared/Icon',
     component: Icon,
+    decorators: [CenterDecorator],
 }
 
 export default meta
 
 type Story = StoryObj<typeof Icon>;
 
-export const Primary: Story = {
+export const AllIcons: Story = {
     args: {
-        // size: 150,
-        // src: IconImg,
+        color: "black",
+        size: 50,
     },
-    decorators: [CenterDecorator],
+    render: (args) => (
+        <div style={{ display: 'flex', flexDirection: "column", gap: '30px', padding: 20 }}>
+            {Object.keys(Icons).map((iconId) => (
+                <div key={iconId} style={{ display: 'flex', alignItems: "center", gap: '8px' }}>
+                    <Icon id={iconId as IconId} color={args.color} size={args.size} />
+                    <div>{iconId}</div>
+                </div>
+            ))}
+        </div>
+    ),
 }
-
-export const Small: Story = {
-    args: {
-        // size: 50,
-        // src: IconImg,
-    },
-    decorators: [CenterDecorator],
-}
-

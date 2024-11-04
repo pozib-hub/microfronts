@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo, HTMLAttributes } from 'react'
+import { CSSProperties, useMemo, HTMLAttributes, FC } from 'react'
 import cn from '@shared/lib/classNames/classNames'
 
 import * as Icons from '../../assets/icons/svg'
@@ -11,13 +11,15 @@ interface IProps extends HTMLAttributes<HTMLElement> {
     className?: string;
     size?: number;
     id: IconId
+    color?: CSSProperties["color"]
 }
 
-export const Icon = (props: IProps) => {
+export const Icon: FC<IProps> = (props) => {
     const {
         id,
         className,
         size,
+        color,
         ...divProps
     } = props
 
@@ -25,9 +27,14 @@ export const Icon = (props: IProps) => {
     const inlineStyles = useMemo<CSSProperties>(() => ({
         width: size || 25,
         height: size || 25,
-    }), [size])
+        color: color || "currentcolor"
+    }), [size, color])
 
-    const Icon = Icons[id]
+    const IconById = Icons[id]
+
+    if (!IconById) {
+        throw new Error(`Icon with id "${id}" not found`)
+    }
 
     return (
         <div
@@ -35,7 +42,7 @@ export const Icon = (props: IProps) => {
             style={inlineStyles}
             {...divProps}
         >
-            <Icon />
+            <IconById />
         </div>
     )
 }
