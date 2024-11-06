@@ -56,7 +56,9 @@ function isTagItem<ValueType>(item: unknown): item is TagItem<ValueType> {
         'value' in item && 'label' in item
 }
 
-function TagsComponent<ValueType>(props: SingleTabProps<ValueType> | MultiTabProps<ValueType>) {
+export type ITagsProps<ValueType> = SingleTabProps<ValueType> | MultiTabProps<ValueType>
+
+function TagsComponent<ValueType>(props: ITagsProps<ValueType>) {
     const {
         className,
         size = "default",
