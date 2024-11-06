@@ -65,13 +65,16 @@ const LoginForm: FC<ILoginFormProps> = (props) => {
                 <Input
                     autoFocus
                     required
-                    type="text" variant="outline"
+                    disabled={isLoading}
+                    type="text"
+                    variant="outline"
                     label={t('username')}
                     value={username}
                     onChange={onChangeUsername}
                 />
                 <Input
                     required
+                    disabled={isLoading}
                     label={t('password')}
                     type="password"
                     variant="outline"
