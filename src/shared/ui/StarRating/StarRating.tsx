@@ -18,7 +18,7 @@ const stars = [1, 2, 3, 4, 5]
 export const StarRating = memo((props: StarRatingProps) => {
     const {
         className,
-        size = 30,
+        size = 25,
         selectedStars = 0,
         onSelect,
     } = props
@@ -58,8 +58,7 @@ export const StarRating = memo((props: StarRatingProps) => {
                         },
                     )}
                     id='StarRating'
-                    // width={size}
-                    // height={size}
+                    size={size}
                     onMouseLeave={onLeave}
                     onMouseEnter={onHover(starNumber)}
                     onClick={onClick(starNumber)}

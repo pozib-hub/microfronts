@@ -4,14 +4,8 @@
     align-items: center;
 }
 
-.starIcon {
-    fill: none;
-}
-
-.normal {}
-
 .hovered svg {
-    fill: var(--primary-color);
+    fill: var(--inverted-primary-color);
 }
 
 .selected svg {
