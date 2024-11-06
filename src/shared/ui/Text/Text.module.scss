@@ -18,9 +18,13 @@
 .h5 {}
 
 
-.primary {}
+.primary {
+  color: var(--primary-color);
+}
 
-.secondary {}
+.secondary {
+  color: var(--secondary-color);
+}
 
 .red {
   color: red;
