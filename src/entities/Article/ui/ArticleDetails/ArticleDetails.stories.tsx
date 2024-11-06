@@ -50,39 +50,27 @@ const article: IArticle = {
 const meta: Meta<typeof ArticleDetails> = {
     title: 'entities/ArticleDetails',
     component: ArticleDetails,
-    decorators: [StoreDecorator({
-        articleDetails: {
-            data: article,
-        },
-    })]
+    decorators: [StoreDecorator({})]
 }
 export default meta
 
 type Story = StoryObj<typeof ArticleDetails>;
 
 export const Normal: Story = {
-    args: {},
-    decorators: [StoreDecorator({
-        articleDetails: {
-            data: article,
-        },
-    })]
+    args: {
+        data: article,
+        isLoading: false
+    },
 }
 
 export const Loading: Story = {
-    args: {},
-    decorators: [StoreDecorator({
-        articleDetails: {
-            isLoading: true,
-        },
-    })]
+    args: {
+        isLoading: true
+    },
 }
 
 export const Errors: Story = {
-    args: {},
-    decorators: [StoreDecorator({
-        articleDetails: {
-            error: 'error',
-        },
-    })]
+    args: {
+        error: "Server 500 Error"
+    },
 }
