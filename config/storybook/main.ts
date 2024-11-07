@@ -13,6 +13,7 @@ const config: StorybookConfig = {
 
   ],
   framework: "@storybook/react-webpack5",
+  staticDirs: ['../../public'],
   // делает в .jsx импорт реакта не обязательным 
   swc: () => ({
     jsc: {

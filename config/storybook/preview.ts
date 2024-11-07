@@ -1,11 +1,12 @@
 import type { Preview } from "@storybook/react"
 
-import { StyleDecorator } from "../../src/shared/config/storybook/StyleDecorator/StyleDecorator"
+import { StyleDecorator } from "@shared/config/storybook/StyleDecorator/StyleDecorator"
 import {
   ThemeDecorator,
   themesList
-} from "../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator"
-import { RouterDecorator } from "../../src/shared/config/storybook/RouterDecorator/RouterDecorator"
+} from "@shared/config/storybook/ThemeDecorator/ThemeDecorator"
+import { RouterDecorator } from "@shared/config/storybook/RouterDecorator/RouterDecorator"
+import { LanguageDecorator } from "@shared/config/storybook/LanguageDecorator/LanguageDecorator"
 
 const preview: Preview = {
   parameters: {
@@ -25,15 +26,19 @@ const preview: Preview = {
 }
 
 export const globalTypes = {
-  // TODO switch language
-  // local: {
-  //   toolbar: {
-  //     items: ["en", "ru"]
-  //   }
-  // }
+  local: {
+    name: "Language",
+    description: "Select the language of the app",
+    defaultValue: "ru",
+    toolbar: {
+      icon: "globe",
+      dynamicTitle: true,
+      items: ["en", "ru"],
+    }
+  }
 }
 
 export default {
   ...preview,
-  decorators: [RouterDecorator, ThemeDecorator, StyleDecorator],
+  decorators: [LanguageDecorator, RouterDecorator, ThemeDecorator, StyleDecorator],
 }
