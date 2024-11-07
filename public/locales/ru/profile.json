@@ -1,0 +1,17 @@
+{
+    "profileCard": {
+        "inputs": {
+            "firstname": "your name",
+            "lastname": "Your lastname",
+            "age": "Your age",
+            "city": "Your city",
+            "address": "Your address",
+            "username": "Your username",
+            "avatar": "Link to avatar"
+        },
+        "errors": {
+            "loadProfile": "There was an error loading your profile"
+        },
+        "solutionError": "Try refreshing the page"
+    }
+}

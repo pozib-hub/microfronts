@@ -2,17 +2,17 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
-import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
-import { Button } from '@shared/ui/Button/Button'
 import { Text } from '@shared/ui/Text/Text'
 import { Loader } from '@shared/ui/Loader/Loader'
+import { Flex } from '@shared/ui/Stack/Flex/Flex'
 
 import { IProfile } from '../../model/types/profile'
-import styles from './ProfileCard.module.scss'
 import { Input } from '@shared/ui/Input/Input'
 import { Avatar } from '@shared/ui/Avatar/Avatar'
 
-interface IProfileCardProps {
+import styles from './ProfileCard.module.scss'
+
+export interface IProfileCardProps {
     className?: string
     data?: IProfile
     isLoading?: boolean
@@ -42,7 +42,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
         // onChangeCurrency,
     } = props
 
-    const { t } = useTranslation()
+    const { t } = useTranslation("profile")
 
     if (isLoading) {
         return (
@@ -60,19 +60,16 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
     if (error) {
         return (
             <div className={cn(styles.ProfileCard, className, styles.error)}>
-                <Text
-                    // theme={TextTheme.ERROR}
-                    variant='h1'
-                    color='white'
-                // title={t('Произошла ошибка при загрузке профиля')}
-                // text={t('Попробуйте обновить страницу')}
-                // align={TextAlign.CENTER}
-                >
-                    {t('Произошла ошибка при загрузке профиля')}
-                </Text>
-                <Text  >
-                    {t('Попробуйте обновить страницу')}
-                </Text>
+                <Flex direction='column' justify='center' gap='16'>
+                    <Text
+                        variant='h1'
+                    >
+                        {t('profileCard.errors.loadProfile')}
+                    </Text>
+                    <Text >
+                        {t('profileCard.solutionError')}
+                    </Text>
+                </Flex>
             </div>
         )
     }
@@ -95,27 +92,27 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                 <div className={styles.col}>
                     <div className={styles.row}>
                         <Input
-                            data-testid="ProfileCart.firstname"
+                            data-testid="ProfileCard.firstname"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
-                            label={t('Ваше имя')}
+                            label={t("profileCard.inputs.firstname")}
                             value={data?.firstname}
                             onChange={(e) => onChangeFirstname(e.target.value)}
                         />
                         <Input
-                            data-testid="ProfileCart.lastname"
+                            data-testid="ProfileCard.lastname"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
-                            label={t('Ваша фамилия')}
+                            label={t("profileCard.inputs.lastname")}
                             value={data?.lastname}
                             onChange={(e) => onChangeLastname(e.target.value)}
                         />
                         <Input
-                            data-testid="ProfileCart.age"
+                            data-testid="ProfileCard.age"
                             classNameWrapper={styles.input}
                             type='number'
                             readOnly={readonly}
-                            label={t('Ваш возраст')}
+                            label={t("profileCard.inputs.age")}
                             value={data?.age}
                             onChange={(e) => onChangeAge(Number(e.target.value) || undefined)}
                         />
@@ -123,26 +120,26 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
 
                     <div className={styles.row}>
                         <Input
-                            data-testid="ProfileCart.city"
+                            data-testid="ProfileCard.city"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
-                            label={t('Город')}
+                            label={t("profileCard.inputs.city")}
                             value={data?.address?.city}
                             onChange={(e) => onChangeCity(e.target.value)}
                         />
                         <Input
-                            data-testid="ProfileCart.username"
+                            data-testid="ProfileCard.username"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
-                            label={t('Введите имя пользователя')}
+                            label={t("profileCard.inputs.username")}
                             value={data?.username}
                             onChange={(e) => onChangeUsername(e.target.value)}
                         />
                         <Input
-                            data-testid="ProfileCart.avatar"
+                            data-testid="ProfileCard.avatar"
                             classNameWrapper={styles.input}
                             readOnly={readonly}
-                            label={t('Введите ссылку на аватар')}
+                            label={t("profileCard.inputs.avatar")}
                             value={data?.avatar}
                             onChange={(e) => onChangeAvatar(e.target.value)}
                         />
