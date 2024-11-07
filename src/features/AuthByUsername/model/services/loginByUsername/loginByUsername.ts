@@ -40,7 +40,7 @@ export const loginByUsername = createAsyncThunk<
 
             return response.data
         } catch (error) {
-            throw rejectWithValue('wrongLoginPassword')
+            throw rejectWithValue('auth.wrongLoginPassword')
         }
     },
 )

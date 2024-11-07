@@ -24,20 +24,20 @@ export const Success: Story = {
     ],
 }
 
-export const Error: Story = {
-    decorators: [
-        CenterDecorator,
-        StoreDecorator({
-            loginForm: { username: '123', password: 'asd', error: 'ERROR' },
-        }),
-    ],
-}
-
 export const Loading: Story = {
     decorators: [
         CenterDecorator,
         StoreDecorator({
             loginForm: { isLoading: true },
+        }),
+    ],
+}
+
+export const Error: Story = {
+    decorators: [
+        CenterDecorator,
+        StoreDecorator({
+            loginForm: { username: '123', password: 'asd', error: 'auth.wrongLoginPassword' },
         }),
     ],
 }

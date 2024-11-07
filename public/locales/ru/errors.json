@@ -1,3 +1,5 @@
 {
-    "wrongLoginPassword": "Неправильный логин или пароль"
+    "auth": {
+        "wrongLoginPassword": "Неправильный логин или пароль"
+    }
 }

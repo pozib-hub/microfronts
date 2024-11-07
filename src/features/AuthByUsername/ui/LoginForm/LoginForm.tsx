@@ -32,7 +32,7 @@ const LoginForm: FC<ILoginFormProps> = (props) => {
     } = props
 
     const dispatch = useAppDispatch()
-    const { t } = useTranslation()
+    const { t } = useTranslation(["auth", "errors"])
 
     const {
         username = "",
@@ -61,21 +61,21 @@ const LoginForm: FC<ILoginFormProps> = (props) => {
     return (
         <DynamicModuleLoader reducers={asyncReducers} shouldAfterUnmount={false}>
             <div className={cn(styles.LoginFrom, className)}>
-                <Text>{t('Авторизация')}</Text>
+                <Text className={styles.title}>{t('form.title')}</Text>
                 <Input
                     autoFocus
                     required
                     disabled={isLoading}
                     type="text"
                     variant="outline"
-                    label={t('username')}
+                    label={t('form.inputs.username')}
                     value={username}
                     onChange={onChangeUsername}
                 />
                 <Input
                     required
                     disabled={isLoading}
-                    label={t('password')}
+                    label={t('form.inputs.password')}
                     type="password"
                     variant="outline"
                     value={password}
