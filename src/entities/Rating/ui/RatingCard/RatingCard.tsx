@@ -10,7 +10,6 @@ import { StarRating } from '@shared/ui/StarRating/StarRating'
 import { Modal } from '@shared/ui/Modal/Modal'
 import { Input } from '@shared/ui/Input/Input'
 import { Button } from '@shared/ui/Button/Button'
-// import { Drawer } from '@shared/ui/Drawer/Drawer'
 
 interface IRatingCardProps {
     className?: string;
@@ -64,7 +63,7 @@ export const RatingCard = memo((props: IRatingCardProps) => {
             <Input
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
-                placeholder={t('Ваш отзыв')}
+                placeholder={t('yourReview')}
             />
         </>
     )
@@ -81,10 +80,10 @@ export const RatingCard = memo((props: IRatingCardProps) => {
                         {modalContent}
                         <HStack max gap="16" justify="end">
                             <Button variant='transparent' onClick={cancelHandle}>
-                                {t('Закрыть')}
+                                {t('close')}
                             </Button>
                             <Button onClick={acceptHandle}>
-                                {t('Отправить')}
+                                {t('send')}
                             </Button>
                         </HStack>
                     </VStack>
