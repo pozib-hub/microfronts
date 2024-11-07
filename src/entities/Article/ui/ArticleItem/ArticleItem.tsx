@@ -1,5 +1,4 @@
 import React, { FC, HTMLAttributeAnchorTarget, memo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
 import { Icon } from '@shared/ui/Icon/Icon'
@@ -30,7 +29,6 @@ export const ArticleItem: FC<IArticleItemProps> =
             target,
         } = props
 
-        const { t } = useTranslation()
         const [isHover, bindHover] = useHover()
 
         const types = item.type.join(", ")

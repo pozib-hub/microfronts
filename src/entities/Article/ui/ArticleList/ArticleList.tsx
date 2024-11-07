@@ -34,12 +34,12 @@ export const ArticleList: FC<IArticleListProps> =
             target,
         } = props
 
-        const { t } = useTranslation()
+        const { t } = useTranslation("articles")
 
         if (!isLoading && !items.length) {
             return (
                 <div className={cn(styles.wrapper, styles[view], className)}>
-                    <span >{t('Статьи не найдены')}</span>
+                    <span >{t('list.noFound')}</span>
                 </div>
             )
         }
