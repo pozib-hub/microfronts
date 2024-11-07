@@ -1,4 +1,6 @@
 {
+    "articles": "Cтатьи",
+    "articles.create": "Создать статью",
     "list": {
         "noFound": "Статьи не найдены"
     }

@@ -1,4 +1,6 @@
 {
+    "articles": "articles",
+    "articles.create": "Create article",
     "list": {
         "noFound": "No articles found"
     }
