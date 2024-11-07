@@ -30,7 +30,7 @@ const AddCommentForm: FC<IAddCommentFormProps> =
             onSendComment,
         } = props
 
-        const { t } = useTranslation()
+        const { t } = useTranslation(["translation", "comments"])
         const dispatch = useAppDispatch()
 
         const {
@@ -51,7 +51,7 @@ const AddCommentForm: FC<IAddCommentFormProps> =
                 <div className={cn(styles.wrapper, className)}>
                     <Input
                         classNameWrapper={styles.input}
-                        placeholder={t('Введите текст комментария')}
+                        placeholder={t('addForm.enterCommentText', { ns: "comments" })}
                         value={text}
                         onChange={(e) => onCommentTextChange(e.target.value)}
                     />
@@ -60,7 +60,7 @@ const AddCommentForm: FC<IAddCommentFormProps> =
                         variant='transparent'
                         onClick={onSendHandler}
                     >
-                        {t('Отправить')}
+                        {t('send')}
                     </Button>
                 </div>
             </DynamicModuleLoader>
