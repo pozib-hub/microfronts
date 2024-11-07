@@ -41,6 +41,7 @@ export const Input: FC<IInputProps> = memo(function Input(props) {
         disabled,
         placeholder,
         size = "medium",
+        width,
         ...inputProps
     } = props
 
@@ -56,8 +57,13 @@ export const Input: FC<IInputProps> = memo(function Input(props) {
         }
     }, [autoFocus])
 
+    const wrapperStyle = {
+        ...style,
+        width: width || undefined,
+    }
+
     return (
-        <div className={cn(styles.wrapper, classNameWrapper)} style={style}>
+        <div className={cn(styles.wrapper, classNameWrapper)} style={wrapperStyle}>
             <div className={cn(
                 styles.container,
                 styles[`variant-${variant}`],
