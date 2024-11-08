@@ -1,6 +1,5 @@
 
 import { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
 import { Card } from '@shared/ui/Card/Card'
@@ -20,10 +19,6 @@ export const NotificationItem = memo((props: INotificationItemProps) => {
         className,
         item,
     } = props
-    const { t } = useTranslation()
-
-    console.log(item)
-
 
     if (item.href) {
         return (
