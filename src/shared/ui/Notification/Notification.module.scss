@@ -13,8 +13,7 @@ $spacing: 8px;
     align-items: center;
     width: 100%;
     max-width: 504px;
-    padding: 14px 16px;
-    border: 1px solid rgb(245, 244, 247);
+    padding: 6px 20px 6px 12px;
     border-radius: 12px;
 
     .title {
@@ -45,23 +44,23 @@ $spacing: 8px;
 .icon {
     display: flex;
     align-items: center;
-    margin-right: 18px;
+    margin-right: 12px;
 }
 
 .variant--success {
-    background-color: rgb(219, 245, 233);
+    background-color: rgb(150, 244, 143);
 }
 
 .variant--warning {
-    background-color: rgb(254, 244, 221);
+    background-color: rgb(238, 210, 145);
 }
 
 .variant--info {
-    background-color: rgb(221, 240, 255);
+    background-color: rgb(200, 227, 248);
 }
 
 .variant--error {
-    background-color: rgb(248, 223, 222);
+    background-color: rgb(247, 186, 184);
 }
 
 .notification-enter {

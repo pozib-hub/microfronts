@@ -1,35 +1,23 @@
-import React, {
-    useCallback, useEffect, useRef, FC,
-} from 'react'
+import React, { useCallback, useEffect, useRef, FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
-
-// import { NewSuccessIcon } from 'cscore/src/icons/NewSuccessIcon'
-// import { NewErrorIcon } from 'cscore/src/icons/NewErrorIcon'
-// import { NewInfoIcon } from 'cscore/src/icons/NewInfoIcon'
-// import { NewWarningIcon } from 'cscore/src/icons/NewWarningIcon'
+import { Icon } from '../Icon/Icon'
 
 import styles from './Notification.module.scss'
 
 const titles = {
-    info: 'Информационное сообщение',
-    success: 'Выполнено!',
-    warning: 'Внимание!',
-    error: 'Ошибка!',
+    info: 'notifications.info',
+    success: 'notifications.success',
+    warning: 'notifications.warning',
+    error: 'notifications.error',
 }
 
-// const icon = {
-//     success: <NewSuccessIcon />,
-//     info: <NewInfoIcon />,
-//     warning: <NewWarningIcon />,
-//     error: <NewErrorIcon />,
-// }
-
 const icon = {
-    success: <div />,
-    info: <div />,
-    warning: <div />,
-    error: <div />,
+    success: <Icon id="Done" size={20} />,
+    info: <Icon id="Info" size={26} />,
+    warning: <Icon id="Warning" size={30} />,
+    error: <Icon id="Error" size={26} />,
 }
 
 export interface INotification {
@@ -60,6 +48,7 @@ const Notification: FC<INotificationProps> = (props) => {
     } = props
 
     const timer = useRef<ReturnType<typeof setInterval> | null>(null)
+    const { t } = useTranslation()
 
     const handleClick = useCallback(() => {
         onClick?.()
@@ -88,7 +77,7 @@ const Notification: FC<INotificationProps> = (props) => {
             <div className={cn(styles.content, styles[`variant--${variant}`])}>
                 <div className={styles.icon}>{icon[variant]}</div>
                 <div>
-                    <div className={styles.title}>{title || titles[variant]}</div>
+                    <div className={styles.title}>{title || t(titles[variant])}</div>
                     {Array.isArray(text) ? (
                         text.map((t) => <div key={t} className={styles.text}>{t}</div>)
                     ) : (

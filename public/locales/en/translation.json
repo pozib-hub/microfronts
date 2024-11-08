@@ -8,6 +8,13 @@
     "send": "Send",
     "cancel": "Cancel",
     "edit": "Edit",
+    "search": "Search",
     "yourReview": "Your review",
-    "weRecommend": "We recommend"
+    "weRecommend": "We recommend",
+    "notifications": {
+        "success": "Success!",
+        "info": "Information message",
+        "warning": "Warning!",
+        "error": "Error!"
+    }
 }
