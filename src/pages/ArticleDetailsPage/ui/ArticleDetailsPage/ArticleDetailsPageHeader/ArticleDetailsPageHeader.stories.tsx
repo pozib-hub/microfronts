@@ -1,17 +1,36 @@
-// import React from 'react';
-// import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
-// import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader';
+import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader'
+import { StoreDecorator } from '@shared/config/storybook/StoreDecorator/StoreDecorator'
 
-// export default {
-//     title: 'shared/ArticleDetailsPageHeader',
-//     component: ArticleDetailsPageHeader,
-//     argTypes: {
-//         backgroundColor: { control: 'color' },
-//     },
-// } as ComponentMeta<typeof ArticleDetailsPageHeader>;
+const meta: Meta<typeof ArticleDetailsPageHeader> = {
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPageHeader',
+    component: ArticleDetailsPageHeader,
+}
 
-// const Template: ComponentStory<typeof ArticleDetailsPageHeader> = (args) => <ArticleDetailsPageHeader {...args} />;
+export default meta
 
-// export const Normal = Template.bind({});
-// Normal.args = {};
+type Story = StoryObj<typeof ArticleDetailsPageHeader>
+
+export const CantEdit: Story = {
+    args: {},
+    decorators: [StoreDecorator({})],
+}
+
+export const CanEdit: Story = {
+    args: {},
+    decorators: [StoreDecorator({
+        user: {
+            authData: {
+                id: "1"
+            },
+        },
+        articleDetails: {
+            data: {
+                user: {
+                    id: "1",
+                }
+            }
+        }
+    })],
+}
