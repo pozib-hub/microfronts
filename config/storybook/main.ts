@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-
+    'storybook-addon-mock',
   ],
   framework: "@storybook/react-webpack5",
   staticDirs: ['../../public'],

@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next'
 
 import { VStack } from '@shared/ui/Stack'
 import { ArticleList } from '@entities/Article'
-import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi'
+import { Text } from '@shared/ui/Text/Text'
 
+import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi'
 
 
 export const ArticleRecommendationsList = memo((props) => {
@@ -18,16 +19,16 @@ export const ArticleRecommendationsList = memo((props) => {
     }
 
     return (
-        <VStack>
-            <VStack>
-                Рекомендуем
-                <ArticleList
-                    view='tiles'
-                    isLoading={isLoading}
-                    items={data}
-                    target='_blank'
-                />
-            </VStack>
+        <VStack gap='16'>
+            <Text variant='h4'>
+                {t("weRecommend")}
+            </Text>
+            <ArticleList
+                view='tiles'
+                isLoading={isLoading}
+                items={data}
+                target='_blank'
+            />
         </VStack>
     )
 })
