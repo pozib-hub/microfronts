@@ -8,11 +8,7 @@
 .btn {
     &-view {
         &.selected {
-            fill: var(--inverted-bg-color)
-        }
-
-        :hover {
-            fill: var(--inverted-bg-color)
+            color: var(--secondary-color)
         }
     }
 }

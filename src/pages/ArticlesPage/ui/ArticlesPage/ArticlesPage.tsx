@@ -1,6 +1,6 @@
+import { memo, useCallback, useEffect } from 'react'
+
 import cn from '@shared/lib/classNames/classNames'
-import { useTranslation } from 'react-i18next'
-import { memo, useCallback, useEffect, useState } from 'react'
 import { ArticleList } from '@entities/Article'
 import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
@@ -9,7 +9,6 @@ import { useDebounce } from '@shared/lib/hooks/useDebounce'
 
 import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout'
 import {
-    articlesPageActions,
     articlesPageReducer,
     getArticles
 } from '../../models/slice/ArticlesPageSlice'
@@ -34,7 +33,6 @@ interface ArticlesPageProps {
 const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props
 
-    const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
     const {
@@ -81,7 +79,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     />
                 </div>
             </ScrollActionsLayout>
-
         </DynamicModuleLoader >
     )
 }

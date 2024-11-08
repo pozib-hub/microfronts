@@ -23,7 +23,6 @@ export const ArticlesPageHeader: FC<IArticlesPageHeaderProps> =
 
         const [isOpenModalFilters, setIsOpenModalFilters] = useState(false)
 
-
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
 
@@ -63,6 +62,7 @@ export const ArticlesPageHeader: FC<IArticlesPageHeaderProps> =
                             styles["btn-view"],
                             { [styles.selected]: view === "list" }
                         )}
+                        clearPadding
                         variant='transparent'
                         onClick={onClickIconList}
                     >
@@ -73,6 +73,7 @@ export const ArticlesPageHeader: FC<IArticlesPageHeaderProps> =
                             styles["btn-view"],
                             { [styles.selected]: view === "tiles" }
                         )}
+                        clearPadding
                         variant='transparent'
                         onClick={onClickIconTiles}
 
@@ -88,12 +89,14 @@ export const ArticlesPageHeader: FC<IArticlesPageHeaderProps> =
                         onChange={e => onChangeSearch(e.target.value)}
                     />
                     <Button
+                        clearPadding
                         variant='transparent'
                         onClick={onChangeSort}
                     >
                         <Icon id={order === "desc" ? "OrderAsc" : "OrderDesc"} size={20} />
                     </Button >
                     <Button
+                        clearPadding
                         variant='transparent'
                         onClick={() => setIsOpenModalFilters(prev => !prev)}
                     >
