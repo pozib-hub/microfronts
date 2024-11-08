@@ -16,7 +16,7 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
         className,
         articleId
     } = props
-    const { t } = useTranslation()
+    const { t } = useTranslation("articles")
 
     const { data, isLoading } = useGetArticleRating({
         articleId,
@@ -57,8 +57,8 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
             onAccept={onAccept}
             rate={rating}
             className={className}
-            title={t('Оцените статью')}
-            feedbackTitle={t('Оставьте свой отзыв о статье, это поможет улучшить качество')}
+            title={t('rating.rateArticle')}
+            feedbackTitle={t('rating.pleaseLeaveReview')}
             hasFeedback
         />
     )

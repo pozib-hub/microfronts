@@ -3,5 +3,9 @@
     "articles.create": "Create article",
     "list": {
         "noFound": "No articles found"
+    },
+    "rating": {
+        "rateArticle": "Rate this article",
+        "pleaseLeaveReview": "Leave your feedback on the article, this will help improve the quality"
     }
 }
