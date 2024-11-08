@@ -1,11 +1,13 @@
 {
-    "about": "about",
-    "profile": "profile",
-    "main": "main",
+    "about": "About",
+    "profile": "Profile",
+    "main": "Main",
     "filters": "Filters",
     "close": "Close",
     "save": "Save",
     "send": "Send",
+    "cancel": "Cancel",
+    "edit": "Edit",
     "yourReview": "Your review",
     "weRecommend": "We recommend"
 }

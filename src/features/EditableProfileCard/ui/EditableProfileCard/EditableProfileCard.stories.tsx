@@ -20,7 +20,7 @@ const editProfile = {
 }
 
 const meta: Meta<typeof EditableProfileCard> = {
-    title: 'features/EditableProfileCard',
+    title: 'features/EditableProfileCard/EditableProfileCard',
     component: EditableProfileCard,
 }
 

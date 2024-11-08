@@ -1,10 +1,12 @@
-import { Text } from '@shared/ui/Text/Text'
-import { Button } from '@shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { useCallback } from 'react'
+
 import cn from '@shared/lib/classNames/classNames'
+import { Text } from '@shared/ui/Text/Text'
+import { Button } from '@shared/ui/Button/Button'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Flex } from '@shared/ui/Stack/Flex/Flex'
 
 import { editProfileActions } from '../../model/slice/profileSlice'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
@@ -20,7 +22,7 @@ export const EditableProfilePageHeader = (props: EditableProfilePageHeaderProps)
         className,
     } = props
 
-    const { t } = useTranslation('profile')
+    const { t } = useTranslation()
 
     // const readonly = useSelector(getProfileReadonly)
     const { readonly, data } = useAppSelector(state => state.editProfile) || {}
@@ -43,43 +45,47 @@ export const EditableProfilePageHeader = (props: EditableProfilePageHeaderProps)
 
     return (
         <div className={cn(styles.wrapper, className)}>
-            <Text title={t('Профиль')} />
+            <Flex max direction='row' align='center' justify='between'>
 
-            {isEditProfile && <>
-                {readonly
-                    ? (
-                        <Button
-                            data-testid="EditableProfileCardHeader.EditButton"
-                            className={styles.editBtn}
-                            variant='dashed'
-                            onClick={onEdit}
-                        >
-                            {t('Редактировать')}
-                        </Button>
-                    )
-                    : (
-                        <>
+                <Text variant='h3'>
+                    {t('profile')}
+                </Text>
+
+                {isEditProfile && <>
+                    {readonly
+                        ? (
                             <Button
-                                data-testid="EditableProfileCardHeader.CancelButton"
+                                data-testid="EditableProfileCardHeader.EditButton"
                                 className={styles.editBtn}
-                                variant='primary'
-                                onClick={onCancelEdit}
+                                variant='dashed'
+                                onClick={onEdit}
                             >
-                                {t('Отменить')}
+                                {t('edit')}
                             </Button>
-                            <Button
-                                data-testid="EditableProfileCardHeader.SaveButton"
-                                className={styles.saveBtn}
-                                variant='primary'
-                                onClick={onSave}
-                            >
-                                {t('Сохранить')}
-                            </Button>
-                        </>
-                    )}
+                        )
+                        : (
+                            <>
+                                <Button
+                                    data-testid="EditableProfileCardHeader.CancelButton"
+                                    className={styles.editBtn}
+                                    variant='primary'
+                                    onClick={onCancelEdit}
+                                >
+                                    {t('cancel')}
+                                </Button>
+                                <Button
+                                    data-testid="EditableProfileCardHeader.SaveButton"
+                                    className={styles.saveBtn}
+                                    variant='primary'
+                                    onClick={onSave}
+                                >
+                                    {t('save')}
+                                </Button>
+                            </>
+                        )}
 
-            </>}
-
+                </>}
+            </Flex>
         </div>
     )
 }
