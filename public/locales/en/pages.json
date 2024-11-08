@@ -2,5 +2,10 @@
     "forbidden": {
         "title": "You don't have access",
         "subtitle": "Contact your administrator"
+    },
+    "notFound": {
+        "title": "This page does not exist",
+        "subtitle": "Go to",
+        "btnRedirect": "home"
     }
 }
