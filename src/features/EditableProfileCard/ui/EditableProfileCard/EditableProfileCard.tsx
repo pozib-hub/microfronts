@@ -8,7 +8,9 @@ import cn from '@shared/lib/classNames/classNames'
 import { ProfileCard } from '@entities/profile'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { Loader } from '@shared/ui/Loader/Loader'
-import { Text } from '@shared/ui/Text/Text'
+import { showNotification } from '@shared/ui/Notification'
+import { Flex } from '@shared/ui/Stack/Flex/Flex'
+
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
 
@@ -28,10 +30,11 @@ interface IEditableProfileCardProps {
     id?: string
 }
 
+
 export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
     const { className, id } = props
 
-    const { t } = useTranslation()
+    const { t } = useTranslation("profile")
     const dispatch = useAppDispatch()
 
     const location = useLocation()
@@ -47,16 +50,7 @@ export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
         validateErrors,
     } = profile || {}
 
-    const validateErrorTranslates: Record<ValidateProfileError, string> = {
-        [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
-        [ValidateProfileError.INCORRECT_CITY]: t('Некорректный регион'),
-        [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
-        [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
-        [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
-    }
-
     useEffect(() => {
-
         return () => {
             location.state = null
         }
@@ -71,6 +65,20 @@ export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
             dispatch(editProfileActions.clearData())
         }
     }, [dispatch, id, myUserId])
+
+    useEffect(() => {
+        const validateErrorTranslates: Record<ValidateProfileError, string> = {
+            [ValidateProfileError.SERVER_ERROR]: t('profileCard.errors.formEdit.server'),
+            [ValidateProfileError.NO_DATA]: t('profileCard.errors.formEdit.noData'),
+            [ValidateProfileError.INCORRECT_CITY]: t('profileCard.errors.formEdit.city'),
+            [ValidateProfileError.INCORRECT_USER_DATA]: t('profileCard.errors.formEdit.userData'),
+            [ValidateProfileError.INCORRECT_AGE]: t('profileCard.errors.formEdit.age'),
+        }
+
+        validateErrors?.map(err =>
+            showNotification({ variant: "error", text: validateErrorTranslates[err] })
+        )
+    }, [t, validateErrors])
 
     const onChangeFirstname = useCallback((value: string) => {
         dispatch(editProfileActions.updateProfile({ firstname: value || '' }))
@@ -102,15 +110,10 @@ export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
                 <EditableProfilePageHeader />
 
                 {
-                    validateErrors?.map(err =>
-                        <Text data-testid="EditableProfileCard.Error" key={err} color='red' >
-                            {validateErrorTranslates[err]}
-                        </Text>
-                    )
-                }
-                {
                     isLoading
-                        ? <Loader />
+                        ? <Flex direction='row' justify='center'>
+                            <Loader />
+                        </Flex>
                         : <ProfileCard
                             isLoading={isLoading}
                             readonly={readonly}

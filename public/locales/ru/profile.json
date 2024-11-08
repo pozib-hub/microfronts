@@ -1,17 +1,24 @@
 {
     "profileCard": {
         "inputs": {
-            "firstname": "your name",
-            "lastname": "Your lastname",
-            "age": "Your age",
-            "city": "Your city",
-            "address": "Your address",
-            "username": "Your username",
-            "avatar": "Link to avatar"
+            "firstname": "Ваше имя",
+            "lastname": "Ваша фамилия",
+            "age": "Ваш возраст",
+            "city": "Ваш город",
+            "address": "Ваш адрес",
+            "username": "Ваше имя пользователя",
+            "avatar": "Cсылка на аватар"
         },
         "errors": {
-            "loadProfile": "There was an error loading your profile"
+            "loadProfile": "Произошла ошибка при загрузке профиля",
+            "formEdit": {
+                "server": "Серверная ошибка при сохранении",
+                "noData": "Данные не указаны",
+                "city": "Некорректный регион",
+                "userData": "Имя и фамилия обязательны",
+                "age": "Некорректный возраст"
+            }
         },
-        "solutionError": "Try refreshing the page"
+        "solutionError": "Попробуйте обновить страницу"
     }
 }
