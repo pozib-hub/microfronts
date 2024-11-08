@@ -2,6 +2,8 @@
   color: var(--primary-color);
   transition: opacity 0.3s;
 
+  text-decoration: none;
+
   &.disabled {
     cursor: not-allowed;
     color: var(--color-text-disabled);

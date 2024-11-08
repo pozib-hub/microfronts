@@ -1,12 +1,11 @@
 
 import { Meta, StoryObj } from '@storybook/react'
 
-import { ThemeDecorator } from '@shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from '@shared/const/them'
-import ArticleDetailsPage from './ArticleDetailsPage'
+import { ArticleType } from '@entities/Article'
 import { IArticle } from '@entities/Article'
 import { StoreDecorator } from '@shared/config/storybook/StoreDecorator/StoreDecorator'
-import { ArticleType } from '@entities/Article'
+
+import ArticleDetailsPage from './ArticleDetailsPage'
 
 const article: IArticle = {
     id: '1',
@@ -50,7 +49,7 @@ const article: IArticle = {
 }
 
 const meta: Meta<typeof ArticleDetailsPage> = {
-    title: 'pages/ArticleDetailsPage',
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
     component: ArticleDetailsPage,
     decorators: [StoreDecorator({
         articleDetails: {
@@ -64,9 +63,5 @@ export default meta
 
 type Story = StoryObj<typeof ArticleDetailsPage>;
 
-export const LightTheme: Story = {
-}
-
-export const DarkTheme: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)],
+export const Default: Story = {
 }

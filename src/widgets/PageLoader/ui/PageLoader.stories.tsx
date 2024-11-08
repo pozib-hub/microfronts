@@ -8,17 +8,12 @@ import { PageLoader } from './PageLoader'
 const meta: Meta<typeof PageLoader> = {
     title: 'widget/PageLoader',
     component: PageLoader,
+    decorators: [CenterDecorator],
 }
 
 export default meta
 
 type Story = StoryObj<typeof PageLoader>;
 
-export const Light: Story = {
-    decorators: [CenterDecorator],
-}
-
-export const Dark: Story = {
-    ...Light,
-    decorators: [CenterDecorator, ThemeDecorator(Theme.DARK)],
+export const Default: Story = {
 }

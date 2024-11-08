@@ -1,31 +1,33 @@
-// import React from 'react';
-// import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
-// import { Button } from '../Button/Button';
-// import { Menu } from './Menu';
+import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
 
-// export default {
-//     title: 'shared/Menu',
-//     component: Dropdown,
-//     argTypes: {
-//         backgroundColor: { control: 'color' },
-//     },
-// } as ComponentMeta<typeof Dropdown>;
+import { Button } from '../Button/Button'
+import { Menu } from './Menu'
 
-// const Template: ComponentStory<typeof Menu> = (args) => <Menu {...args} />;
+const meta: Meta<typeof Menu> = {
+    title: 'shared/Menu',
+    component: Menu,
+    decorators: [CenterDecorator]
+}
 
-// export const Normal = Template.bind({});
-// Normal.args = {
-//     trigger: <Button>Open</Button>,
-//     items: [
-//         {
-//             content: 'first',
-//         },
-//         {
-//             content: 'second',
-//         },
-//         {
-//             content: 'third',
-//         },
-//     ],
-// };
+export default meta
+
+type Story = StoryObj<typeof Menu>
+
+export const Default: Story = {
+    args: {
+        trigger: <Button>Open</Button>,
+        items: [
+            {
+                content: 'first',
+            },
+            {
+                content: 'second',
+            },
+            {
+                content: 'third',
+            },
+        ],
+    },
+}

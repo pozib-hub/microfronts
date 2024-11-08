@@ -1,20 +1,22 @@
-// import React from 'react';
-// import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
-// import { Text } from 'shared/ui/Text/Text';
-// import { Card } from './Card';
+import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
 
-// export default {
-//     title: 'shared/Card',
-//     component: Card,
-//     argTypes: {
-//         backgroundColor: { control: 'color' },
-//     },
-// } as ComponentMeta<typeof Card>;
+import { Text } from '../Text/Text'
+import { Card } from './Card'
 
-// const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+const meta: Meta<typeof Card> = {
+    title: 'shared/Card',
+    component: Card,
+    decorators: [CenterDecorator]
+}
 
-// export const Normal = Template.bind({});
-// Normal.args = {
-//     children: <Text title="test" text="text text" />,
-// };
+export default meta
+
+type Story = StoryObj<typeof Card>
+
+export const Default: Story = {
+    args: {
+        children: <Text variant='h3'>test</Text>
+    },
+}

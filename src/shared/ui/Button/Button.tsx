@@ -6,7 +6,7 @@ import styles from './Button.module.scss'
 
 type Variants = 'primary' | 'dashed' | 'transparent' | 'outline'
 type Sizes = 'small' | 'medium' | 'large'
-type Color = 'danger' | 'primary ' | 'default '
+type Color = 'danger' | 'primary' | 'default '
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: Variants
@@ -15,6 +15,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean
     fullWidth?: boolean
     disabled?: boolean
+    clearPadding?: boolean
 }
 
 export const Button: FC<IButtonProps> = (props) => {
@@ -27,19 +28,21 @@ export const Button: FC<IButtonProps> = (props) => {
         isLoading,
         fullWidth,
         disabled,
+        clearPadding,
         ...buttonProps
     } = props
 
     const classes = [
         styles.button,
+        styles[variant],
+        styles[size],
+        styles[color],
         {
 
             [styles.disabled]: disabled,
             [styles.loading]: isLoading,
+            [styles.clearPadding]: clearPadding
         },
-        styles[variant],
-        styles[size],
-        styles[color],
         className,
     ]
 

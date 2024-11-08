@@ -10,6 +10,7 @@ const meta: Meta<typeof AppLink> = {
         children: 'Text',
     },
     component: AppLink,
+    decorators: [CenterDecorator],
 }
 
 export default meta
@@ -20,12 +21,10 @@ export const Primary: Story = {
     args: {
         variant: 'primary',
     },
-    decorators: [CenterDecorator],
 }
 
 export const Secondary: Story = {
     args: {
         variant: 'secondary',
     },
-    decorators: [CenterDecorator],
 }

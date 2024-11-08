@@ -17,10 +17,6 @@ export const LanguageDecorator = (Story: StoryFn, context: StoryContext) => {
 
     }, [local])
 
-    console.log(i18n)
-
-
-
     return <Suspense fallback={<div>loading translations...</div>}>
         <I18nextProvider i18n={i18n}>
             <Story />

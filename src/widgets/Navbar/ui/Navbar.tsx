@@ -82,7 +82,7 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
 
                 <AppLink to={routePath.about}>{t('about')}</AppLink>
 
-                <Button variant='transparent' onClick={onOpenModal}>
+                <Button color='primary' variant='transparent' onClick={onOpenModal}>
                     {t('signIn')}
                 </Button>
             </div>

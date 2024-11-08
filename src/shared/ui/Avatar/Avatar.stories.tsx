@@ -8,6 +8,7 @@ import { Avatar } from './Avatar'
 const meta: Meta<typeof Avatar> = {
     title: 'shared/Avatar',
     component: Avatar,
+    decorators: [CenterDecorator],
 }
 
 export default meta
@@ -19,7 +20,6 @@ export const Primary: Story = {
         size: 150,
         src: AvatarImg,
     },
-    decorators: [CenterDecorator],
 }
 
 export const Small: Story = {
@@ -27,6 +27,5 @@ export const Small: Story = {
         size: 50,
         src: AvatarImg,
     },
-    decorators: [CenterDecorator],
 }
 

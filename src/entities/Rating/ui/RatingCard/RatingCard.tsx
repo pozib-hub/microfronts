@@ -58,9 +58,12 @@ export const RatingCard = memo((props: IRatingCardProps) => {
     const modalContent = (
         <>
             <Text
-                title={feedbackTitle}
-            />
+                variant='span'
+            >
+                {feedbackTitle}
+            </Text>
             <Input
+                width={"100%"}
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
                 placeholder={t('yourReview')}

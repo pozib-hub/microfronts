@@ -8,13 +8,15 @@ import cn from '@shared/lib/classNames/classNames'
 import { Button } from '@shared/ui/Button/Button'
 import { routePath } from '@shared/const/router'
 import { getArticleDetailsData } from '@entities/Article'
+import { AppLink } from '@shared/ui/AppLink/AppLink'
+import { Text } from '@shared/ui/Text/Text'
+
 import { getCanEditArticle } from '../../../model/selectors/article'
 
 // import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetails'
 // import { getCanEditArticle } from 'pages/ArticleDetailsPage/model/selectors/article'
 
 import styles from './ArticleDetailsPageHeader.module.scss'
-import { AppLink } from '@shared/ui/AppLink/AppLink'
 
 interface ArticleDetailsPageHeaderProps {
     className?: string;
@@ -39,7 +41,9 @@ export const ArticleDetailsPageHeader =
         return (
             <div className={cn(styles.ArticleDetailsPageHeader, className)}>
                 <AppLink to={routePath.articles}>
-                    {String("<")}
+                    <Text>
+                        {String("<")}
+                    </Text>
                 </AppLink>
                 {canEdit && (
                     <Button
@@ -47,7 +51,7 @@ export const ArticleDetailsPageHeader =
                         variant='outline'
                         onClick={onEditArticle}
                     >
-                        {t('Редактировать')}
+                        {t('edit')}
                     </Button>
                 )}
             </div>

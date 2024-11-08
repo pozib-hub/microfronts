@@ -84,7 +84,7 @@ export const ArticleItem: FC<IArticleItemProps> =
 
         return (
             <div {...bindHover} className={cn(styles.wrapper, styles[view], className)}>
-                <AppLink target={target} to={routePath.articles + item.id}>
+                <AppLink target={target} to={routePath.articleDetail(item.id)}>
                     <Card className={styles.card}>
                         <div className={styles.img_wrapper}>
                             <img className={styles.img} src={item.img} alt={item.title} />
