@@ -1,5 +1,6 @@
 {
     "addForm": {
-        "enterCommentText": "Enter comment text"
-    }
+        "enterCommentText": "Введите текст комментария"
+    },
+    "comments": "Комментарии"
 }

@@ -28,7 +28,7 @@ export const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> =
             id,
         } = props
 
-        const { t } = useTranslation()
+        const { t } = useTranslation("comments")
         const dispatch = useAppDispatch()
 
         useEffect(() => {
@@ -53,7 +53,7 @@ export const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> =
 
         if (!id) {
             <div className={cn(styles.wrapper, className)}>
-                <h3 className={styles.title}>Коментарии</h3>
+                <h3 className={styles.title}>{t("comments")}</h3>
 
                 <Loader />
             </div>
@@ -61,7 +61,7 @@ export const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> =
 
         return (
             <div className={cn(styles.wrapper, className)}>
-                <h3 className={styles.title}>Коментарии</h3>
+                <h3 className={styles.title}>{t("comments")}</h3>
 
                 <AddCommentForm
                     isLoading={isLoadingForm}
