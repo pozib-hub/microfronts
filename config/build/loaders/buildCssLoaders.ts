@@ -5,10 +5,12 @@ export function buildCssLoaders(isDev: boolean) {
     return [
         {
             test: /\.css$/i,
+            exclude: /node_modules/,
             use: ["style-loader", "css-loader"],
         },
         {
             test: /\.s[ac]ss$/i,
+            exclude: /node_modules/,
             use: [
                 isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                 {
@@ -25,6 +27,7 @@ export function buildCssLoaders(isDev: boolean) {
         },
         {
             test: /\.less$/i,
+            exclude: /node_modules/,
             use: [
                 // compiles Less to CSS
                 "style-loader",
