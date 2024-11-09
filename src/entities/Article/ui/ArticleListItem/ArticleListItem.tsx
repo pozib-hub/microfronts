@@ -8,20 +8,22 @@ import { Avatar } from '@shared/ui/Avatar/Avatar'
 import { routePath } from '@shared/const/router'
 import { AppLink } from '@shared/ui/AppLink/AppLink'
 import { ArticleDisplayType } from '@shared/const/articles'
+import { AppImage } from '@shared/ui/AppImage'
+import { Skeleton } from '@shared/ui/Skeleton/Skeleton'
 
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { IArticle } from '../../model/types/article'
 
-import styles from './ArticleItem.module.scss'
+import styles from './ArticleListItem.module.scss'
 
-interface IArticleItemProps {
+interface IArticleListItemProps {
     className?: string
     item: IArticle,
     view: ArticleDisplayType
     target?: HTMLAttributeAnchorTarget
 }
-export const ArticleItem: FC<IArticleItemProps> =
-    memo(function ArticleItem(props) {
+export const ArticleListItem: FC<IArticleListItemProps> =
+    memo(function ArticleListItem(props) {
         const {
             className,
             item,
@@ -62,7 +64,12 @@ export const ArticleItem: FC<IArticleItemProps> =
                             <h3>{item.title}</h3>
                         </div>
                         <span className={styles.types}>{types}</span>
-                        <img className={styles.img} src={item.img} alt={item.title} />
+                        <AppImage
+                            className={styles.img}
+                            src={item.img}
+                            alt={item.title}
+                            fallback={<Skeleton width={"100%"} height={250} />}
+                        />
                         {textBlock && (
                             <ArticleTextBlock
                                 className={styles.text_block}
@@ -87,7 +94,12 @@ export const ArticleItem: FC<IArticleItemProps> =
                 <AppLink target={target} to={routePath.articleDetail(item.id)}>
                     <Card className={styles.card}>
                         <div className={styles.img_wrapper}>
-                            <img className={styles.img} src={item.img} alt={item.title} />
+                            <AppImage
+                                className={styles.img}
+                                src={item.img}
+                                alt={item.title}
+                                fallback={<Skeleton width={200} height={200} />}
+                            />
                             <span className={styles.date}>{item.createdAt}</span>
                         </div>
                         <div className={styles.info}>

@@ -1,18 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
-import { ArticleItem } from './ArticleItem'
+import { ArticleListItem } from './ArticleListItem'
 import { IArticle } from '../../model/types/article'
 
-const meta: Meta<typeof ArticleItem> = {
-    title: 'entities/Article/ArticleItem',
-    component: ArticleItem,
+const meta: Meta<typeof ArticleListItem> = {
+    title: 'entities/Article/ArticleListItem',
+    component: ArticleListItem,
     decorators: [CenterDecorator],
 }
 
 export default meta
 
-type Story = StoryObj<typeof ArticleItem>;
+type Story = StoryObj<typeof ArticleListItem>;
 
 const article = {
     id: '1',

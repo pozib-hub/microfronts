@@ -5,8 +5,8 @@ import cn from '@shared/lib/classNames/classNames'
 import { ArticleDisplayType } from '@shared/const/articles'
 
 import { IArticle } from '../../model/types/article'
-import { ArticleItem } from '../ArticleItem/ArticleItem'
-import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton'
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 
 import styles from './ArticleList.module.scss'
 
@@ -48,7 +48,7 @@ export const ArticleList: FC<IArticleListProps> =
             <div className={cn(styles.wrapper, styles[view], className)}>
                 {
                     items.map(item =>
-                        <ArticleItem
+                        <ArticleListItem
                             target={target}
                             key={item.id}
                             view={view}
@@ -57,7 +57,7 @@ export const ArticleList: FC<IArticleListProps> =
                 }
                 {
                     isLoading && skeletonItems(view)
-                        .map((_, index) => <ArticleItemSkeleton key={index} view={view} />)
+                        .map((_, index) => <ArticleListItemSkeleton key={index} view={view} />)
                 }
             </div>
         )

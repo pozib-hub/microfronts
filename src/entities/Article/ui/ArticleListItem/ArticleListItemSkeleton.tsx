@@ -1,17 +1,20 @@
-import cn from '@shared/lib/classNames/classNames'
 import { memo } from 'react'
+
+import cn from '@shared/lib/classNames/classNames'
+
 import { Card } from '@shared/ui/Card/Card'
 import { Skeleton } from '@shared/ui/Skeleton/Skeleton'
-import styles from './ArticleItem.module.scss'
 import { ArticleDisplayType } from '@shared/const/articles'
 
-interface IArticleItemSkeletonProps {
+import styles from './ArticleListItem.module.scss'
+
+interface IArticleListItemSkeletonProps {
     className?: string;
     view: ArticleDisplayType
 }
 
-export const ArticleItemSkeleton =
-    memo(function ArticleItemSkeleton(props: IArticleItemSkeletonProps) {
+export const ArticleListItemSkeleton =
+    memo(function ArticleListItemSkeleton(props: IArticleListItemSkeletonProps) {
         const {
             className,
             view
