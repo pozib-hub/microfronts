@@ -35,7 +35,7 @@ export const sidebarLinkItems: ISidebarItem[] = [
     },
     {
         path: routePath.articleCreate,
-        text: 'articles.create',
+        text: 'articleCreate',
         iconId: 'Tiles',
         authOnly: true
     }

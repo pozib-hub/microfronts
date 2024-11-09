@@ -8,6 +8,7 @@ import { AppLink } from '@shared/ui/AppLink/AppLink'
 import { Button } from '@shared/ui/Button/Button'
 import { Menu, MenuItem } from '@shared/ui/Menu/Menu'
 import { Avatar } from '@shared/ui/Avatar/Avatar'
+import { Text } from '@shared/ui/Text/Text'
 import { LoginModal } from '@features/AuthByUsername'
 import { getUserAuthData, userActions, UserRole } from '@entities/user'
 import { NotificationButton } from '@features/NotificationButton'
@@ -41,18 +42,18 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
 
     const optionsMenu: MenuItem[] = [
         {
-            content: t('profile'),
+            content: t('navbar.items.profile'),
             // onClick: onLogout,
         },
         {
-            content: t('logOut'),
+            content: t('navbar.items.logout'),
             onClick: onLogout,
         }
     ]
 
     if (authData?.roles?.has(UserRole.ADMIN)) {
         optionsMenu.push({
-            content: t('adminPanel'),
+            content: t('navbar.items.adminPanel'),
             href: routePath.adminPanel,
         })
     }
@@ -63,7 +64,7 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
                 <div className={style.links}>
                     <NotificationButton />
 
-                    <AppLink to={routePath.about}>{t('about')}</AppLink>
+                    <AppLink to={routePath.about}>{t('navbar.items.about')}</AppLink>
                     <Menu
                         className={style.menu}
                         trigger={<Avatar size={28} src={authData.avatar} />}
@@ -79,11 +80,14 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
     return (
         <header className={cn(style.navbar, className)}>
             <div className={style.links}>
+                <AppLink to={routePath.about}>
+                    {t('navbar.items.about')}
+                </AppLink>
 
-                <AppLink to={routePath.about}>{t('about')}</AppLink>
-
-                <Button color='primary' variant='transparent' onClick={onOpenModal}>
-                    {t('signIn')}
+                <Button variant='transparent' onClick={onOpenModal}>
+                    <Text color='primary'>
+                        {t('navbar.items.signIn')}
+                    </Text>
                 </Button>
             </div>
             <LoginModal

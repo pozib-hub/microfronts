@@ -1,7 +1,4 @@
 {
-    "about": "About",
-    "profile": "Profile",
-    "main": "Main",
     "filters": "Filters",
     "close": "Close",
     "save": "Save",
@@ -16,5 +13,24 @@
         "info": "Information message",
         "warning": "Warning!",
         "error": "Error!"
+    },
+    "sidebar": {
+        "items": {
+            "main": "Main",
+            "about": "About",
+            "profile": "Profile",
+            "articles": "Articles",
+            "articleCreate": "Create article"
+        }
+    },
+    "navbar": {
+        "items": {
+            "signIn": "Sign in",
+            "logout": "Logout",
+            "about": "About",
+            "profile": "Profile",
+            "main": "Main",
+            "adminPanel": "Admin panel"
+        }
     }
 }

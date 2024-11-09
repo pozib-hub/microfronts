@@ -34,7 +34,9 @@ export const SidebarItem: FC<ISidebarItemProps> = memo(function SidebarItem(prop
             to={path}
         >
             <Icon id={iconId} size={20} />
-            {!collapsed && <Text>{t(text)}</Text>}
+            {!collapsed && <Text color='primary'>
+                {t(`sidebar.items.${text}`)}
+            </Text>}
         </AppLink>
     )
 })

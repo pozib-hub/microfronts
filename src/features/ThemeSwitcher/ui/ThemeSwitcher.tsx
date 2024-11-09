@@ -20,7 +20,7 @@ export const ThemeSwitcher: FC<IThemeSwitcherProps> = (props) => {
 
     return (
         <div className={cn(style.themeSwitcher, className)}>
-            <Button variant='transparent' onClick={toggleTheme}>{Icon}</Button>
+            <Button clearPadding variant='transparent' onClick={toggleTheme}>{Icon}</Button>
         </div>
     )
 }

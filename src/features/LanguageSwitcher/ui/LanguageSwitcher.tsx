@@ -12,7 +12,7 @@ interface ILanguageSwitcherProps {
 
 export const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
     const { className } = props
-    const { t, i18n } = useTranslation()
+    const { i18n } = useTranslation()
 
     const currentLanguage = i18n.language
 
@@ -24,7 +24,9 @@ export const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
 
     return (
         <div className={cn(styles.languageSwitcher, className)}>
-            <Button onClick={toggle} variant='transparent'>{invertLang}</Button>
+            <Button clearPadding variant='transparent' color='primary' onClick={toggle}>
+                {invertLang}
+            </Button>
         </div>
     )
 }

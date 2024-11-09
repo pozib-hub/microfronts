@@ -48,6 +48,16 @@
   &_item {
     width: 25px;
     height: 25px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      color: var(--bg-color);
+
+      :hover {
+        color: var(--text-color);
+      }
+    }
   }
 
   &.collapsed {
