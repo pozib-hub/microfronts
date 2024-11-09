@@ -14,6 +14,7 @@ export const userSlice = createSlice({
     reducers: {
         setAuthData: (state, action: PayloadAction<IUser>) => {
             state.authData = action.payload
+            state.authData.roles = new Set(action.payload.roles)
         },
         // переделать в асинк 
         initAuthData: (state) => {
