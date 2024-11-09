@@ -1,6 +1,10 @@
 import { CSSProperties, useMemo } from 'react'
 import cn from '@shared/lib/classNames/classNames'
 
+import { AppImage } from '../AppImage'
+import { Icon } from '../Icon/Icon'
+import { Skeleton } from '../Skeleton/Skeleton'
+
 import styles from './Avatar.module.scss'
 
 interface AvatarProps {
@@ -11,21 +15,26 @@ interface AvatarProps {
 }
 
 export const Avatar = ({
-    className, src, size, alt,
+    className,
+    src,
+    size = 100,
+    alt,
 }: AvatarProps) => {
 
 
     const inlineStyles = useMemo<CSSProperties>(() => ({
-        width: size || 100,
-        height: size || 100,
+        width: size,
+        height: size,
     }), [size])
 
     return (
-        <img
+        <AppImage
+            className={cn(styles.Avatar, className)}
             src={src}
             alt={alt}
             style={inlineStyles}
-            className={cn(styles.Avatar, className)}
+            fallback={<Skeleton width={size} height={size} border='50%' />}
+            errorFallback={<Icon id="UserFilled" size={100} />}
         />
     )
 }
