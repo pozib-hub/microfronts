@@ -23,7 +23,7 @@ const ProfilePage: FC<IProfilePage> = (props) => {
     const { id } = useParams()
 
     return (
-        <div className={cn(styles.page, className)}>
+        <div data-testId="ProfilePage" className={cn(styles.page, className)}>
             {location.state?.article
                 && <AppLink to={routePath.articles + location.state.article.id}>
                     {"<"}

@@ -14,7 +14,7 @@ const MainPage = (props: IMainPage) => {
 
     const { t } = useTranslation()
 
-    return <div className={cn(styles.page, className)}>{t('Main')}</div>
+    return <div data-testId="MainPage" className={cn(styles.page, className)}>{t('Main')}</div>
 }
 
 export default MainPage

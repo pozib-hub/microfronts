@@ -7,7 +7,7 @@ export const routePath = {
     "articleDetail": (id: string) => `/articles/${id}`,
     "articleEdit": (id: string) => `/ articles / ${id}/edit`,
     "articleCreate": '/articles/create',
-    "adminPanel": "admin/panel",
+    "adminPanel": "/admin/panel",
 
     "CharacteristicsUVHD": '/CharacteristicsUVHD',
     "test": '/test',

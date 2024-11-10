@@ -15,7 +15,7 @@ export const AdminPanelPage = memo((props: IAdminPanelPageProps) => {
     const { t } = useTranslation()
 
     return (
-        <div className={cn(styles.wrapper, className)}>
+        <div data-testId="AdminPanelPage" className={cn(styles.wrapper, className)}>
             Панель админа
         </div>
     )

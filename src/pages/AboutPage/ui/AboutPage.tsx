@@ -16,7 +16,7 @@ const AboutPage = (props: IAboutPage) => {
     const { t } = useTranslation()
 
 
-    return <div className={cn(styles.page, className)}></div >
+    return <div data-testId="AboutPage" className={cn(styles.page, className)}></div >
 }
 
 export default AboutPage
