@@ -29,6 +29,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "lint-staged": {
+    "**/*.{ts,tsx}": "eslint"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/plugin-transform-runtime": "^7.25.4",
@@ -96,6 +99,7 @@
     "jest-html-reporters": "^3.1.7",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
+    "lint-staged": "^15.2.10",
     "loki": "^0.35.0",
     "mini-css-extract-plugin": "^2.5.3",
     "react-refresh": "^0.14.2",
