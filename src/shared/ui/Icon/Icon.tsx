@@ -12,6 +12,7 @@ interface IProps extends HTMLAttributes<HTMLElement> {
     size?: number;
     id: IconId
     color?: CSSProperties["color"]
+    inverted?: boolean
 }
 
 export const Icon: FC<IProps> = (props) => {
@@ -20,6 +21,7 @@ export const Icon: FC<IProps> = (props) => {
         className,
         size,
         color,
+        inverted,
         ...divProps
     } = props
 
@@ -27,7 +29,7 @@ export const Icon: FC<IProps> = (props) => {
     const inlineStyles = useMemo<CSSProperties>(() => ({
         width: size || 25,
         height: size || 25,
-        color: color || "currentcolor"
+        color: color || undefined
     }), [size, color])
 
     const IconById = Icons[id]
@@ -38,7 +40,11 @@ export const Icon: FC<IProps> = (props) => {
 
     return (
         <div
-            className={cn(styles.wrapper, className)}
+            className={cn(
+                styles.wrapper,
+                { [styles.inverted]: inverted },
+                className
+            )}
             style={inlineStyles}
             {...divProps}
         >

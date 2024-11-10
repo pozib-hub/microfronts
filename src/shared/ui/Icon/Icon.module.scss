@@ -1,1 +1,7 @@
-.wrapper {}
+.wrapper {
+    color: var(--inverted-bg-color);
+}
+
+.inverted {
+    color: var(--bg-color);
+}

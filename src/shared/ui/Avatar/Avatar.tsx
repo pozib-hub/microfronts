@@ -34,7 +34,7 @@ export const Avatar = ({
             alt={alt}
             style={inlineStyles}
             fallback={<Skeleton width={size} height={size} border='50%' />}
-            errorFallback={<Icon id="UserFilled" size={100} />}
+            errorFallback={<Icon inverted id="UserFilled" size={size} />}
         />
     )
 }
