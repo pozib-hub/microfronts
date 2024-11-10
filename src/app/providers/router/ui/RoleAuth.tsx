@@ -1,5 +1,6 @@
 import { ReactNode, FC, useMemo } from "react"
 import { Navigate, useLocation } from 'react-router-dom'
+import intersection from "lodash/intersection"
 
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector"
 
@@ -17,9 +18,9 @@ const RoleAuth: FC<IRoleAuthProps> = ({ children, roles }) => {
     const location = useLocation()
 
     const hasRequiredRoles = useMemo(() => {
-        const setRoles = new Set(roles)
+        const setRoles = roles
 
-        return setRoles.intersection(userRoles).size !== 0
+        return intersection(setRoles, userRoles).length !== 0
     }, [roles, userRoles])
 
     if (!hasRequiredRoles) {

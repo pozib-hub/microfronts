@@ -51,7 +51,7 @@ export const Navbar: FC<INavbarProps> = memo(function Navbar(props) {
         }
     ]
 
-    if (authData?.roles?.has(UserRole.ADMIN)) {
+    if (authData?.roles?.includes(UserRole.ADMIN)) {
         optionsMenu.push({
             content: t('navbar.items.adminPanel'),
             href: routePath.adminPanel,

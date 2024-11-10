@@ -4,7 +4,7 @@ export interface IUser {
     id: string
     username: string
     avatar?: string
-    roles?: Set<UserRole>
+    roles?: UserRole[]
 }
 
 export interface UserSchema {
