@@ -95,6 +95,9 @@ jobs:
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()
+      - name: move loki report
+        run: mv .loki reports/
+        if: always()
       - name: move loki
         run: mv .loki reports/
         if: always()
