@@ -34,7 +34,7 @@
     // import React from 'react';
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "ts-node": {
     "compilerOptions": {
@@ -44,6 +44,13 @@
       "./config/jest/setupTest.ts",
       "./src/**/*.ts",
       "./src/**/*.tsx",
-    ]
-  }
+    ],
+  },
+  "exclude": [
+    "./cypress.config.ts",
+    //other exclusions that may help https://github.com/cypress-io/cypress/issues/22059#issuecomment-1428298264
+    "node_modules",
+    "cypress",
+    "**/*.cy.tsx"
+  ]
 }

@@ -70,7 +70,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 isLoading={isLoading}
                 onScroll={handleMoreArticles}
             >
-                <div className={cn(styles.wrapper, className)}>
+                <div data-testid="ArticlesPage" className={cn(styles.wrapper, className)}>
                     <ArticlesPageHeader />
                     <ArticleList
                         isLoading={isLoading}
