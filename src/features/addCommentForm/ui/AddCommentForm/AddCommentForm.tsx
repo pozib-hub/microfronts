@@ -48,7 +48,7 @@ const AddCommentForm: FC<IAddCommentFormProps> =
 
         return (
             <DynamicModuleLoader reducers={reducers}>
-                <div className={cn(styles.wrapper, className)}>
+                <div data-testid="AddCommentForm" className={cn(styles.wrapper, className)}>
                     <Input
                         classNameWrapper={styles.input}
                         placeholder={t('addForm.enterCommentText', { ns: "comments" })}

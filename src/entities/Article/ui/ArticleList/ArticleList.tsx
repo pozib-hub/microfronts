@@ -45,7 +45,7 @@ export const ArticleList: FC<IArticleListProps> =
         }
 
         return (
-            <div className={cn(styles.wrapper, styles[view], className)}>
+            <div data-testid="ArticleList" className={cn(styles.wrapper, styles[view], className)}>
                 {
                     items.map(item =>
                         <ArticleListItem

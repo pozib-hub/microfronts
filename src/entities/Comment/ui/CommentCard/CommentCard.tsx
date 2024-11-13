@@ -25,7 +25,7 @@ export const CommentCard: FC<ICommentCardProps> =
 
         if (isLoading) {
             return (
-                <div className={cn(styles.wrapper, className)}>
+                <div data-testid="CommentCard.Loading" className={cn(styles.wrapper, className)}>
                     <div className={styles.header}>
                         <Skeleton width={30} height={30} border="50%" />
                         <Skeleton height={16} width={100} className={styles.username} />
@@ -40,7 +40,7 @@ export const CommentCard: FC<ICommentCardProps> =
         }
 
         return (
-            <div className={cn(styles.wrapper, className)}>
+            <div data-testid="CommentCard.Content" className={cn(styles.wrapper, className)}>
                 <AppLink to={`${routePath.profile}/${comment.user.id}`}>
                     <div className={styles.header}>
                         {

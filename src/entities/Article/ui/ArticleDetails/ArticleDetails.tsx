@@ -97,7 +97,7 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(function ArticleDet
                     />
                 </div>
 
-                <div>
+                <div data-testid="ArticleDetails.Info">
                     <div
                         className={styles.title}
                     >

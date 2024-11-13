@@ -38,7 +38,10 @@ export const ArticleListItem: FC<IArticleListItemProps> =
 
         if (view === "list") {
             return <>
-                <div className={cn(styles.wrapper, styles[view], className)} >
+                <div
+                    data-testid="ArticleListItem"
+                    className={cn(styles.wrapper, styles[view], className)}
+                >
                     <Card className={styles.card}>
                         <div className={styles.header}>
                             <AppLink
@@ -90,7 +93,11 @@ export const ArticleListItem: FC<IArticleListItemProps> =
         }
 
         return (
-            <div {...bindHover} className={cn(styles.wrapper, styles[view], className)}>
+            <div
+                {...bindHover}
+                data-testid="ArticleListItem"
+                className={cn(styles.wrapper, styles[view], className)}
+            >
                 <AppLink target={target} to={routePath.articleDetail(item.id)}>
                     <Card className={styles.card}>
                         <div className={styles.img_wrapper}>
