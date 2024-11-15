@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import builderReducersByProject from '@utils/builderReducersByProject'
 import { Theme } from '@shared/const/them'
+import { KEY_THEME_BROWSER_STORAGE } from '@shared/const/localstorage'
 
 import { IUserSettings } from '../types/userSettings'
 import { saveUserSetting } from '../services/saveUserSettings'
@@ -9,7 +10,7 @@ import { getUserSetting } from '../services/getUserSettings'
 
 const initialState: IUserSettings = {
     isFirstVisit: false,
-    theme: Theme.DARK,
+    theme: localStorage.getItem(KEY_THEME_BROWSER_STORAGE) as Theme || Theme.DARK,
 }
 
 type IProps = {
@@ -33,12 +34,20 @@ export const userSettingsSlice = createSlice({
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 state[key] = value
+
+                if (key === "theme") {
+                    localStorage.setItem(KEY_THEME_BROWSER_STORAGE, value)
+                }
             })
             .addCase(getUserSetting.fulfilled, (state, action) => {
                 const { key, value } = action.payload
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 state[key] = value
+
+                if (key === "theme") {
+                    localStorage.setItem(KEY_THEME_BROWSER_STORAGE, value)
+                }
             })
     }
 })

@@ -1,4 +1,4 @@
-import React, { useState, FC, useMemo, useEffect, useCallback } from 'react'
+import React, { FC, useMemo, useEffect, useCallback } from 'react'
 
 import { ThemeContext } from '@shared/lib/context/ThemeContext'
 import { Theme } from '@shared/const/them'
@@ -21,7 +21,7 @@ const ThemeProvider: FC<IThemeProviderProps> = ({ children, initialTheme }) => {
     }, [dispatch])
 
     useEffect(() => {
-        document.body.className = theme || Theme.LIGHT
+        document.body.className = theme
     }, [theme])
 
     const setTheme = useCallback(

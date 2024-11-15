@@ -12,9 +12,9 @@ type IProps = {
 }
 
 type IReturn = {
-    key: keyof IUserSettings,
-    value: IUserSettings[keyof IUserSettings],
-}
+    [K in keyof IUserSettings]: { key: K; value: NonNullable<IUserSettings[K]> }
+}[keyof IUserSettings]
+
 
 export const getUserSetting = createAsyncThunk<
     IReturn,
