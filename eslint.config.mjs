@@ -9,9 +9,9 @@ import storybookPlugin from "eslint-plugin-storybook"
 import i18nextPlugin from 'eslint-plugin-i18next'
 import hooksPlugin from "eslint-plugin-react-hooks"
 import pozibPlugin from "eslint-plugin-pozib-plugin"
+import eslintConfigPrettier from "eslint-config-prettier"
 
 const jsRules = {
-  // indent: ['error', 4],
   camelcase: ['off', { properties: 'never' }],
   semi: ['error', 'never'],
   'no-shadow': 'off',
@@ -50,8 +50,6 @@ const importRules = {
 }
 
 const reactRules = {
-  'react/jsx-indent': [2, 4],
-  'react/jsx-indent-props': [2, 4],
   'react/require-default-props': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/jsx-props-no-spreading': 'warn',
@@ -63,6 +61,7 @@ const reactRules = {
   ],
   'jsx-a11y/click-events-have-key-events': 'off',
   "react/display-name": "off",
+  "react/jsx-max-props-per-line": ["error", { maximum: 4 }]
 }
 
 const reactHookRules = {
@@ -83,6 +82,7 @@ export default [
   esLint.configs.recommended,
   ...tsLint.configs.recommended,
   reactPlugin.configs.flat.recommended,
+  eslintConfigPrettier,
   { files: ["**/*.{js,ts,jsx}"] },
   {
     languageOptions: {
