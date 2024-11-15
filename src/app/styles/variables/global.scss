@@ -29,4 +29,18 @@
   // Цвета disabled
   --color-bg-container-disabled: rgba(0, 0, 0, 0.04);
   --color-text-disabled: rgba(0, 0, 0, 0.25);
+
+  // Отступы
+  --spacing: 8px;
+
+  --responsive-desktop: 1280px;
+  --responsive-tablet: 1279px;
+  --responsive-phone: 575px;
+  --responsive-min-desktop: 1280px;
+  --responsive-min-tablet: 576px;
+
+  --desktop-sidebar-size: 64px;
+  --mobile-navbar-height: 64px;
+  --mobile-header-height: 48px;
+  // --mobile-viewport-height: calc(100vh - (#{--mobile-navbar-height} + #{--mobile-header-height}))
 }

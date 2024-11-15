@@ -1,15 +1,26 @@
-.navbar {
-  width: 100%;
-  height: var(--height-navbar);
-  background: var(--inverted-bg-color);
-  display: flex;
-  align-items: center;
-  padding: 20px;
+.wrapper {
+  background: var(--bg-color);
+  height: 100%;
+  padding-top: 5%;
+  padding-inline: calc(var(--spacing) * 4);
 }
 
-.links {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-left: auto;
+.title {
+  margin-bottom: calc(var(--spacing) * 4);
+}
+
+.subtitle {
+  margin-bottom: 10px;
+}
+
+.instructions {}
+
+.error {
+  margin-bottom: var(--spacing);
+}
+
+.button {
+  &:hover {
+    opacity: 0.8;
+  }
 }

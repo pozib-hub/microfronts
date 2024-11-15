@@ -7,11 +7,12 @@ import styles from './Section.module.scss'
 
 interface IProps {
     classNames?: {
-        wrapper?: string;
-        title?: string;
-        contentWrapper?: string;
-        content?: string;
+        wrapper?: string
+        title?: string
+        contentWrapper?: string
+        content?: string
     }
+    openByClickTitle?: boolean
     title?: string
     icon?: React.ReactNode
     children: React.ReactElement
@@ -25,14 +26,14 @@ const Section: FC<IProps> = (props) => {
         title,
         icon,
         defaultOpen = true,
-        delayAnimation = "0.3s",
+        delayAnimation = '0.3s',
+        openByClickTitle,
         children,
     } = props
 
     const refWrapperContent = useRef<HTMLDivElement>(null)
     const [refContent, sizeContent] = useResizeObserver<HTMLDivElement>()
     const [open, setOpen] = useState(defaultOpen)
-
 
     useEffect(() => {
         const wrapper = refWrapperContent.current
@@ -43,7 +44,6 @@ const Section: FC<IProps> = (props) => {
         }
     }, [defaultOpen, refContent])
 
-
     useEffect(() => {
         const wrapper = refWrapperContent.current
         const content = refContent.current
@@ -53,13 +53,18 @@ const Section: FC<IProps> = (props) => {
         if (open) {
             wrapper.style.maxHeight = `${content.scrollHeight}px`
         } else {
-            wrapper.style.maxHeight = "0"
+            wrapper.style.maxHeight = '0'
         }
     }, [open, refContent, sizeContent])
 
-
     const onToggleOpen = () => {
-        setOpen(prev => !prev)
+        setOpen((prev) => !prev)
+    }
+
+    const onClickTitle = () => {
+        if (openByClickTitle) {
+            onToggleOpen()
+        }
     }
 
     const transitionAnimation = open
@@ -69,27 +74,27 @@ const Section: FC<IProps> = (props) => {
     return (
         <div className={cn(styles.wrapper, classNames?.wrapper)}>
             <div className={styles.header}>
-                <div className={cn(styles.title, classNames?.title)}>
+                <div
+                    className={cn(styles.title, classNames?.title, {
+                        [styles.clickTitle]: openByClickTitle,
+                    })}
+                    onClick={onClickTitle}
+                >
                     {icon}
                     {title}
                 </div>
                 <div
-                    className={cn(
-                        styles.chevronIcon,
-                        {
-                            [styles.open]: open,
-                        })
-                    }
+                    className={cn(styles.chevronIcon, {
+                        [styles.open]: open,
+                    })}
                     onClick={onToggleOpen}
-                >
-                    {/* <IconProvider iconId='ChevronUpIcon' /> */}
-                </div>
+                />
             </div>
             <div
                 ref={refWrapperContent}
                 className={cn(styles.content, classNames?.content)}
                 style={{
-                    transition: transitionAnimation
+                    transition: transitionAnimation,
                 }}
             >
                 <div

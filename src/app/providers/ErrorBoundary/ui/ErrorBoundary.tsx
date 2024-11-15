@@ -1,6 +1,4 @@
-import React, {
-    Component, ErrorInfo, FC, Suspense,
-} from 'react'
+import React, { Component, ErrorInfo, FC, Suspense } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
 import { PageError } from '@widgets/PageError'
@@ -11,12 +9,18 @@ interface IProps {
 
 interface IState {
     hasError: boolean
+    error?: Error
+    errorInfo?: ErrorInfo
 }
 
 class ErrorBoundary extends Component<IProps & WithTranslation, IState> {
     constructor(props: IProps & WithTranslation) {
         super(props)
-        this.state = { hasError: false }
+        this.state = {
+            hasError: false,
+            error: undefined,
+            errorInfo: undefined,
+        }
     }
 
     static getDerivedStateFromError(error: Error) {
@@ -25,19 +29,21 @@ class ErrorBoundary extends Component<IProps & WithTranslation, IState> {
     }
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+        this.setState({
+            error: error,
+            errorInfo: errorInfo,
+        })
         // You can also log the error to an error reporting service
         // logErrorToMyService(error, errorInfo)
     }
 
     render() {
         const { children, t } = this.props
-        const { hasError } = this.state
+        const { hasError, error, errorInfo } = this.state
 
         if (hasError) {
             // You can render any custom fallback UI
-            return (
-                <PageError />
-            )
+            return <PageError error={error} errorInfo={errorInfo} />
         }
 
         return children
