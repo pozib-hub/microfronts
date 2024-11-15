@@ -5,7 +5,6 @@ import parseApiErrors from '@shared/api/parseApiErrors'
 import { API_Errors } from '@shared/api/types'
 
 import { IArticle } from '../../types/article'
-import { articleDetailsActions } from '../../slice/articleDetailsSlice'
 
 interface IProps {
     id?: string

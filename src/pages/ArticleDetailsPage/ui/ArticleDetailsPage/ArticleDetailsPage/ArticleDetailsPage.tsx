@@ -4,46 +4,51 @@ import { ArticleDetails } from '@entities/Article'
 import { useParams } from 'react-router-dom'
 import {
     DynamicModuleLoader,
-    ReducersList
+    ReducersList,
 } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { fetchArticleById } from '@entities/Article'
 import { ArticleRating } from '@features/ArticleRating'
+import { ArticleRecommendationsList } from '@features/ArticleRecommendationsList'
 
 import { articleDetailsPageReducer } from '../../../model/slices'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
-import { ArticleRecommendationsList } from '@features/ArticleRecommendationsList'
 import { ArticleDetailsComments } from '../../ArticleDetailsComments/ArticleDetailsComments'
 
 import styles from './ArticleDetailsPage.module.scss'
+import { toggleFeatures } from '@shared/lib/features/toggleFeatures'
 
 const reducers: ReducersList = {
-    articleDetailsPage: articleDetailsPageReducer
+    articleDetailsPage: articleDetailsPageReducer,
 }
 
 interface ArticleDetailsPageProps {
-    className?: string;
+    className?: string
 }
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { className } = props
 
-    const { id } = useParams()
+    const { id = '' } = useParams()
 
     const dispatch = useAppDispatch()
 
     const {
         isLoading: isLoadingArticles,
         data: articles,
-        error: errorArticles
-    } = useAppSelector(state => state.articleDetails) || {}
-
+        error: errorArticles,
+    } = useAppSelector((state) => state.articleDetails) || {}
 
     useEffect(() => {
         dispatch(fetchArticleById({ id }))
     }, [dispatch, id])
 
+    const ArticleRatingFeature = toggleFeatures({
+        name: 'isArticleRatingEnabled',
+        on: () => <ArticleRating articleId={id} />,
+        off: () => <div></div>,
+    })
 
     return (
         <DynamicModuleLoader reducers={reducers}>
@@ -54,7 +59,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     isLoading={isLoadingArticles}
                     error={errorArticles}
                 />
-                {id && <ArticleRating articleId={id} />}
+                {ArticleRatingFeature}
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id} />
             </div>
@@ -63,5 +68,3 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 }
 
 export default memo(ArticleDetailsPage)
-
-

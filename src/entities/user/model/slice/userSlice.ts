@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { IUser, UserSchema } from '../types/user'
+import { setFeaturesFlags } from '@shared/lib/features'
 
 
 const initialState: UserSchema = {
@@ -15,13 +16,16 @@ export const userSlice = createSlice({
         setAuthData: (state, action: PayloadAction<IUser>) => {
             state.authData = action.payload
             state.authData.roles = action.payload.roles
+            setFeaturesFlags(action.payload.features)
         },
         // переделать в асинк 
         initAuthData: (state) => {
-            const user = localStorage.getItem('user')
+            const string_user = localStorage.getItem('user')
 
-            if (user) {
-                state.authData = JSON.parse(user)
+            if (string_user) {
+                const user = JSON.parse(string_user) as IUser
+                state.authData = user
+                setFeaturesFlags(user.features)
             }
 
             state._inited = true
