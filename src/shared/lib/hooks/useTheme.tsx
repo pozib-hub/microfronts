@@ -1,11 +1,6 @@
 import { useContext } from 'react'
 
-import BrowserStorage from '@utils/BrowserStorage'
-
-import {
-    ThemeContext
-} from '../context/ThemeContext'
-import { KEY_THEME_BROWSER_STORAGE } from '../../const/localstorage'
+import { ThemeContext } from '../context/ThemeContext'
 import { Theme } from '../../const/them'
 
 const getNextTheme = (theme?: Theme) => {
@@ -26,8 +21,6 @@ export default () => {
 
     const toggleTheme = () => {
         const newTheme = getNextTheme(theme)
-        BrowserStorage.set(KEY_THEME_BROWSER_STORAGE, newTheme)
-        document.body.className = newTheme
         setTheme?.(newTheme)
     }
 

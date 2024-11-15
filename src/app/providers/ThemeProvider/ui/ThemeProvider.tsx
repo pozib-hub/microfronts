@@ -1,23 +1,10 @@
-import React, {
-    useState, FC, useMemo, useEffect,
-} from 'react'
+import React, { useState, FC, useMemo, useEffect, useCallback } from 'react'
 
-// import BrowserStorage from "src/utils/BrowserStorage";
-import BrowserStorage from '@utils/BrowserStorage'
-
-import {
-    ThemeContext,
-} from '@shared/lib/context/ThemeContext'
-import { KEY_THEME_BROWSER_STORAGE } from '@shared/const/localstorage'
+import { ThemeContext } from '@shared/lib/context/ThemeContext'
 import { Theme } from '@shared/const/them'
-
-const getSaveTheme = async () => {
-    try {
-        return BrowserStorage.get<Theme>(KEY_THEME_BROWSER_STORAGE)
-    } catch (error) {
-        return null
-    }
-}
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import { getUserSetting, saveUserSetting } from '@entities/UserSettings'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 
 interface IThemeProviderProps {
     children?: React.ReactNode
@@ -25,31 +12,34 @@ interface IThemeProviderProps {
 }
 
 const ThemeProvider: FC<IThemeProviderProps> = ({ children, initialTheme }) => {
-    const [theme, setTheme] = useState<Theme>(initialTheme || Theme.LIGHT)
+    const dispatch = useAppDispatch()
+
+    const theme = useAppSelector((state) => state.userSettings.theme)
 
     useEffect(() => {
-        getSaveTheme()
-            .then((t) => {
-                const _theme = t || theme
-                setTheme(_theme)
-                document.body.className = _theme
-            })
-            .catch(() => { })
+        dispatch(getUserSetting({ key: 'theme' }))
+    }, [dispatch])
+
+    useEffect(() => {
+        document.body.className = theme || Theme.LIGHT
     }, [theme])
+
+    const setTheme = useCallback(
+        (theme: Theme) => {
+            dispatch(saveUserSetting({ key: 'theme', value: theme }))
+        },
+        [dispatch],
+    )
 
     const defaultProps = useMemo(
         () => ({
             theme,
             setTheme,
         }),
-        [theme],
+        [theme, setTheme],
     )
 
-    return (
-        <ThemeContext.Provider value={defaultProps}>
-            {children}
-        </ThemeContext.Provider>
-    )
+    return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>
 }
 
 export default ThemeProvider
