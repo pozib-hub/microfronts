@@ -7,5 +7,14 @@
         "title": "This page does not exist",
         "subtitle": "Go to",
         "btnRedirect": "home"
+    },
+    "pageError": {
+        "title": "Something went wrong...",
+        "subtitle": "The page is currently unavailable.",
+        "textReloadPage": "Try",
+        "btnReloadPage": "reloading the page",
+        "textGoMainPage": "If reloading the page does not help, contact support or",
+        "btnGoMainPage": "go to the main page",
+        "readMore": "More details..."
     }
 }
