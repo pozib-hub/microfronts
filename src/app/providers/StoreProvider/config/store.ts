@@ -1,5 +1,6 @@
 import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { userReducer } from '@entities/user'
+import { userSettingsReducer } from '@entities/UserSettings'
 
 import { $api } from '@shared/api/api'
 import { globalSettingsReducer } from '@entities/globalSettings'
@@ -10,7 +11,8 @@ import { createReducerManager } from './reducerManager'
 
 export const staticReducers = {
     user: userReducer,
-    globalSettings: globalSettingsReducer
+    globalSettings: globalSettingsReducer,
+    userSettings: userSettingsReducer
 }
 
 export function createReduxStore(

@@ -19,11 +19,13 @@ import { AddCommentFormSchema } from '@features/addCommentForm'
 import { EditableProfileSchema } from '@features/EditableProfileCard'
 import { ArticlesPageSchema } from '@pages/ArticlesPage'
 import { ArticleDetailsPageSchema } from '@pages/ArticleDetailsPage'
+import { UserSettingsSchema } from '@entities/UserSettings'
 import { rtkApi } from '@shared/api/rtkApi'
 
 export interface StateSchema {
     globalSettings: GlobalSettingsSchema
     user: UserSchema
+    userSettings: UserSettingsSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // async reducers

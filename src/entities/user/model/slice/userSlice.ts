@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { IUser, UserSchema } from '../types/user'
 import { setFeaturesFlags } from '@shared/lib/features'
+import { IUser, UserSchema } from '../types/user'
 
 
 const initialState: UserSchema = {
