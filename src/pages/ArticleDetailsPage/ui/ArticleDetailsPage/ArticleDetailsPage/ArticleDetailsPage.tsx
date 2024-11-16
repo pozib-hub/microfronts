@@ -11,12 +11,12 @@ import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { fetchArticleById } from '@entities/Article'
 import { ArticleRating } from '@features/ArticleRating'
 import { ArticleRecommendationsList } from '@features/ArticleRecommendationsList'
+import { useToggleFnFeatures } from '@shared/lib/features/useToggleFnFeatures'
+import { ToggleFeatures } from '@shared/lib/features'
 
 import { articleDetailsPageReducer } from '../../../model/slices'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleDetailsComments } from '../../ArticleDetailsComments/ArticleDetailsComments'
-import { toggleFeatures } from '@shared/lib/features/toggleFeatures'
-import { ToggleFeatures } from '@shared/lib/features'
 
 import styles from './ArticleDetailsPage.module.scss'
 
@@ -45,7 +45,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         dispatch(fetchArticleById({ id }))
     }, [dispatch, id])
 
-    const ArticleRatingFeature = toggleFeatures({
+    const ArticleRatingFeature = useToggleFnFeatures({
         name: 'isArticleRatingEnabled',
         on: () => <ArticleRating articleId={id} />,
         off: () => <div></div>,

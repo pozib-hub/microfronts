@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react'
 
+import { getFeaturesFlags } from '@entities/user'
 import { IFeaturesFlags } from '@shared/types/featuresFlags'
-import { getFeaturesFlag } from '../setGetFeatures'
+import { useAppSelector } from '../../../lib/hooks/useAppSelector'
 
 interface IToggleFeaturesProps {
     name: keyof IFeaturesFlags
@@ -11,7 +12,9 @@ interface IToggleFeaturesProps {
 export const ToggleFeatures = (props: IToggleFeaturesProps) => {
     const { name, on, off } = props
 
-    if (getFeaturesFlag(name)) {
+    const flags = useAppSelector(getFeaturesFlags)
+
+    if (flags[name]) {
         return on
     }
 
