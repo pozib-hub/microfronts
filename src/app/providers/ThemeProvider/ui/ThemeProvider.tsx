@@ -21,8 +21,12 @@ const ThemeProvider: FC<IThemeProviderProps> = ({ children, initialTheme }) => {
     }, [dispatch])
 
     useEffect(() => {
+        if (!theme) {
+            dispatch(saveUserSetting({ key: 'theme', value: Theme.DARK }))
+        }
+
         document.body.className = theme
-    }, [theme])
+    }, [theme, dispatch])
 
     const setTheme = useCallback(
         (theme: Theme) => {
