@@ -26,14 +26,15 @@
     "storybook:build": "storybook build -c ./config/storybook",
     "prepare": "husky install",
     "generate": "node .\\scripts\\createSlice\\index.js",
-    "postinstall": "node .\\scripts\\clear-cache.js"
+    "postinstall": "node .\\scripts\\clear-cache.js",
+    "remove-feature": "ts-node .\\scripts\\remove-feature\\remove-feature.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "prettier --list-different ",
+      "prettier --list-different",
       "eslint"
     ]
   },

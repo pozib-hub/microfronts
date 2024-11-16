@@ -15,9 +15,10 @@ import { ArticleRecommendationsList } from '@features/ArticleRecommendationsList
 import { articleDetailsPageReducer } from '../../../model/slices'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleDetailsComments } from '../../ArticleDetailsComments/ArticleDetailsComments'
+import { toggleFeatures } from '@shared/lib/features/toggleFeatures'
+import { ToggleFeatures } from '@shared/lib/features'
 
 import styles from './ArticleDetailsPage.module.scss'
-import { toggleFeatures } from '@shared/lib/features/toggleFeatures'
 
 const reducers: ReducersList = {
     articleDetailsPage: articleDetailsPageReducer,
@@ -59,7 +60,11 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     isLoading={isLoadingArticles}
                     error={errorArticles}
                 />
-                {ArticleRatingFeature}
+                <ToggleFeatures
+                    name={'isArticleRatingEnabled'}
+                    on={<ArticleRating articleId={id} />}
+                    off={<div></div>}
+                />
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id} />
             </div>

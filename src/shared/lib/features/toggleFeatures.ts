@@ -1,5 +1,5 @@
 import { IFeaturesFlags } from "@shared/types/featuresFlags"
-import { getFeaturesFlags } from "./setGetFeatures"
+import { getFeaturesFlag } from "./setGetFeatures"
 
 interface IToggleFeaturesOptions<T> {
     name: keyof IFeaturesFlags
@@ -8,7 +8,7 @@ interface IToggleFeaturesOptions<T> {
 }
 
 export function toggleFeatures<T>({ name, off, on }: IToggleFeaturesOptions<T>): T {
-    if (getFeaturesFlags(name)) {
+    if (getFeaturesFlag(name)) {
         return on()
     }
 
