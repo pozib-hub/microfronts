@@ -21,24 +21,20 @@ type IProps = {
 export const userSettingsSlice = createSlice({
     name: 'userSettings',
     initialState,
-    reducers: {
-        // setData: (state, action: PayloadAction<IUserSettings>) => {
-        //     state = { ...state, ...action.payload }
-        // },
-        // clearData: () => initialState
-    },
+    reducers: {},
     extraReducers: (builder) => {
-        builderReducersByProject(builder)?.addCase(
-            saveUserSetting.fulfilled, (state, action: PayloadAction<IProps>) => {
-                const { key, value } = action.payload
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                state[key] = value
+        builderReducersByProject(builder)
+            ?.addCase(
+                saveUserSetting.fulfilled, (state, action: PayloadAction<IProps>) => {
+                    const { key, value } = action.payload
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    state[key] = value
 
-                if (key === "theme") {
-                    localStorage.setItem(KEY_THEME_BROWSER_STORAGE, value)
-                }
-            })
+                    if (key === "theme") {
+                        localStorage.setItem(KEY_THEME_BROWSER_STORAGE, value)
+                    }
+                })
             .addCase(getUserSetting.fulfilled, (state, action) => {
                 const { key, value } = action.payload
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -28,12 +28,13 @@ export const addCommentFormSlice = createSlice({
         clearForm: () => initialState
     },
     extraReducers: (builder) => {
-        builderReducersByProject(builder)?.addCase(
-            addCommentForArticle.pending,
-            (state) => {
-                state.error = undefined
-                state.isLoading = true
-            })
+        builderReducersByProject(builder)
+            ?.addCase(
+                addCommentForArticle.pending,
+                (state) => {
+                    state.error = undefined
+                    state.isLoading = true
+                })
             .addCase(
                 addCommentForArticle.fulfilled,
                 (state, action) => {
