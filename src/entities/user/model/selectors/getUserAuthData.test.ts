@@ -9,7 +9,8 @@ describe("getUserAuthData.test", () => {
             authData: {
                 id: "1",
                 username: "admin"
-            }
+            },
+            isLoading: false,
             // avatar: Avatar,
         }
         const state: PartialDeep<StateSchema> = {

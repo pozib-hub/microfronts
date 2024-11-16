@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 
 import cn from '@shared/lib/classNames/classNames'
 import { Navbar } from '@widgets/Navbar'
 import { Sidebar } from '@widgets/Sidebar'
 import { PageLoader } from '@widgets/PageLoader'
-import { userActions } from '@entities/user'
+import { me } from '@entities/user'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 
 import { AppRouter } from './providers/router'
@@ -20,14 +20,13 @@ import { AppRouter } from './providers/router'
 // 8. свой json server
 // 9. авторизация по сертификату
 
-
 const App = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
-    const inited = useAppSelector(state => state.user._inited)
+    const isLoading = useAppSelector((state) => state.user.isLoading)
 
     useEffect(() => {
-        dispatch(userActions.initAuthData())
+        dispatch(me())
     }, [dispatch])
 
     return (
@@ -35,9 +34,7 @@ const App = () => {
             <Suspense fallback={<PageLoader />}>
                 <Navbar />
                 <Sidebar />
-                <main id="scroll-layout">
-                    {inited && <AppRouter />}
-                </main>
+                <main id="scroll-layout">{isLoading ? <PageLoader /> : <AppRouter />}</main>
             </Suspense>
         </div>
     )

@@ -28,14 +28,12 @@ export const loginByUsername = createAsyncThunk<
         const { dispatch, rejectWithValue, extra } = thunkAPI
         try {
 
-            // const response = await axios.post<IUser>('http://localhost:8000/login', authData)
             const response = await extra.api.post<IUser>('login', authData)
 
             if (!response.data) {
                 throw new Error('error')
             }
 
-            BrowserStorage.set(USER_LOCALSTORAGE_KEY, response.data)
             dispatch(userActions.setAuthData(response.data))
 
             return response.data
