@@ -15,7 +15,24 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     const svgLoader = {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: [
+            {
+                loader: '@svgr/webpack',
+                options: {
+                    icon: true,
+                    svgConfig: {
+                        plugins: [
+                            {
+                                name: 'convertColors',
+                                params: {
+                                    currentColor: true,
+                                },
+                            },
+                        ],
+                    },
+                },
+            },
+        ],
         // exclude: /node_modules/,
     }
 
@@ -28,12 +45,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     }
 
-    return [
-        fileLoader,
-        svgLoader,
-        baseBabelLoader,
-        tsxBabelLoader,
-        typescriptLoader,
-        ...cssLoaders
-    ]
+    return [fileLoader, svgLoader, baseBabelLoader, tsxBabelLoader, typescriptLoader, ...cssLoaders]
 }
