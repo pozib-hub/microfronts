@@ -7,8 +7,10 @@ import { PageLoader } from '@widgets/PageLoader'
 import { me } from '@entities/user'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { ToggleFeatures } from '@shared/lib/features'
 
 import { AppRouter } from './providers/router'
+import { MainLayout } from '@shared/layouts/MainLayout'
 
 // TODO:
 // 1. сделать приттер на пре-коммит
@@ -30,13 +32,30 @@ const App = () => {
     }, [dispatch])
 
     return (
-        <div className={cn('app')}>
-            <Suspense fallback={<PageLoader />}>
-                <Navbar />
-                <Sidebar />
-                <main id="scroll-layout">{isLoading ? <PageLoader /> : <AppRouter />}</main>
-            </Suspense>
-        </div>
+        <ToggleFeatures
+            name="isAppRedesigned"
+            on={
+                <div className={cn('app_redesigned')}>
+                    <Suspense fallback={<PageLoader />}>
+                        <MainLayout
+                            header={<Navbar />}
+                            content={isLoading ? <PageLoader /> : <AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
+                        {/* <main id="scroll-layout">{isLoading ? <PageLoader /> : <AppRouter />}</main> */}
+                    </Suspense>
+                </div>
+            }
+            off={
+                <div className={cn('app')}>
+                    <Suspense fallback={<PageLoader />}>
+                        <Navbar />
+                        <Sidebar />
+                        <main id="scroll-layout">{isLoading ? <PageLoader /> : <AppRouter />}</main>
+                    </Suspense>
+                </div>
+            }
+        />
     )
 }
 

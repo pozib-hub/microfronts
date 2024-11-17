@@ -33,7 +33,7 @@ export const SidebarItem: FC<ISidebarItemProps> = memo(function SidebarItem(prop
             className={cn(styles.SidebarItem, className)}
             to={path}
         >
-            <Icon id={iconId} size={20} />
+            <Icon inverted id={iconId} size={20} />
             {!collapsed && <Text color='primary'>
                 {t(`sidebar.items.${text}`)}
             </Text>}
