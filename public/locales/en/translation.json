@@ -6,6 +6,7 @@
     "cancel": "Cancel",
     "edit": "Edit",
     "search": "Search",
+    "copy": "Copy",
     "yourReview": "Your review",
     "weRecommend": "We recommend",
     "notifications": {
@@ -32,5 +33,9 @@
             "main": "Main",
             "adminPanel": "Admin panel"
         }
+    },
+    "ratingCard": {
+        "yourReview": "Your review",
+        "thanksRating": "Thanks for your rating! Спасибо за оценку!"
     }
 }

@@ -2,156 +2,181 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
-import { Input, IInputProps } from './Input'
 import { Icon } from '../Icon/Icon'
+import { Input } from './Input'
 
 const meta: Meta<typeof Input> = {
     title: 'shared/Input',
     component: Input,
     argTypes: {
-        value: { control: "text" }
+        value: { control: 'text' },
     },
     decorators: [CenterDecorator],
 }
 
 export default meta
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof Input>
 
-const Template: StoryFn<IInputProps> = (args) => {
-    const [value, setValue] = useState(args.value || '')
+// const Template: StoryFn<IInputProps> = (args) => {
+//     const [value, setValue] = useState(args.value || '')
 
-    return (
-        <Input
-            {...args}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-        />
-    )
-}
+//     return <Input {...args} value={value} onChange={(e) => setValue(e.target.value)} />
+// }
 
-// Standard ------------
+// TODO
 
-export const Standard = Template.bind({})
-Standard.args = {
-}
+// import { CenterDecorator } from '@shared/config/storybook/CenterDecorator/CenterDecorator'
+// import { Input } from './Input'
+// import { Icon } from '../Icon/Icon'
 
-export const StandardWithLabel = Template.bind({})
-StandardWithLabel.args = {
-    label: 'label',
-}
+// const meta: Meta<typeof Input> = {
+//     title: 'shared/Input',
+//     component: Input,
+//     argTypes: {
+//         value: { control: "text" }
+//     },
+//     decorators: [CenterDecorator],
+// }
 
-export const StandardWithLabelAndPlaceholder = Template.bind({})
-StandardWithLabelAndPlaceholder.args = {
-    label: 'label',
-    placeholder: 'placeholder',
-}
+// export default meta
 
-export const StandardDisabled = Template.bind({})
-StandardDisabled.args = {
-    label: 'label',
-    disabled: true,
-}
+// type Story = StoryObj<typeof Input>;
 
-export const StandardError = Template.bind({})
-StandardError.args = {
-    label: 'label',
-    required: true,
-    error: true,
-    errorMessage: "Что то пошло не так"
-}
+// const Template: StoryFn<IInputProps> = (args) => {
+//     const [value, setValue] = useState(args.value || '')
 
-export const StandardWithIcons = Template.bind({})
-StandardWithIcons.args = {
-    label: 'label',
-    iconLeft: <Icon id='Eye' size={20} />,
-    iconRight: <Icon id='Notification' size={18} />
-}
+//     return (
+//         <Input
+//             {...args}
+//             value={value}
+//             onChange={(e) => setValue(e.target.value)}
+//         />
+//     )
+// }
 
-// Filled ------------
+// // Standard ------------
 
-export const Filled = Template.bind({})
-Filled.args = {
-    variant: 'filled',
-}
+// export const Standard = Template.bind({})
+// Standard.args = {
+// }
 
-export const FilledWithLabel = Template.bind({})
-FilledWithLabel.args = {
-    label: 'label',
-    variant: 'filled',
-}
+// export const StandardWithLabel = Template.bind({})
+// StandardWithLabel.args = {
+//     label: 'label',
+// }
 
-export const FilledWithLabelAndPlaceholder = Template.bind({})
-FilledWithLabelAndPlaceholder.args = {
-    label: 'label',
-    variant: 'filled',
-    placeholder: 'placeholder',
-}
+// export const StandardWithLabelAndPlaceholder = Template.bind({})
+// StandardWithLabelAndPlaceholder.args = {
+//     label: 'label',
+//     placeholder: 'placeholder',
+// }
 
-export const FilledDisabled = Template.bind({})
-FilledDisabled.args = {
-    label: 'label',
-    variant: 'filled',
-    disabled: true,
-}
+// export const StandardDisabled = Template.bind({})
+// StandardDisabled.args = {
+//     label: 'label',
+//     disabled: true,
+// }
 
-export const FilledError = Template.bind({})
-FilledError.args = {
-    label: 'label',
-    variant: 'filled',
-    required: true,
-    error: true,
-    errorMessage: "Что то пошло не так"
-}
+// export const StandardError = Template.bind({})
+// StandardError.args = {
+//     label: 'label',
+//     required: true,
+//     error: true,
+//     errorMessage: "Что то пошло не так"
+// }
 
-export const FilledWithIcons = Template.bind({})
-FilledWithIcons.args = {
-    label: 'label',
-    variant: 'filled',
-    iconLeft: <Icon id='Eye' size={20} />,
-    iconRight: <Icon id='Notification' size={18} />
-}
+// export const StandardWithIcons = Template.bind({})
+// StandardWithIcons.args = {
+//     label: 'label',
+//     iconLeft: <Icon id='Eye' size={20} />,
+//     iconRight: <Icon id='Notification' size={18} />
+// }
 
-// Outline ------------
+// // Filled ------------
 
-export const Outline = Template.bind({})
-Outline.args = {
-    variant: 'outline',
-}
+// export const Filled = Template.bind({})
+// Filled.args = {
+//     variant: 'filled',
+// }
 
-export const OutlineWithLabel = Template.bind({})
-OutlineWithLabel.args = {
-    label: 'label',
-    variant: 'outline',
-}
+// export const FilledWithLabel = Template.bind({})
+// FilledWithLabel.args = {
+//     label: 'label',
+//     variant: 'filled',
+// }
 
-export const OutlineWithLabelAndPlaceholder = Template.bind({})
-OutlineWithLabelAndPlaceholder.args = {
-    label: 'label',
-    variant: 'outline',
-    placeholder: 'placeholder',
-}
+// export const FilledWithLabelAndPlaceholder = Template.bind({})
+// FilledWithLabelAndPlaceholder.args = {
+//     label: 'label',
+//     variant: 'filled',
+//     placeholder: 'placeholder',
+// }
 
-export const OutlineDisabled = Template.bind({})
-OutlineDisabled.args = {
-    label: 'label',
-    variant: 'outline',
-    disabled: true,
-}
+// export const FilledDisabled = Template.bind({})
+// FilledDisabled.args = {
+//     label: 'label',
+//     variant: 'filled',
+//     disabled: true,
+// }
 
-export const OutlineError = Template.bind({})
-OutlineError.args = {
-    label: 'label',
-    variant: 'outline',
-    required: true,
-    error: true,
-    errorMessage: "Что то пошло не так"
-}
+// export const FilledError = Template.bind({})
+// FilledError.args = {
+//     label: 'label',
+//     variant: 'filled',
+//     required: true,
+//     error: true,
+//     errorMessage: "Что то пошло не так"
+// }
 
-export const OutlineWithIcons = Template.bind({})
-OutlineWithIcons.args = {
-    label: 'label',
-    variant: 'outline',
-    iconLeft: <Icon id='Eye' size={20} />,
-    iconRight: <Icon id='Notification' size={18} />
-}
+// export const FilledWithIcons = Template.bind({})
+// FilledWithIcons.args = {
+//     label: 'label',
+//     variant: 'filled',
+//     iconLeft: <Icon id='Eye' size={20} />,
+//     iconRight: <Icon id='Notification' size={18} />
+// }
+
+// // Outline ------------
+
+// export const Outline = Template.bind({})
+// Outline.args = {
+//     variant: 'outline',
+// }
+
+// export const OutlineWithLabel = Template.bind({})
+// OutlineWithLabel.args = {
+//     label: 'label',
+//     variant: 'outline',
+// }
+
+// export const OutlineWithLabelAndPlaceholder = Template.bind({})
+// OutlineWithLabelAndPlaceholder.args = {
+//     label: 'label',
+//     variant: 'outline',
+//     placeholder: 'placeholder',
+// }
+
+// export const OutlineDisabled = Template.bind({})
+// OutlineDisabled.args = {
+//     label: 'label',
+//     variant: 'outline',
+//     disabled: true,
+// }
+
+// export const OutlineError = Template.bind({})
+// OutlineError.args = {
+//     label: 'label',
+//     variant: 'outline',
+//     required: true,
+//     error: true,
+//     errorMessage: "Что то пошло не так"
+// }
+
+// export const OutlineWithIcons = Template.bind({})
+// OutlineWithIcons.args = {
+//     label: 'label',
+//     variant: 'outline',
+//     iconLeft: <Icon id='Eye' size={20} />,
+//     iconRight: <Icon id='Notification' size={18} />
+// }

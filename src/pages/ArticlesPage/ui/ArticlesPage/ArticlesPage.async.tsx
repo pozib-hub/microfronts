@@ -1,3 +1,3 @@
-import { lazy, FC } from 'react'
+import { lazy } from 'react'
 
-export const ArticlesPageAsync = lazy<FC>(() => import('./ArticlesPage'))
+export const ArticlesPageAsync = lazy(() => import('./ArticlesPage'))

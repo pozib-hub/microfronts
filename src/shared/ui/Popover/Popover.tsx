@@ -15,36 +15,24 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
 }
 
 interface PopoverProps {
-    className?: string;
-    direction?: DropdownDirection;
-    trigger: ReactNode;
-    children: ReactNode;
+    className?: string
+    direction?: DropdownDirection
+    trigger: ReactNode
+    children: ReactNode
 }
 
 export function Popover(props: PopoverProps) {
-    const {
-        className,
-        trigger,
-        direction = 'bottom right',
-        children,
-    } = props
+    const { className, trigger, direction = 'bottom right', children } = props
 
     const panelClasses = mapDirectionClass[direction]
 
-
     return (
-        <HPopover
-            className={cn(styles.Popover, className)}
-        >
-            <PopoverButton as='div' className={styles.trigger}>
+        <HPopover className={cn(styles.Popover, className)}>
+            <PopoverButton as="div" className={styles.trigger}>
                 {trigger}
             </PopoverButton>
 
-            <PopoverPanel
-                className={cn(styles.panel, panelClasses)}
-            >
-                {children}
-            </PopoverPanel>
+            <PopoverPanel className={cn(styles.panel, panelClasses)}>{children}</PopoverPanel>
         </HPopover>
     )
 }

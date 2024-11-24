@@ -20,7 +20,7 @@ interface IProps {
     delayAnimation?: string
 }
 
-const Section: FC<IProps> = (props) => {
+export const Section: FC<IProps> = (props) => {
     const {
         classNames,
         title,
@@ -113,5 +113,3 @@ const Section: FC<IProps> = (props) => {
         </div>
     )
 }
-
-export default Section

@@ -1,25 +1,25 @@
-import { IUser } from "@entities/user"
-import { ArticleType } from "../consts/consts"
+import { IUser } from '@entities/user'
+import { ArticleType } from '../consts/consts'
 
 interface IBaseBlock {
     id: string
-    type: "CODE" | "IMAGE" | "TEXT"
+    type: 'CODE' | 'IMAGE' | 'TEXT'
 }
 
 export interface ICodeBlock extends IBaseBlock {
     code: string
-    type: "CODE"
+    type: 'CODE'
 }
 
 export interface IImageBlock extends IBaseBlock {
     src: string
-    type: "IMAGE"
+    type: 'IMAGE'
     title: string
 }
 
 export interface ITextBlock extends IBaseBlock {
     paragraphs: string[]
-    type: "TEXT"
+    type: 'TEXT'
     title?: string
 }
 export type ArticleBlock = ICodeBlock | IImageBlock | ITextBlock
@@ -45,3 +45,5 @@ export interface ArticleDetailsSchema {
     error?: string
     data?: IArticle
 }
+
+export type ArticleView = 'tiles' | 'list'

@@ -16,12 +16,7 @@ interface ILoginModalProps {
     onChangeClose?: (open: boolean) => void
 }
 export const LoginModal: FC<ILoginModalProps> = (props) => {
-    const {
-        className,
-        isOpen,
-        onClose,
-        onChangeClose,
-    } = props
+    const { className, isOpen, onClose, onChangeClose } = props
 
     const dispatch = useAppDispatch()
 
@@ -35,7 +30,7 @@ export const LoginModal: FC<ILoginModalProps> = (props) => {
             classNames={{ wrapper: cn(styles.LoginModal, className) }}
             isOpen={isOpen}
             onClose={handleClose}
-        // onChangeClose={onChangeClose}
+            // onChangeClose={onChangeClose}
         >
             <Suspense fallback={<Loader />}>
                 <LoginFormLazy onSuccess={handleClose} />

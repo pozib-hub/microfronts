@@ -1,130 +1,101 @@
-import React, {
-    FC, InputHTMLAttributes,
-    memo,
-    useEffect,
-    useRef,
-    useState,
-} from 'react'
+import React, { InputHTMLAttributes, memo, ReactNode, useEffect, useRef, useState } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
+import { HStack } from '../Stack'
+import { Text } from '../Text'
 
 import styles from './Input.module.scss'
 
-type Variants = 'filled' | 'outline' | 'default'
-type Sizes = 'small' | 'medium' | 'large'
-export interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
-    variant?: Variants
-    classNameWrapper?: string
+type HTMLInputProps = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'value' | 'onChange' | 'readOnly' | 'size'
+>
+
+type InputSize = 's' | 'm' | 'l'
+
+interface InputProps extends HTMLInputProps {
+    className?: string
+    value?: string | number
     label?: string
-    iconLeft?: React.ReactNode
-    iconRight?: React.ReactNode
-    errorMessage?: string
-    error?: boolean
-    autoFocus?: boolean
-    disabled?: boolean
-    placeholder?: string
-    size?: Sizes
+    onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void
+    autofocus?: boolean
+    readonly?: boolean
+    addonLeft?: ReactNode
+    addonRight?: ReactNode
+    size?: InputSize
 }
 
-export const Input: FC<IInputProps> = memo(function Input(props) {
+export const Input = memo((props: InputProps) => {
     const {
-        classNameWrapper,
-        variant = 'default',
+        className,
+        value,
+        onChange,
         type = 'text',
-        label,
-        iconLeft,
-        iconRight,
-        errorMessage,
-        error,
-        style,
-        autoFocus,
-        disabled,
         placeholder,
-        size = "medium",
-        width,
-        ...inputProps
+        autofocus,
+        readonly,
+        addonLeft,
+        addonRight,
+        label,
+        size = 'm',
+        ...otherProps
     } = props
-
-    const isLabelWithPlaceholder = Boolean(label) && Boolean(placeholder)
-
-    const [isFocus, setFocus] = useState(false)
     const ref = useRef<HTMLInputElement>(null)
+    const [isFocused, setIsFocused] = useState(false)
 
     useEffect(() => {
-        if (autoFocus) {
-            setFocus(true)
+        if (autofocus) {
+            setIsFocused(true)
             ref.current?.focus()
         }
-    }, [autoFocus])
+    }, [autofocus])
 
-    const wrapperStyle = {
-        ...style,
-        width: width || undefined,
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e)
     }
 
-    return (
-        <div className={cn(styles.wrapper, classNameWrapper)} style={wrapperStyle}>
-            <div className={cn(
-                styles.container,
-                styles[`variant-${variant}`],
-                styles[size],
-                {
-                    [styles.disabled]: disabled,
-                    [styles.error]: error,
-                    [styles['label-static']]: isLabelWithPlaceholder,
-                },
-            )}
-            >
-                {iconLeft && <div className={styles['icon-left']}>{iconLeft}</div>}
-                <div className={styles["container-input"]}
-                >
-                    <input
-                        ref={ref}
-                        type={type}
-                        {...inputProps}
-                        placeholder={placeholder}
-                        disabled={disabled}
-                        className={cn(
-                            styles.input,
-                            props.className,
-                            { [styles['not-empty']]: Boolean(props.value) },
-                        )}
-                        style={{}}
-                    />
-                    {label && !props.hidden && (
-                        <label
-                            className={cn(styles.label)}
-                        >
-                            <span className={styles['label-text']}>{label}</span>
-                            {props.required &&
-                                <span className={styles['label-star-required']}>∗</span>}
-                        </label>
-                    )}
-                    {variant === "outline" && (
-                        <fieldset
-                            aria-hidden="true"
-                            className={styles.fieldset}
-                            style={iconLeft ? { padding: '0 32px' } : {}}
-                        >
-                            <legend
-                                className={styles.legend}
-                                style={label ? undefined : { width: '0.01px' }}
-                            >
-                                <span className={styles['label-text']}>{label}</span>
-                                {props.required && (
-                                    <span className={styles['label-required']}>∗</span>
-                                )}
-                            </legend>
-                        </fieldset>)
-                    }
-                </div>
-                {iconRight && <div className={styles['icon-right']}>{iconRight}</div>}
-            </div>
-            {errorMessage && (
-                <p className={styles['error-message']} title={errorMessage}>
-                    {errorMessage}
-                </p>)
-            }
+    const onBlur = () => {
+        setIsFocused(false)
+    }
+
+    const onFocus = () => {
+        setIsFocused(true)
+    }
+
+    const mods = {
+        [styles.readonly]: readonly,
+        [styles.focused]: isFocused,
+        [styles.withAddonLeft]: Boolean(addonLeft),
+        [styles.withAddonRight]: Boolean(addonRight),
+    }
+
+    const input = (
+        <div className={cn(styles.InputWrapper, mods, className, styles[size])}>
+            <div className={styles.addonLeft}>{addonLeft}</div>
+            <input
+                ref={ref}
+                type={type}
+                value={value}
+                onChange={onChangeHandler}
+                className={styles.input}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                readOnly={readonly}
+                placeholder={placeholder}
+                {...otherProps}
+            />
+            <div className={styles.addonRight}>{addonRight}</div>
         </div>
     )
+
+    if (label) {
+        return (
+            <HStack fullWidth gap={2}>
+                <Text>{label}</Text>
+                {input}
+            </HStack>
+        )
+    }
+
+    return input
 })

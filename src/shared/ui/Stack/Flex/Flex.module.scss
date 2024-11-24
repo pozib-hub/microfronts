@@ -30,6 +30,10 @@
     align-items: flex-end;
 }
 
+.alignBaseLine {
+    align-items: baseline;
+}
+
 .directionRow {
     flex-direction: row;
 }
@@ -38,38 +42,10 @@
     flex-direction: column;
 }
 
-.gap4 {
-    gap: 4px;
-}
-
-.gap8 {
-    gap: 8px;
-}
-
-.gap16 {
-    gap: 16px;
-}
-
-.gap32 {
-    gap: 32px;
-}
-
-.padding4 {
-    padding: 4px;
-}
-
-.padding8 {
-    padding: 8px;
-}
-
-.padding16 {
-    padding: 16px;
-}
-
-.padding32 {
-    padding: 32px;
-}
-
-.max {
+.fullWidth {
     width: 100%;
+}
+
+.fullHeight {
+    height: 100%;
 }

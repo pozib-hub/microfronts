@@ -1,13 +1,11 @@
-import React, {
-    FC, memo, useCallback,
-} from 'react'
+import React, { FC, memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
 import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Input } from '@shared/ui/Input/Input'
-import { Button } from '@shared/ui/Button/Button'
+import { Input } from '@shared/ui/deprecated/Input/Input'
+import { Button } from '@shared/ui/deprecated/Button/Button'
 import { Text } from '@shared/ui/Text/Text'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
@@ -26,37 +24,39 @@ interface ILoginFormProps {
     onSuccess: () => void
 }
 const LoginForm: FC<ILoginFormProps> = (props) => {
-    const {
-        className,
-        onSuccess,
-    } = props
+    const { className, onSuccess } = props
 
     const dispatch = useAppDispatch()
-    const { t } = useTranslation(["auth", "errors"])
+    const { t } = useTranslation(['auth', 'errors'])
 
     const {
-        username = "",
-        password = "",
+        username = '',
+        password = '',
         isLoading = false,
-        error = "",
+        error = '',
     } = useSelector(getLoginState) || {}
 
-    const onChangeUsername = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(loginActions.setUsername(e.target.value))
-    }, [dispatch])
+    const onChangeUsername = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            dispatch(loginActions.setUsername(e.target.value))
+        },
+        [dispatch],
+    )
 
-    const onChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(loginActions.setPassword(e.target.value))
-    }, [dispatch])
+    const onChangePassword = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            dispatch(loginActions.setPassword(e.target.value))
+        },
+        [dispatch],
+    )
 
     const onSubmit = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }))
 
-        if (result.meta.requestStatus === "fulfilled") {
+        if (result.meta.requestStatus === 'fulfilled') {
             onSuccess()
         }
     }, [onSuccess, dispatch, password, username])
-
 
     return (
         <DynamicModuleLoader reducers={asyncReducers} shouldAfterUnmount={false}>
@@ -85,13 +85,13 @@ const LoginForm: FC<ILoginFormProps> = (props) => {
                     disabled={isLoading}
                     isLoading={isLoading}
                     variant="primary"
-                    onClick={onSubmit}>
+                    onClick={onSubmit}
+                >
                     {t('signIn')}
                 </Button>
-                <Text color="red">{t(`${error}`, { ns: "errors" })}</Text>
+                {/* <Text color="red">{t(`${error}`, { ns: 'errors' })}</Text> */}
             </div>
         </DynamicModuleLoader>
-
     )
 }
 

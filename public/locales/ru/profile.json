@@ -1,12 +1,12 @@
 {
     "profileCard": {
         "inputs": {
-            "firstname": "Ваше имя",
-            "lastname": "Ваша фамилия",
-            "age": "Ваш возраст",
-            "city": "Ваш город",
-            "address": "Ваш адрес",
-            "username": "Ваше имя пользователя",
+            "firstname": "Имя",
+            "lastname": "Фамилия",
+            "age": "Возраст",
+            "city": "Город",
+            "address": "Адрес",
+            "username": "Имя пользователя",
             "avatar": "Cсылка на аватар"
         },
         "errors": {

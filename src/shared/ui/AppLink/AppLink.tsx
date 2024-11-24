@@ -1,41 +1,45 @@
-import React, { FC } from 'react'
-import { Link, LinkProps } from 'react-router-dom'
+import { LinkProps, NavLink } from 'react-router-dom'
+import { memo, ReactNode } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
 
 import styles from './AppLink.module.scss'
 
-type Variants = 'primary' | 'secondary'
+export type AppLinkVariant = 'primary' | 'red'
 
-interface IAppLinkProps extends LinkProps {
-    variant?: Variants;
-    disabled?: boolean
+interface AppLinkProps extends LinkProps {
+    className?: string
+    variant?: AppLinkVariant
+    children?: ReactNode
+    activeClassName?: string
+    decoration?: boolean
 }
 
-export const AppLink: FC<IAppLinkProps> = (props) => {
+export const AppLink = memo((props: AppLinkProps) => {
     const {
+        to,
         className,
         children,
         variant = 'primary',
-        disabled,
+        activeClassName = '',
+        decoration = false,
         ...otherProps
     } = props
 
-    const classes = [
-        styles.appLink,
-        {
-            [styles.disabled]: disabled,
-        },
-        styles[variant],
-        className,
-    ]
-
     return (
-        <Link
-            className={cn(classes)}
+        <NavLink
+            to={to}
+            className={({ isActive }) =>
+                cn(
+                    styles.wrapper,
+                    styles[variant],
+                    { [activeClassName]: isActive, [styles.decoration]: decoration },
+                    className,
+                )
+            }
             {...otherProps}
         >
             {children}
-        </Link>
+        </NavLink>
     )
-}
+})

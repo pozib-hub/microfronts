@@ -7,23 +7,11 @@
 
 body {
   font: var(--font-m);
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 #root {
   height: 100%;
-}
-
-.app {
-  background: var(--bg-color);
-  min-height: 100vh;
-}
-
-.app_redesigned {
-  background: var(--bg-redesigned);
-  min-height: 100vh;
-  font: var(--font-m-redesigned);
-  color: var(--text-redesigned);
 }
 
 *::-webkit-scrollbar {
@@ -34,14 +22,14 @@ body {
 
 *::-webkit-scrollbar-track {
   /* цвет дорожки */
-  background: var(--card-bg);
+  background: var(--light-bg-color);
 }
 
 *::-webkit-scrollbar-thumb {
   /* цвет плашки */
-  background-color: var(--inverted-primary-color);
+  background-color: var(--scroll-bg-color);
   /* закругления плашки */
   border-radius: 20px;
   /* padding вокруг плашки */
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--scroll-border-color);
 }

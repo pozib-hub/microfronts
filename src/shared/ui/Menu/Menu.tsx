@@ -3,24 +3,24 @@ import { Menu as HMenu } from '@headlessui/react'
 
 import cn from '@shared/lib/classNames/classNames'
 // import { MenuDirection } from 'shared/types/ui'
-import { AppLink } from '../AppLink/AppLink'
+import { AppLink } from '../AppLink'
 
 import styles from './Menu.module.scss'
 
 export interface MenuItem {
-    disabled?: boolean;
-    content?: ReactNode;
-    onClick?: () => void;
-    href?: string;
+    disabled?: boolean
+    content?: ReactNode
+    onClick?: () => void
+    href?: string
 }
 
 type MenuDirection = 'bottom left' | 'bottom right' | 'top right' | 'top left'
 
 interface MenuProps {
-    className?: string;
-    items: MenuItem[];
-    direction?: MenuDirection;
-    trigger: ReactNode;
+    className?: string
+    items: MenuItem[]
+    direction?: MenuDirection
+    trigger: ReactNode
 }
 
 const mapDirectionClass: Record<MenuDirection, string> = {
@@ -31,23 +31,15 @@ const mapDirectionClass: Record<MenuDirection, string> = {
 }
 
 export function Menu(props: MenuProps) {
-    const {
-        className,
-        trigger,
-        items,
-        direction = 'bottom right',
-    } = props
+    const { className, trigger, items, direction = 'bottom right' } = props
 
     const classDirection = mapDirectionClass[direction]
 
     return (
         <HMenu as="div" className={cn(styles.wrapper, className)}>
-            <HMenu.Button className={styles.trigger}>
-                {trigger}
-            </HMenu.Button>
+            <HMenu.Button className={styles.trigger}>{trigger}</HMenu.Button>
             <HMenu.Items className={cn(styles.list, classDirection)}>
                 {items.map((item, index) => {
-
                     const content = ({ active }: { active: boolean }) => (
                         <button
                             type="button"
@@ -65,22 +57,19 @@ export function Menu(props: MenuProps) {
                                 key={index}
                                 as={AppLink}
                                 to={item.href}
-                                disabled={item.disabled}>
+                                disabled={item.disabled}
+                            >
                                 {content}
                             </HMenu.Item>
                         )
                     }
 
                     return (
-                        <HMenu.Item
-                            key={index}
-                            as={Fragment}
-                            disabled={item.disabled}>
+                        <HMenu.Item key={index} as={Fragment} disabled={item.disabled}>
                             {content}
                         </HMenu.Item>
                     )
                 })}
-
             </HMenu.Items>
         </HMenu>
     )

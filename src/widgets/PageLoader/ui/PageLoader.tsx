@@ -7,7 +7,7 @@ import cn from '@shared/lib/classNames/classNames'
 import style from './PageLoader.module.scss'
 
 interface IPageLoaderProps {
-    className?: string;
+    className?: string
 }
 
 export const PageLoader = (props: IPageLoaderProps) => {

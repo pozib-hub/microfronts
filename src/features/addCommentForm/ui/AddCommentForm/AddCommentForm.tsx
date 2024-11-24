@@ -17,55 +17,47 @@ const reducers = {
 }
 
 export interface IAddCommentFormProps {
-    className?: string;
+    className?: string
     isLoading: boolean
-    onSendComment: (text: string) => void;
+    onSendComment: (text: string) => void
 }
 
-const AddCommentForm: FC<IAddCommentFormProps> =
-    memo(function AddCommentForm(props) {
-        const {
-            className,
-            isLoading,
-            onSendComment,
-        } = props
+const AddCommentForm: FC<IAddCommentFormProps> = memo(function AddCommentForm(props) {
+    const { className, isLoading, onSendComment } = props
 
-        const { t } = useTranslation(["translation", "comments"])
-        const dispatch = useAppDispatch()
+    const { t } = useTranslation(['translation', 'comments'])
+    const dispatch = useAppDispatch()
 
-        const {
-            text
-        } = useAppSelector(s => s.addCommentForm) || {}
+    const { text } = useAppSelector((s) => s.addCommentForm) || {}
 
-        const onCommentTextChange = useCallback((value: string) => {
+    const onCommentTextChange = useCallback(
+        (value: string) => {
             dispatch(addCommentFormActions.setText(value))
-        }, [dispatch])
+        },
+        [dispatch],
+    )
 
-        const onSendHandler = useCallback(() => {
-            onSendComment(text || '')
-            onCommentTextChange('')
-        }, [onCommentTextChange, onSendComment, text])
+    const onSendHandler = useCallback(() => {
+        onSendComment(text || '')
+        onCommentTextChange('')
+    }, [onCommentTextChange, onSendComment, text])
 
-        return (
-            <DynamicModuleLoader reducers={reducers}>
-                <div data-testid="AddCommentForm" className={cn(styles.wrapper, className)}>
-                    <Input
-                        classNameWrapper={styles.input}
-                        placeholder={t('addForm.enterCommentText', { ns: "comments" })}
-                        value={text}
-                        onChange={(e) => onCommentTextChange(e.target.value)}
-                    />
-                    <Button
-                        isLoading={isLoading}
-                        variant='transparent'
-                        onClick={onSendHandler}
-                    >
-                        {t('send')}
-                    </Button>
-                </div>
-            </DynamicModuleLoader>
-        )
-    })
+    return (
+        <DynamicModuleLoader reducers={reducers}>
+            <div data-testid="AddCommentForm" className={cn(styles.wrapper, className)}>
+                <Input
+                    className={styles.input}
+                    placeholder={t('addForm.enterCommentText', { ns: 'comments' })}
+                    value={text}
+                    onChange={(e) => onCommentTextChange(e.target.value)}
+                />
+                <Button isLoading={isLoading} variant="filled" onClick={onSendHandler}>
+                    {t('send')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
+    )
+})
 
 export default AddCommentForm
 

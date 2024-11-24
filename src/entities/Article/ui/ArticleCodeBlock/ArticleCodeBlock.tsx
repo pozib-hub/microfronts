@@ -12,17 +12,12 @@ interface IArticleCodeBlockProps {
     className?: string
     block: ICodeBlock
 }
-export const ArticleCodeBlock: FC<IArticleCodeBlockProps> =
-    memo(function ArticleCodeBlock(props) {
-        const {
-            className,
-            block,
-        } = props
+export const ArticleCodeBlock: FC<IArticleCodeBlockProps> = memo(function ArticleCodeBlock(props) {
+    const { className, block } = props
 
-        return (
-            <div className={cn(styles.wrapper, className)}>
-                <Code>{block.code}</Code>
-            </div>
-        )
-    })
-
+    return (
+        <div className={cn(styles.wrapper, className)}>
+            <Code>{block.code}</Code>
+        </div>
+    )
+})

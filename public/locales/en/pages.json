@@ -16,5 +16,8 @@
         "textGoMainPage": "If reloading the page does not help, contact support or",
         "btnGoMainPage": "go to the main page",
         "readMore": "More details..."
+    },
+    "pageProfile": {
+        "header": "Profile"
     }
 }

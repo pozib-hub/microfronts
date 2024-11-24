@@ -1,23 +1,23 @@
-.appLink {
-  color: var(--text-color);
-  transition: opacity 0.3s;
+.wrapper {
+    text-decoration: none;
+}
 
-  text-decoration: none;
-
-  &.disabled {
-    cursor: not-allowed;
-    color: var(--color-text-disabled);
-  }
-
-  &:not(.disabled):hover {
-    opacity: 0.7;
-  }
+.decoration {
+    text-decoration: solid;
 }
 
 .primary {
-  color: var(--primary-color);
+    color: var(--text-color);
+
+    &:hover * {
+        color: var(--accent-color);
+    }
 }
 
-.secondary {
-  color: var(--inverted-primary-color);
+.red {
+    color: var(--cancel-color);
+
+    &:hover {
+        opacity: 0.8;
+    }
 }

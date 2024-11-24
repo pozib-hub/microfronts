@@ -31,11 +31,11 @@ const sourceFiles = project.getSourceFiles()
 sourceFiles.forEach((sourceFile) => {
     sourceFile.forEachDescendant((node) => {
         if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
-            replaceToggleFunction(node, removedFeatureName, featureState)
+            return replaceToggleFunction(node, removedFeatureName, featureState)
         }
 
         if (node.isKind(SyntaxKind.JsxSelfClosingElement) && isToggleComponent(node)) {
-            replaceComponent(node, removedFeatureName, featureState)
+            return replaceComponent(node, removedFeatureName, featureState)
         }
     })
 })

@@ -1,35 +1,24 @@
 .light_theme {
-  --bg-color: #e8e8ea;
-  --inverted-bg-color: #090949;
+  --dark-bg-color: #FFFFFF;
+  --bg-color: #EFF5F6;
+  --light-bg-color: #E2EEF1;
+  --text-color: #141C1F;
+  --hint-color: #ADBCC0;
+  --cancel-color: #FF7777;
+  --save-color: #62DE85;
+  --icon-color: #5ED3F3;
+  --accent-color: #19abff;
 
-  --primary-color: #0232c2;
-  --secondary-color: #2b6eff;
+  --card-box-shadow-color: 0px 0px 12px 3px rgba(94, 211, 243, 0.15);
+  --sidebar-active-indicator-color: linear-gradient(89.97deg, rgba(94, 211, 243, 0.3) 1.15%, rgba(94, 211, 243, 0) 99.97%);
+  --app-logo-gradient-big-color: radial-gradient(57.05% 57.05% at 49.84% 42.95%, rgba(94, 211, 243, 0.2) 0%, rgba(94, 211, 243, 0.132281) 7.81%, rgba(94, 211, 243, 0.0830304) 29.69%, rgba(94, 211, 243, 0.0386116) 56.77%, rgba(94, 211, 243, 0.021875) 77.6%, rgba(94, 211, 243, 0) 100%);
+  --app-logo-gradient-small-color: : radial-gradient(30.29% 30.29% at 50% 50%, rgba(94, 211, 243, 0.18) 0%, rgba(94, 211, 243, 0.106) 25.55%, rgba(94, 211, 243, 0.07) 47.27%, rgba(94, 211, 243, 0.038) 69.66%, rgba(94, 211, 243, 0) 100%);
+  --scroll-bg-color: #5ED3F3;
+  --scroll-border-color: rgba(94, 211, 243, 0.5);
 
-  --text-color: #fff;
-
-  --inverted-primary-color: #04ff04;
-  --inverted-secondary-color: #049604;
-
-  --skeleton-color: #fff;
-  --skeleton-shadow: rgba(0 0 0 / 20%);
-
-  // code
-  --code-bg: #fff;
-
-  // card
-  --card-bg: #d5d5d7;
-
-  // listbox
-  --listbox-bg: #d5d5d7;
-
-  // redesigned
-  --dark-bg-redesigned: #FFFFFF;
-  --bg-redesigned: #EFF5F6;
-  --light-bg-redesigned: #E2EEF1;
-  --text-redesigned: #141C1F;
-  --hint-redesigned: #ADBCC0;
-  --cancel-redesigned: #FF7777;
-  --save-redesigned: #62DE85;
-  --icon-redesigned: #5ED3F3;
-  --accent-redesigned: #00C8FF;
+  --bg-color-deprecated: #e8e8ea;
+  --inverted-bg-color-deprecated: #090949;
+  --primary-color-deprecated: #0232c2;
+  --secondary-color-deprecated: #2b6eff;
+  --text-color-deprecated: #fff;
 }

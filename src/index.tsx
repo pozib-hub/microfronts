@@ -20,9 +20,7 @@ const Index = (
         <StoreProvider>
             <ErrorBoundary>
                 <CheckAuthProvider>
-                    <ThemeProvider>
-                        <App />
-                    </ThemeProvider>
+                    <App />
                 </CheckAuthProvider>
             </ErrorBoundary>
         </StoreProvider>

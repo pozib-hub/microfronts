@@ -1,26 +1,17 @@
 import React, { FC } from 'react'
 
-import cn from '@shared/lib/classNames/classNames'
-import { Button } from '@shared/ui/Button/Button'
 import useTheme from '@shared/lib/hooks/useTheme'
-
-import { getIconByTheme } from '../utils'
+import { Icon } from '@shared/ui/Icon/Icon'
 
 import style from './ThemeSwitcher.module.scss'
 
 interface IThemeSwitcherProps {
-    className?: string;
+    className?: string
 }
 
 export const ThemeSwitcher: FC<IThemeSwitcherProps> = (props) => {
     const { className } = props
     const { theme, toggleTheme } = useTheme()
 
-    const Icon = getIconByTheme(theme)
-
-    return (
-        <div className={cn(style.themeSwitcher, className)}>
-            <Button clearPadding variant='transparent' onClick={toggleTheme}>{Icon}</Button>
-        </div>
-    )
+    return <Icon id="Theme" clickable onClick={toggleTheme} />
 }

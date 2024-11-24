@@ -5,7 +5,6 @@ import cn from '@shared/lib/classNames/classNames'
 
 import styles from './AboutPage.module.scss'
 
-
 interface IAboutPage {
     className?: string
 }
@@ -15,8 +14,7 @@ const AboutPage = (props: IAboutPage) => {
 
     const { t } = useTranslation()
 
-
-    return <div data-testId="AboutPage" className={cn(styles.page, className)}></div >
+    return <div data-testid="AboutPage" className={cn(styles.page, className)}></div>
 }
 
 export default AboutPage

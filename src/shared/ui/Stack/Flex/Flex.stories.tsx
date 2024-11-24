@@ -6,7 +6,7 @@ import { Flex } from './Flex'
 const meta: Meta<typeof Flex> = {
     title: 'shared/Flex',
     component: Flex,
-    decorators: [CenterDecorator]
+    decorators: [CenterDecorator],
 }
 
 export default meta
@@ -28,7 +28,7 @@ export const Row: Story = {
 
 export const RowGap: Story = {
     args: {
-        gap: '4',
+        gap: 1,
         children: (
             <>
                 <div>first</div>
@@ -39,7 +39,6 @@ export const RowGap: Story = {
         ),
     },
 }
-
 
 export const Column: Story = {
     args: {
@@ -57,7 +56,7 @@ export const Column: Story = {
 
 export const ColumnGap16: Story = {
     args: {
-        gap: '16',
+        gap: 4,
         direction: 'column',
         children: (
             <>

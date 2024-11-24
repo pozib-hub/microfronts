@@ -15,7 +15,6 @@ export const CheckAuthProvider = (props: ICheckAuthProviderProps) => {
 
     const dispatch = useAppDispatch()
 
-
     $api.interceptors.response.use(
         (response) => response,
         (error) => {

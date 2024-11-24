@@ -1,22 +1,23 @@
 import React, { memo } from 'react'
-import classNames from '@/shared/lib/classNames/classNames'
-// import AppSvg from '@/shared/assets/icons/app-image.svg'
+
+import cn from '@shared/lib/classNames/classNames'
 
 import { HStack } from '../Stack'
+import { Icon } from '../Icon/Icon'
 
 import styles from './AppLogo.module.scss'
-import { Icon } from '../Icon/Icon'
 
 interface AppLogoProps {
     className?: string
+    size?: number
 }
 
-export const AppLogo = memo(({ className }: AppLogoProps) => {
+export const AppLogo = memo(({ className, size = 50 }: AppLogoProps) => {
     return (
-        <HStack max justify="center" className={classNames(styles.wrapper, className)}>
+        <HStack fullWidth justify="center" className={cn(styles.wrapper, className)}>
+            <Icon id="AppImage" size={size} className={styles.logo} />
             <div className={styles.gradientBig} />
             <div className={styles.gradientSmall} />
-            <Icon id="AppImage" />
         </HStack>
     )
 })
