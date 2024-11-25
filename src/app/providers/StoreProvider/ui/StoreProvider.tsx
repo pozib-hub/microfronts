@@ -25,17 +25,5 @@ export const StoreProvider = (props: StoreProviderProps) => {
         // navigate
     )
 
-    const UNAUTHORIZED = 401
-    $api.interceptors.response.use(
-        (response) => response,
-        (error) => {
-            const { status } = error.response
-            if (status === UNAUTHORIZED) {
-                store.dispatch(userActions.logout())
-            }
-            return Promise.reject(error)
-        },
-    )
-
     return <Provider store={store}>{children}</Provider>
 }

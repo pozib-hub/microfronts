@@ -11,6 +11,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff)$/i,
         use: ['file-loader'],
+        exclude: /node_modules/,
     }
 
     const svgLoader = {
@@ -33,7 +34,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                 },
             },
         ],
-        // exclude: /node_modules/,
+        exclude: /node_modules/,
     }
 
     const cssLoaders = buildCssLoaders(options.isDev)

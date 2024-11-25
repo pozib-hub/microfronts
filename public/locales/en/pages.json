@@ -19,5 +19,30 @@
     },
     "pageProfile": {
         "header": "Profile"
+    },
+    "pageHome": {
+        "header": "Main",
+        "navigations": {
+            "items": {
+                "about": {
+                    "title": "About Us",
+                    "caption": "For information about us"
+                },
+                "profile": {
+                    "title": "Profile",
+                    "caption": "To go to your profile"
+                },
+                "catalog": {
+                    "title": "Catalog",
+                    "caption": "To make purchases",
+                    "subitems": {
+                        "main": "Home catalog",
+                        "kit": "Uniform",
+                        "clothes": "Clothes",
+                        "office": "Office"
+                    }
+                }
+            }
+        }
     }
 }
