@@ -9,6 +9,7 @@ export interface ISidebarItem {
     onClick?: (path?: string) => void
 }
 
+// TODO deprecate
 export const sidebarLinkItems: ISidebarItem[] = [
     {
         path: routePath.main,
