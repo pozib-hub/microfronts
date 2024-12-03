@@ -1,101 +1,56 @@
-import React, { InputHTMLAttributes, memo, ReactNode, useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useRef } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
-import { HStack } from '../Stack'
-import { Text } from '../Text'
+import { mergeRefs } from '@shared/lib/ref/mergeRefs'
+
+import { IInputProps } from './types'
+import { InputContainer } from './InputContainer/InputContainer'
 
 import styles from './Input.module.scss'
 
-type HTMLInputProps = Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly' | 'size'
->
-
-type InputSize = 's' | 'm' | 'l'
-
-interface InputProps extends HTMLInputProps {
-    className?: string
-    value?: string | number
-    label?: string
-    onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void
-    autofocus?: boolean
-    readonly?: boolean
-    addonLeft?: ReactNode
-    addonRight?: ReactNode
-    size?: InputSize
-}
-
-export const Input = memo((props: InputProps) => {
+export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
     const {
-        className,
-        value,
-        onChange,
+        classNameWrapper,
+        variant = 'default',
         type = 'text',
-        placeholder,
-        autofocus,
-        readonly,
-        addonLeft,
-        addonRight,
         label,
-        size = 'm',
-        ...otherProps
+        iconLeft,
+        iconRight,
+        errorMessage,
+        isError,
+        style,
+        autoFocus,
+        disabled,
+        placeholder,
+        size = 'medium',
+        width,
+        readonly,
+        children,
+        required,
+        ...inputProps
     } = props
-    const ref = useRef<HTMLInputElement>(null)
-    const [isFocused, setIsFocused] = useState(false)
+
+    const refInput = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
-        if (autofocus) {
-            setIsFocused(true)
-            ref.current?.focus()
+        if (autoFocus) {
+            // setFocus(true)
+            refInput.current?.focus()
         }
-    }, [autofocus])
+    }, [autoFocus])
 
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e)
-    }
-
-    const onBlur = () => {
-        setIsFocused(false)
-    }
-
-    const onFocus = () => {
-        setIsFocused(true)
-    }
-
-    const mods = {
-        [styles.readonly]: readonly,
-        [styles.focused]: isFocused,
-        [styles.withAddonLeft]: Boolean(addonLeft),
-        [styles.withAddonRight]: Boolean(addonRight),
-    }
-
-    const input = (
-        <div className={cn(styles.InputWrapper, mods, className, styles[size])}>
-            <div className={styles.addonLeft}>{addonLeft}</div>
+    return (
+        <InputContainer {...props}>
             <input
-                ref={ref}
+                ref={mergeRefs([ref, refInput])}
                 type={type}
-                value={value}
-                onChange={onChangeHandler}
-                className={styles.input}
-                onFocus={onFocus}
-                onBlur={onBlur}
+                {...inputProps}
                 readOnly={readonly}
                 placeholder={placeholder}
-                {...otherProps}
+                disabled={disabled}
+                className={cn(styles.input, props.className)}
+                style={{}}
             />
-            <div className={styles.addonRight}>{addonRight}</div>
-        </div>
+        </InputContainer>
     )
-
-    if (label) {
-        return (
-            <HStack fullWidth gap={2}>
-                <Text>{label}</Text>
-                {input}
-            </HStack>
-        )
-    }
-
-    return input
 })
