@@ -1,7 +1,5 @@
-
 import { UserRole } from '@entities/user'
 
-import { Test } from '@pages/Tests'
 import { AboutPage } from '@pages/AboutPage'
 import { MainPage } from '@pages/MainPage'
 import { NotFoundPage } from '@pages/NotFoundPage'
@@ -29,7 +27,7 @@ export const routeConfig: AppRoutesProps[] = [
         element: <AboutPage />,
     },
     {
-        path: routePath.profile() + "/:id?",
+        path: routePath.profile() + '/:id?',
         element: <ProfilePage />,
         authOnly: true,
     },
@@ -39,15 +37,15 @@ export const routeConfig: AppRoutesProps[] = [
         element: <ArticlesPage />,
     },
     {
-        path: routePath.articles + "/:id",
+        path: routePath.articles + '/:id',
         element: <ArticleDetailsPage />,
     },
     {
-        path: routePath.articles + "/:id/edit",
+        path: routePath.articles + '/:id/edit',
         element: <ArticleEditPage />,
     },
     {
-        path: routePath.articles + "/create",
+        path: routePath.articles + '/create',
         element: <ArticleEditPage />,
     },
     {
@@ -56,15 +54,10 @@ export const routeConfig: AppRoutesProps[] = [
         authOnly: true,
     },
     {
-        path: routePath.test,
-        element: <Test />,
-        authOnly: true,
-    },
-    {
         path: routePath.adminPanel,
         element: <AdminPanelPage />,
         authOnly: true,
-        roles: [UserRole.ADMIN]
+        roles: [UserRole.ADMIN],
     },
     {
         path: '*',

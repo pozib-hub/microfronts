@@ -39,9 +39,9 @@ class NotificationManager extends EventEmitter {
             this.listNotify.push(Object.assign(defaultNotify, notify))
         }
 
-        if (!document.getElementById('notifications')) {
-            await createNotificationsWrapper()
-        }
+        // if (!document.getElementById('notifications')) {
+        //     await createNotificationsWrapper()
+        // }
 
         this.emitChange()
     }

@@ -1,68 +1,66 @@
-import { ChangeEvent, HTMLAttributes, useMemo } from 'react'
+import ReactSelect, { GroupBase, Props } from 'react-select'
 
 import cn from '@shared/lib/classNames/classNames'
+
+import { InputContainer } from '../Input'
+
 import styles from './Select.module.scss'
 
-export interface SelectOption<T extends string> {
-    value: T;
-    content: string;
+type Variants = 'filled' | 'outline' | 'default'
+
+interface ISelectProps<OptionType, IsMulti extends boolean, Group extends GroupBase<OptionType>>
+    extends Props<OptionType, IsMulti, Group> {
+    className?: string
+    label?: string
+    isError?: boolean
+    errorMessage?: boolean | string
+    variant?: Variants
+    width?: string | number
 }
 
-type BaseProps = Omit<HTMLAttributes<HTMLSelectElement>, "onChange" | "options" | "value">
-
-interface SelectProps<T extends string> extends BaseProps {
-    className?: string;
-    label?: string;
-    options?: SelectOption<T>[];
-    value?: string | SelectOption<T>;
-    onChange?: (value: T) => void;
-    readonly?: boolean;
-}
-
-export const Select = <T extends string>(props: SelectProps<T>) => {
+export function Select<
+    OptionType,
+    IsMulti extends boolean = false,
+    Group extends GroupBase<OptionType> = GroupBase<OptionType>,
+>(props: ISelectProps<OptionType, IsMulti, Group>) {
     const {
         className,
         label,
-        options,
-        onChange,
-        value,
-        readonly,
-        ...selectProps
+        isError,
+        errorMessage,
+        variant = 'default',
+        width,
+        placeholder,
+        ...otherProps
     } = props
 
-    const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        if (onChange) {
-            onChange(e.target.value as T)
-        }
-    }
-
-    const optionsList = useMemo(() => options?.map((opt) => (
-        <option
-            className={styles.option}
-            value={opt.value}
-            key={opt.value}
-        >
-            {opt.content}
-        </option>
-    )), [options])
-
-
     return (
-        <div className={cn(styles.Wrapper, className)}>
-            {label && (
-                <span className={styles.label}>
-                    {`${label}>`}
-                </span>
-            )}
-            <select
-                {...selectProps}
-                disabled={readonly}
-                className={styles.select}
-                value={typeof value === "string" ? value : value?.value}
-                onChange={onChangeHandler}
-            >
-                {optionsList}
-            </select>
+        <div className={cn(styles.wrapper, className)} style={{ width }}>
+            <ReactSelect
+                {...otherProps}
+                components={{
+                    Control: ({ children, hasValue, isFocused }) => {
+                        const value = hasValue || isFocused ? 'true' : undefined
+                        return (
+                            <InputContainer
+                                label={label}
+                                isError={isError}
+                                errorMessage={errorMessage}
+                                variant={variant}
+                                value={value}
+                                placeholder=""
+                            >
+                                {children}
+                            </InputContainer>
+                        )
+                    },
+                }}
+                placeholder={label ? '' : placeholder}
+                styles={{
+                    valueContainer: (base) => ({ ...base, padding: '0 8px' }),
+                    dropdownIndicator: (base) => ({ ...base, padding: '6px 8px' }),
+                }}
+            />
         </div>
     )
 }

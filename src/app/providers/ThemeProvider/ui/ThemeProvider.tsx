@@ -1,39 +1,19 @@
-import React, { FC, useMemo, useEffect, useCallback } from 'react'
+import React, { FC, useMemo, useEffect, useState } from 'react'
 
 import { ThemeContext } from '@shared/lib/context/ThemeContext'
-import { Theme } from '@shared/const/them'
-import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
-import { getUserSetting, saveUserSetting } from '@entities/UserSettings'
-import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { Theme } from '@shared/const/theme'
 
 interface IThemeProviderProps {
     children?: React.ReactNode
-    initialTheme?: Theme
+    initialTheme: Theme
 }
 
 const ThemeProvider: FC<IThemeProviderProps> = ({ children, initialTheme }) => {
-    const dispatch = useAppDispatch()
-
-    const theme = useAppSelector((state) => state.userSettings.theme)
+    const [theme, setTheme] = useState(initialTheme)
 
     useEffect(() => {
-        dispatch(getUserSetting({ key: 'theme' }))
-    }, [dispatch])
-
-    useEffect(() => {
-        if (!theme) {
-            dispatch(saveUserSetting({ key: 'theme', value: Theme.DARK }))
-        }
-
-        document.body.className = theme
-    }, [theme, dispatch])
-
-    const setTheme = useCallback(
-        (theme: Theme) => {
-            dispatch(saveUserSetting({ key: 'theme', value: theme }))
-        },
-        [dispatch],
-    )
+        document.body.className = initialTheme
+    }, [initialTheme])
 
     const defaultProps = useMemo(
         () => ({

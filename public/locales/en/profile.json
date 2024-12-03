@@ -1,16 +1,16 @@
 {
     "profileCard": {
         "inputs": {
-            "firstname": "your name",
-            "lastname": "Your lastname",
-            "age": "Your age",
-            "city": "Your city",
-            "address": "Your address",
-            "username": "Your username",
+            "firstname": "Name",
+            "lastname": "Lastname",
+            "age": "Age",
+            "city": "City",
+            "address": "Address",
+            "username": "Username",
             "avatar": "Link to avatar"
         },
         "errors": {
-            "loadProfile": "There was an error loading your profile",
+            "loadProfile": "There was an error loading profile",
             "formEdit": {
                 "server": "Server error when saving",
                 "noData": "Data not provided",

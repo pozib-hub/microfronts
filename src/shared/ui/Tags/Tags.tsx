@@ -1,7 +1,11 @@
-import cn from '@shared/lib/classNames/classNames'
 import { memo, ReactNode, useCallback } from 'react'
-import styles from './Tags.module.scss'
 import _ from 'lodash'
+
+import cn from '@shared/lib/classNames/classNames'
+
+import { Flex, FlexDirection } from '../Stack/Flex/Flex'
+
+import styles from './Tags.module.scss'
 
 export interface TagItem<ValueType> {
     value: ValueType
@@ -20,21 +24,24 @@ type CompareValue<ValueType> = ValueType extends object
     ? TypesISValueObject<ValueType>
     : TypesISValuePrimitive<ValueType>
 
-type TabsPropsBase<ValueType, Multi extends boolean | undefined = boolean | undefined>
-    = CompareValue<ValueType> & {
-        isMulti?: Multi
-        className?: string
-        size?: "small" | "default" | 'large'
-        tags: TagItem<ValueType>[]
+type TabsPropsBase<
+    ValueType,
+    Multi extends boolean | undefined = boolean | undefined,
+> = CompareValue<ValueType> & {
+    isMulti?: Multi
+    className?: string
+    size?: 'small' | 'default' | 'large'
+    direction?: FlexDirection
+    tags: TagItem<ValueType>[]
 
-        value: Multi extends true
+    value: Multi extends true
         ? ValueType[] | TagItem<ValueType>[]
         : ValueType | TagItem<ValueType> | null
 
-        onChange: Multi extends true
+    onChange: Multi extends true
         ? (value: TagItem<ValueType>[]) => void
         : (value: TagItem<ValueType>) => void
-    }
+}
 
 type SingleTabProps<ValueType> = TabsPropsBase<ValueType, false> & {
     isMulti?: false
@@ -48,92 +55,79 @@ type MultiTabProps<ValueType> = TabsPropsBase<ValueType, true> & {
     onChange: (value: TagItem<ValueType>[]) => void
 }
 
-const isObject = (value: unknown): value is object =>
-    typeof value === "object" && value !== null
+const isObject = (value: unknown): value is object => typeof value === 'object' && value !== null
 
 function isTagItem<ValueType>(item: unknown): item is TagItem<ValueType> {
-    return typeof item === 'object' && item !== null &&
-        'value' in item && 'label' in item
+    return typeof item === 'object' && item !== null && 'value' in item && 'label' in item
 }
 
 export type ITagsProps<ValueType> = SingleTabProps<ValueType> | MultiTabProps<ValueType>
 
 function TagsComponent<ValueType>(props: ITagsProps<ValueType>) {
-    const {
-        className,
-        size = "default",
-        isMulti,
-        tags,
-        value,
-        onChange,
-    } = props
+    const { className, size = 'default', isMulti, tags, value, direction = 'row', onChange } = props
 
     const { fieldCompareValue } = props as TypesISValueObject<ValueType>
 
-    const checkSelectedTag = useCallback((
-        value: TagItem<ValueType> | ValueType,
-        tag: TagItem<ValueType>
-    ) => {
-        if (Array.isArray(value)) {
-            throw new Error("value must not be an array")
-        }
-
-        if (isTagItem(value)) {
-            if (isObject(value.value)) {
-                return _.isEqual(
-                    tag.value[fieldCompareValue],
-                    value.value[fieldCompareValue]
-                )
-            } else {
-                return tag.value === value.value
+    const checkSelectedTag = useCallback(
+        (value: TagItem<ValueType> | ValueType, tag: TagItem<ValueType>) => {
+            if (Array.isArray(value)) {
+                throw new Error('value must not be an array')
             }
-        } else {
-            if (isObject(value)) {
-                return _.isEqual(
-                    tag.value[fieldCompareValue],
-                    value[fieldCompareValue]
-                )
+
+            if (isTagItem(value)) {
+                if (isObject(value.value)) {
+                    return _.isEqual(tag.value[fieldCompareValue], value.value[fieldCompareValue])
+                } else {
+                    return tag.value === value.value
+                }
             } else {
-                return tag.value === value
+                if (isObject(value)) {
+                    return _.isEqual(tag.value[fieldCompareValue], value[fieldCompareValue])
+                } else {
+                    return tag.value === value
+                }
             }
-        }
-    }, [fieldCompareValue])
+        },
+        [fieldCompareValue],
+    )
 
-    const handlerClick = useCallback((tag: TagItem<ValueType>) => () => {
-        if (tag.disabled) return
+    const handlerClick = useCallback(
+        (tag: TagItem<ValueType>) => () => {
+            if (tag.disabled) return
 
-        if (isMulti) {
-            const prevValues = tags.filter(t => {
-                const prev = value.find(v => {
-                    if (isTagItem(v)) {
-                        return _.isEqual(v.value, t.value)
-                    } else {
-                        return _.isEqual(v, t.value)
-                    }
+            if (isMulti) {
+                const prevValues = tags.filter((t) => {
+                    const prev = value.find((v) => {
+                        if (isTagItem(v)) {
+                            return _.isEqual(v.value, t.value)
+                        } else {
+                            return _.isEqual(v, t.value)
+                        }
+                    })
+                    return prev
                 })
-                return prev
-            })
 
-            const hasValue = prevValues.findIndex(v => checkSelectedTag(v, tag))
+                const hasValue = prevValues.findIndex((v) => checkSelectedTag(v, tag))
 
-            if (hasValue === -1) {
-                onChange([...prevValues, tag])
+                if (hasValue === -1) {
+                    onChange([...prevValues, tag])
+                } else {
+                    onChange(prevValues.filter((_, index) => index !== hasValue))
+                }
             } else {
-                onChange(prevValues.filter((_, index) => index !== hasValue))
+                onChange(tag)
             }
-        } else {
-            onChange(tag)
-        }
-    }, [checkSelectedTag, isMulti, onChange, tags, value])
-
+        },
+        [checkSelectedTag, isMulti, onChange, tags, value],
+    )
 
     return (
-        <div className={cn(styles.wrapper, className)}>
+        <Flex direction={direction} gap={2} align="start" className={cn(styles.wrapper, className)}>
             {tags.map((tag, index) => {
                 let isSelected = false
 
                 if (isMulti) {
-                    isSelected = value.some(v => checkSelectedTag(v, tag))
+                    isSelected = value.some((v) => checkSelectedTag(v, tag))
                 } else if (value) {
                     isSelected = checkSelectedTag(value, tag)
                 }
@@ -153,7 +147,7 @@ function TagsComponent<ValueType>(props: ITagsProps<ValueType>) {
                     </div>
                 )
             })}
-        </div>
+        </Flex>
     )
 }
 

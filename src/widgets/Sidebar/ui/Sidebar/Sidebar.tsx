@@ -1,13 +1,15 @@
-import React, { memo, useState, FC, useMemo } from 'react'
+import React, { memo, useState, FC, useMemo, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import cn from '@shared/lib/classNames/classNames'
-import { Button } from '@shared/ui/Button/Button'
 import { ThemeSwitcher } from '@features/ThemeSwitcher'
 import { LanguageSwitcher } from '@features/LanguageSwitcher'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 import { VStack } from '@shared/ui/Stack'
+import { AppLogo } from '@shared/ui/AppLogo'
+import { Icon } from '@shared/ui/Icon/Icon'
 
-import { sidebarLinkItems } from '../../model/items'
+import { useSidebarItems } from '../../model/getSidebarItems'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 
 import styles from './Sidebar.module.scss'
@@ -16,47 +18,84 @@ interface ISidebarProps {
     className?: string
 }
 
+const defaultStateSidebar = localStorage.getItem('sidebar') === 'true'
+
+const getCurrentLocation = (location: string) => {
+    const [, path] = location.split('/')
+    return '/' + path
+}
+
 export const Sidebar: FC<ISidebarProps> = memo(function Sidebar(props) {
     const { className } = props
 
-    const isAuth = useAppSelector(state => state.user.authData)
-    const [open, setOpen] = useState(false)
+    const location = useLocation()
+    const isAuth = useAppSelector((state) => state.user.authData)
+    const [open, setOpen] = useState<boolean>(defaultStateSidebar)
+    const [selectedItem, setSelectedItem] = useState('')
 
-    const onToggle = () => setOpen((prev) => !prev)
+    const sideBarItems = useSidebarItems()
+
+    useEffect(() => {
+        setSelectedItem(getCurrentLocation(location.pathname))
+    }, [location.pathname])
+
+    const onToggle = () => {
+        setOpen((prev) => {
+            localStorage.setItem('sidebar', String(!prev))
+            return !prev
+        })
+    }
+
+    const items = useMemo(() => {
+        return sideBarItems.filter((i) => !(i.authOnly && !isAuth))
+    }, [isAuth, sideBarItems])
 
     const styleCollapsed = { [styles.collapsed]: !open }
 
-    const linksItems = useMemo(() => {
-        return sidebarLinkItems.filter(i => !(i.authOnly && !isAuth))
-    }, [isAuth])
+    // Индекс активного элемента для перемещения индикатора
+    const activeIndex = useMemo(() => {
+        return items.findIndex((item) => selectedItem === item.path)
+    }, [items, selectedItem])
+
+    const itemHeight = 35
+    const gapBetweenItems = 8
+    const isExistActiveIndex = activeIndex !== -1
+    const transformActiveIndicator = `translateY(${activeIndex * (itemHeight + gapBetweenItems)}px)`
 
     return (
-        <aside
-            data-testid="sidebar"
-            className={cn(
-                styles.sidebar,
-                className,
-                { [styles.open]: open },
-            )}
-        >
-            <div className={styles.content}>
-                <Button
-                    data-testid="sidebar-toggle"
-                    className={styles['btn-burger']}
-                    onClick={onToggle}
-                >
-                    {open ? "<" : ">"}
-                </Button>
-                <VStack role='navigation' gap='8' padding='16' align={open ? "start" : "end"} >
-                    {
-                        linksItems.map(item =>
-                            <SidebarItem key={item.path} item={item} collapsed={!open} />)
-                    }
-                </VStack>
-                <div className={cn(styles.bottom, styleCollapsed)}>
-                    <LanguageSwitcher className={styles.bottom_item} />
-                    <ThemeSwitcher className={styles.bottom_item} />
-                </div>
+        <aside data-testid="sidebar" className={cn(styles.wrapper, styleCollapsed, className)}>
+            <AppLogo className={styles.appLogo} size={open ? 50 : 30} />
+            <VStack className={styles.items} role="navigation" gap={2}>
+                {/* Индикатор активного элемента */}
+                {isExistActiveIndex && (
+                    <div
+                        className={styles.activeIndicator}
+                        style={{
+                            height: itemHeight,
+                            transform: transformActiveIndicator,
+                        }}
+                    />
+                )}
+
+                {items.map((item, index) => (
+                    <SidebarItem
+                        key={item.path}
+                        item={item}
+                        collapsed={!open}
+                        onClick={() => setSelectedItem(item.path)}
+                    />
+                ))}
+            </VStack>
+            <Icon
+                data-testid="sidebar-toggle"
+                id="ArrowBottom"
+                onClick={onToggle}
+                className={styles.collapseBtn}
+                clickable
+            />
+            <div className={styles.switchers}>
+                <ThemeSwitcher />
+                <LanguageSwitcher className={styles.lang} />
             </div>
         </aside>
     )

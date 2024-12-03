@@ -1,33 +1,31 @@
 import { memo, useCallback, useEffect } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
-import { ArticleList } from '@entities/Article'
-import { DynamicModuleLoader } from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
-import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@shared/components/DynamicModuleLoader/DynamicModuleLoader'
+import { StickyLayout } from '@shared/layouts/StickyLayout'
 import { useDebounce } from '@shared/lib/hooks/useDebounce'
-
+import { ArticleList } from '@entities/Article'
 import { ScrollActionsLayout } from '@widgets/ScrollActionsLayout'
-import {
-    articlesPageReducer,
-    getArticles
-} from '../../models/slice/ArticlesPageSlice'
-import {
-    fetchArticlesList
-} from '../../models/service/fetchArticlesList/fetchArticlesList'
-import {
-    fetchNextArticlePage
-} from '../../models/service/fetchNextArticlePage/fetchNextArticlePage'
-import { ArticlesPageHeader } from '../ArticlesPageHeader/ArticlesPageHeader'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+
+import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer'
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer'
+import { articlesPageReducer, getArticles } from '../../models/slice/ArticlesPageSlice'
+import { fetchArticlesList } from '../../models/service/fetchArticlesList/fetchArticlesList'
+import { fetchNextArticlePage } from '../../models/service/fetchNextArticlePage/fetchNextArticlePage'
 
 import styles from './ArticlesPage.module.scss'
 
-const reducers = {
-    articlesPage: articlesPageReducer
+interface ArticlesPageProps {
+    className?: string
 }
 
-interface ArticlesPageProps {
-    className?: string;
+const reducers: ReducersList = {
+    articlesPage: articlesPageReducer,
 }
 
 const ArticlesPage = (props: ArticlesPageProps) => {
@@ -38,12 +36,13 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const {
         _inited,
         isLoading = true,
+        error,
         view,
         order,
         sort,
-        search = "",
+        search = '',
         filters,
-    } = useAppSelector(state => state.articlesPage) || {}
+    } = useAppSelector((state) => state.articlesPage) || {}
     const articles = useAppSelector(getArticles.selectAll)
 
     const fetchData = useCallback(() => {
@@ -56,12 +55,13 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         if (_inited) {
             fetchArticlesListDebounce()
         }
-    }, [dispatch, _inited, order, sort, search, filters, fetchArticlesListDebounce])
+    }, [dispatch, _inited, order, sort, search, fetchArticlesListDebounce])
 
     const handleMoreArticles = useCallback(() => {
-        dispatch(fetchNextArticlePage())
-    }, [dispatch])
-
+        if (!error) {
+            dispatch(fetchNextArticlePage())
+        }
+    }, [error, dispatch])
 
     return (
         <DynamicModuleLoader reducers={reducers}>
@@ -70,16 +70,21 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 isLoading={isLoading}
                 onScroll={handleMoreArticles}
             >
-                <div data-testid="ArticlesPage" className={cn(styles.wrapper, className)}>
-                    <ArticlesPageHeader />
-                    <ArticleList
-                        isLoading={isLoading}
-                        view={view || "list"}
-                        items={articles}
-                    />
-                </div>
+                <StickyLayout
+                    left={<ViewSelectorContainer />}
+                    right={<FiltersContainer className={styles.filtersContainer} />}
+                    content={
+                        <div data-testid="ArticlesPage" className={cn(styles.wrapper, className)}>
+                            <ArticleList
+                                isLoading={isLoading}
+                                view={view || 'list'}
+                                items={articles}
+                            />
+                        </div>
+                    }
+                />
             </ScrollActionsLayout>
-        </DynamicModuleLoader >
+        </DynamicModuleLoader>
     )
 }
 

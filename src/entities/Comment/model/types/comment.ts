@@ -1,8 +1,8 @@
-import { IUser } from "@entities/user"
+import { IUser } from '@entities/user'
 
 export interface IComment {
     id: string
     text: string
     articleId: string
-    user: IUser
+    user?: IUser
 }

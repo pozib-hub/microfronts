@@ -1,79 +1,65 @@
-import React, { HTMLAttributes, FC, CSSProperties } from 'react'
+import { memo } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Text.module.scss'
 
-type Variants = 'span' | 'p' | 'h1' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
-type Sizes = 'small' | 'medium' | 'large'
-type Colors = 'primary' | 'secondary' | 'red' | 'white'
+export type TextVariant = 'primary' | 'error' | 'accent' | 'hint'
+export type TextAlign = 'right' | 'left' | 'center'
+export type TextSize = 's' | 'm' | 'l'
 
-interface ITextProps extends HTMLAttributes<HTMLSpanElement> {
-    disabled?: boolean
+interface TextProps {
+    className?: string
+    title?: string
+    children?: string
+    variant?: TextVariant
+    align?: TextAlign
+    size?: TextSize
     bold?: boolean
-    variant?: Variants
-    size?: Sizes,
-    color?: Colors,
-    ellipsis?: boolean | {
-        lines?: number,
-        width: string | number,
-    }
-    children?: React.ReactNode
-    "data-testid"?: string
+    'data-testid'?: string
 }
 
-export const Text: FC<ITextProps> = (props) => {
+type HeaderTagType = 'h1' | 'h2' | 'h3'
+
+const mapSizeToClass: Record<TextSize, string> = {
+    s: styles.size_s,
+    m: styles.size_m,
+    l: styles.size_l,
+}
+
+const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
+    s: 'h3',
+    m: 'h2',
+    l: 'h1',
+}
+
+export const Text = memo((props: TextProps) => {
     const {
         className,
         children,
-        variant = 'span',
-        size = 'medium',
-        color,
-        disabled,
+        title,
+        variant = 'primary',
+        align = 'left',
+        size = 'm',
         bold,
-        ellipsis,
-        style,
-
-        "data-testid": dataTestId = ""
+        'data-testid': dataTestId = 'Text',
     } = props
 
-    const classes = [
-        styles.Text,
-        {
-            [styles.disabled]: disabled,
-            [styles.bold]: bold,
-        },
-        styles[color || ""],
-        styles[variant],
-        styles[size],
-        className,
-    ]
+    const HeaderTag = mapSizeToHeaderTag[size]
+    const sizeClass = mapSizeToClass[size]
 
-    const ellipsis_style: CSSProperties = {}
+    const additionalClasses = [className, styles[variant], styles[align], sizeClass]
 
-    if (typeof ellipsis === 'boolean') {
-        ellipsis_style.display = 'inline-block'
-        ellipsis_style.overflow = 'hidden'
-        ellipsis_style.whiteSpace = 'nowrap'
-        ellipsis_style.textOverflow = 'ellipsis'
-    }
-
-    if (typeof ellipsis === 'object') {
-        ellipsis_style.display = '-webkit-box'
-        ellipsis_style.WebkitBoxOrient = 'vertical'
-        ellipsis_style.overflow = 'hidden'
-        ellipsis_style.WebkitLineClamp = ellipsis.lines || 1
-        ellipsis_style.width = ellipsis.width
-    }
-
-    const inline_style = {
-        ...ellipsis_style,
-        ...style,
-    }
-
-    return React.createElement<HTMLAttributes<HTMLSpanElement>>(
-        variant,
-        { ...props, className: cn(classes), style: inline_style },
-        children,
+    return (
+        <div className={cn(styles.wrapper, { [styles.bold]: bold }, ...additionalClasses)}>
+            {title && (
+                <HeaderTag className={styles.title} data-testid={`${dataTestId}.Header`}>
+                    {title}
+                </HeaderTag>
+            )}
+            <p className={styles.text} data-testid={`${dataTestId}.Paragraph`}>
+                {children}
+            </p>
+        </div>
     )
-}
+})

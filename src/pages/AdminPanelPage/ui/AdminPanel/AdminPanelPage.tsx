@@ -1,4 +1,3 @@
-
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,7 +6,7 @@ import cn from '@shared/lib/classNames/classNames'
 import styles from './AdminPanelPage.module.scss'
 
 interface IAdminPanelPageProps {
-    className?: string;
+    className?: string
 }
 
 export const AdminPanelPage = memo((props: IAdminPanelPageProps) => {
@@ -15,7 +14,7 @@ export const AdminPanelPage = memo((props: IAdminPanelPageProps) => {
     const { t } = useTranslation()
 
     return (
-        <div data-testId="AdminPanelPage" className={cn(styles.wrapper, className)}>
+        <div data-testid="AdminPanelPage" className={cn(styles.wrapper, className)}>
             Панель админа
         </div>
     )

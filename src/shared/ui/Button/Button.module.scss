@@ -1,16 +1,21 @@
-.button {
-  --button-border-color-disabled: #d9d9d9;
+.Button {
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
 
-  cursor: pointer;
-  position: relative;
-  border-radius: 4px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  outline: none;
+    &:hover {
+        color: var(--accent-color);
 
+        .addonLeft svg,
+        .addonRight svg {
+            color: var(--accent-color);
+        }
+    }
+}
 
-  .loader {
+.loader {
     position: absolute;
     top: 0;
     left: 0;
@@ -21,123 +26,127 @@
     justify-content: center;
 
     div {
-      width: 20px;
-      height: 20px;
-      border: 3px solid var(--primary-color);
-      border-bottom-color: transparent;
-      border-radius: 50%;
-      display: inline-block;
-      box-sizing: border-box;
-      animation: rotation 1s linear infinite;
+        width: 20px;
+        height: 20px;
+        border: 3px solid var(--accent-color);
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
     }
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-    border-color: var(--button-border-color-disabled);
-    background: var(--color-bg-container-disabled);
-    color: var(--color-text-disabled);
-  }
 }
 
-.button.loading .content {
-  opacity: 0.3;
+.withAddon {
+    padding: 0 16px;
 }
 
-// types --------------------
-
-.primary {
-  background: var(--inverted-bg-color);
-  border: var(--inverted-bg-color);
-  color: var(--text-color);
-
-  &:not(.disabled):hover {
-    opacity: 0.8;
-  }
-
-  &:not(.disabled).danger {
-    background-color: var(--color-danger);
-    border-color: var(--color-danger);
-    color: white;
-  }
+.addonLeft,
+.addonRight {
+    display: flex;
 }
 
-.dashed {
-  border: 1px dashed var(--inverted-bg-color);
-  color: var(--inverted-bg-color);
-  background: none;
-
-  &:not(.disabled):hover {
-    opacity: 0.7;
-  }
-
-  &:not(.disabled).danger {
-    border-color: var(--color-danger);
-    color: var(--color-danger);
-  }
+.addonRight svg,
+.addonLeft svg {
+    color: var(--hint-color);
 }
 
-.transparent {
-  background: none;
-  color: var(--inverted-bg-color);
 
-  &:not(.disabled):hover {
-    color: var(--secondary-color);
-  }
+.clear {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
 
-  &:not(.disabled).danger {
-    color: var(--red-light);
-
-    &:hover {
-      color: var(--red-dark);
+    &.success {
+        color: var(--save-color);
     }
-  }
+}
+
+.filled {
+    background: var(--light-bg-color);
+    border: none;
+    outline: none;
+    border-radius: 34px;
+    border: 2px solid transparent;
+
+
+    &.success {
+        background-color: var(--save-color);
+        color: white;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
 }
 
 .outline {
-  border: 1px solid var(--inverted-bg-color);
-  color: var(--inverted-bg-color);
-  background: none;
+    background: none;
+    border-radius: 34px;
 
-  &:not(.disabled):hover {
-    opacity: 0.7;
-  }
+    &:hover {
+        border: 2px solid var(--accent-color);
+    }
 
-  &:not(.disabled).danger {
-    border-color: var(--color-danger);
-    color: var(--color-danger);
-  }
+    &.normal {
+        border: 2px solid var(--icon-color);
+    }
+
+    &.error {
+        border: 2px solid var(--cancel-color);
+        color: var(--cancel-color);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.success {
+        border: 2px solid var(--save-color);
+    }
 }
 
-// sizes --------------------
-
-.small {
-  padding: 2px 8px;
-  font-size: 0.7em;
+.square {
+    padding: 0;
 }
 
-.medium {
-  padding: 4px 14px;
-  font-size: 1em;
+.square.m {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
 }
 
-.large {
-  padding: 8px 20px;
-  font-size: 1.3em;
+.square.l {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
 }
 
-.clearPadding {
-  padding: 0;
+.square.xl {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
 }
 
-// others --------------------
+.s {
+    line-height: 15px;
+    font: var(--font-s);
+}
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
+.m {
+    font: var(--font-m);
+}
 
-  100% {
-    transform: rotate(360deg);
-  }
+.l {
+    font: var(--font-l);
+}
+
+.xl {
+    font: var(--font-xl);
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.fullWidth {
+    width: 100%;
 }

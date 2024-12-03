@@ -7,5 +7,35 @@
     "rating": {
         "rateArticle": "Оцените статью",
         "pleaseLeaveReview": "Оставьте свой отзыв о статье, это поможет улучшить качество"
+    },
+    "details": {
+        "error": "Произошла ошибка при загрузке статьи.",
+        "readMore": "Читать далее...",
+        "createdAt": "Создана",
+        "views_zero": "{{count}} просмотров",
+        "views_one": "{{count}} просмотр",
+        "views_few": "{{count}} просмотра",
+        "views_many": "{{count}} просмотров"
+    },
+    "filtersTitle": "Сортировать по:",
+    "filtersTopicsTitle": "Тематика статей:",
+    "filters": {
+        "fields": {
+            "title": "названию",
+            "createdAt": "дате создания",
+            "views": "просмотрам"
+        },
+        "thematics": {
+            "science": "Наука",
+            "it": "IT",
+            "backend": "Бэкенд",
+            "frontend": "Фронтенд",
+            "development": "Разработка",
+            "tech": "Технологии"
+        }
+    },
+    "order": {
+        "asc": "возрастанию",
+        "desc": "убыванию"
     }
 }

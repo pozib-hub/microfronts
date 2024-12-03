@@ -1,13 +1,19 @@
 .wrapper {
-    border: 1px solid var(--primary-color);
     padding: 20px;
     position: relative;
-    background-color: #fff;
+    background: var(--light-bg-color);
+    overflow: auto;
+    border: 1px solid var(--accent-color);
+    border-radius: 16px;
+    position: relative;
 }
 
-.btn_copy {
-    // background-color: #1212a1;
+.btnCopy {
     position: absolute;
     right: 20px;
     top: 20px;
+}
+
+.copyIcon path {
+    stroke: var(--primary-color);
 }

@@ -6,6 +6,9 @@
     "cancel": "Cancel",
     "edit": "Edit",
     "search": "Search",
+    "copy": "Copy",
+    "ok": "Ok",
+    "yes": "Yes",
     "yourReview": "Your review",
     "weRecommend": "We recommend",
     "notifications": {
@@ -13,6 +16,14 @@
         "info": "Information message",
         "warning": "Warning!",
         "error": "Error!"
+    },
+    "alert": {
+        "title": {
+            "error": "Error!",
+            "warning": "Warning!",
+            "info": "Information",
+            "confirm": "Confirm"
+        }
     },
     "sidebar": {
         "items": {
@@ -32,5 +43,9 @@
             "main": "Main",
             "adminPanel": "Admin panel"
         }
+    },
+    "ratingCard": {
+        "yourReview": "Your review",
+        "thanksRating": "Thanks for your rating! Спасибо за оценку!"
     }
 }

@@ -7,21 +7,27 @@ import { PageLoader } from '@widgets/PageLoader'
 import { me } from '@entities/user'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { MainLayout } from '@shared/layouts/MainLayout'
+import { AppLoaderLayout } from '@shared/layouts/AppLoaderLayout'
 
 import { AppRouter } from './providers/router'
+import { useAppToolbar } from './lib/useAppToolbar'
+import { WithTheme } from './providers/ThemeProvider/ui/WithTheme'
 
 // TODO:
-// 1. сделать приттер на пре-коммит
 // 2. на линтер поставить правило на сортировку импортов
-// 4. научись делать снипиты для создания компонентов
 // 5. попробовать всем классам в сервере сделать контекст с бд
 // 6. сделать автоматическую типизацию по серверу
-// 7. семантическая  верстка
 // 8. свой json server
 // 9. авторизация по сертификату
 
+// TODO двойной запрос при выборе тематики статей
+// перенести фильтры статей в drawer в мбоильной версии
+
 const App = () => {
     const dispatch = useAppDispatch()
+
+    const toolbar = useAppToolbar()
 
     const isLoading = useAppSelector((state) => state.user.isLoading)
 
@@ -29,15 +35,26 @@ const App = () => {
         dispatch(me())
     }, [dispatch])
 
+    if (isLoading) {
+        return (
+            <div className="app" id="scroll-layout">
+                <AppLoaderLayout />
+            </div>
+        )
+    }
+
     return (
-        <div className={cn('app')}>
+        <div className="app" id="scroll-layout">
             <Suspense fallback={<PageLoader />}>
-                <Navbar />
-                <Sidebar />
-                <main id="scroll-layout">{isLoading ? <PageLoader /> : <AppRouter />}</main>
+                <MainLayout
+                    sidebar={<Sidebar />}
+                    content={<AppRouter />}
+                    rightNavbar={<Navbar />}
+                    toolbar={toolbar}
+                />
             </Suspense>
         </div>
     )
 }
 
-export default App
+export default WithTheme(App)

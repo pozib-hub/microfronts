@@ -1,7 +1,9 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 import { ThemeContext } from '../context/ThemeContext'
-import { Theme } from '../../const/them'
+import { Theme } from '../../const/theme'
+import { getUserSetting, saveUserSetting } from '@entities/UserSettings'
+import { useAppDispatch } from './useAppDispatch'
 
 const getNextTheme = (theme?: Theme) => {
     switch (theme) {
@@ -19,8 +21,15 @@ const getNextTheme = (theme?: Theme) => {
 export default () => {
     const { theme, setTheme } = useContext(ThemeContext)
 
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(getUserSetting({ key: 'theme' }))
+    }, [dispatch])
+
     const toggleTheme = () => {
         const newTheme = getNextTheme(theme)
+        dispatch(saveUserSetting({ key: 'theme', value: newTheme }))
         setTheme?.(newTheme)
     }
 

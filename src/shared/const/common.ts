@@ -11,6 +11,3 @@ export enum Country {
     Kazakhstan = 'Kazahstan',
     Armenia = 'Armenia',
 }
-
-
-export type OrderType = "asc" | "desc"

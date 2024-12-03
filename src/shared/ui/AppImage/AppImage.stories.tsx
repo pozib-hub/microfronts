@@ -15,20 +15,20 @@ const meta: Meta<typeof AppImage> = {
 
 export default meta
 
-type Story = StoryObj<typeof AppImage>;
+type Story = StoryObj<typeof AppImage>
 
 export const Base: Story = {}
 
 export const Loading: Story = {
     args: {
         src: 'https://via.placeholder.com/300x200',
-        fallback: <Skeleton width={300} height={200} />
-    }
+        fallback: <Skeleton width={300} height={200} />,
+    },
 }
 
 export const Error: Story = {
     args: {
         src: '',
-        errorFallback: <div>Error stub</div>
-    }
+        errorFallback: <div>Error stub</div>,
+    },
 }

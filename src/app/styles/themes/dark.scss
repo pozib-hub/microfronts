@@ -1,24 +1,25 @@
 .dark_theme {
-  --bg-color: #090949;
-  --inverted-bg-color: #e8e8ea;
+  --dark-bg-color: #090F11;
+  --bg-color: #0C1214;
+  --light-bg-color: #151C1F;
+  --text-color: #DBDBDB;
+  --hint-color: #555555;
+  --cancel-color: #D95757;
+  --save-color: #6CD98B;
+  --icon-color: #74A2B2;
+  --accent-color: #5ED3F3;
 
-  --primary-color: #048804;
-  --secondary-color: #04ff04;
+  --card-box-shadow-color: 0px 0px 12px 3px rgba(94, 211, 243, 0.15);
+  --sidebar-active-indicator-color: linear-gradient(89.97deg, rgba(94, 211, 243, 0.3) 1.15%, rgba(94, 211, 243, 0) 99.97%);
+  --app-logo-gradient-big-color: radial-gradient(57.05% 57.05% at 49.84% 42.95%, rgba(94, 211, 243, 0.2) 0%, rgba(94, 211, 243, 0.132281) 7.81%, rgba(94, 211, 243, 0.0830304) 29.69%, rgba(94, 211, 243, 0.0386116) 56.77%, rgba(94, 211, 243, 0.021875) 77.6%, rgba(94, 211, 243, 0) 100%);
+  --app-logo-gradient-small-color: : radial-gradient(30.29% 30.29% at 50% 50%, rgba(94, 211, 243, 0.18) 0%, rgba(94, 211, 243, 0.106) 25.55%, rgba(94, 211, 243, 0.07) 47.27%, rgba(94, 211, 243, 0.038) 69.66%, rgba(94, 211, 243, 0) 100%);
+  --scroll-bg-color: #74A2B2;
+  --scroll-border-color: rgba(94, 211, 243, 0.5);
 
-  --text-color: #041c65;
-
-  --inverted-primary-color: #041c65;
-  --inverted-secondary-color: #2b6eff;
-
-  --skeleton-color: #1515ad;
-  --skeleton-shadow: #2b2be8;
-
-  // code
-  --code-bg: #1212a1;
-
-  // card
-  --card-bg: #0d0d6b;
-
-  // listbox
-  --listbox-bg: #0d0d6b;
+  // deprecated
+  --dark-bg-color-deprecated: #090F11;
+  --inverted-bg-color-deprecated: #e8e8ea;
+  --primary-color-deprecated: #048804;
+  --secondary-color-deprecated: #04ff04;
+  --text-color-deprecated: #041c65;
 }

@@ -6,30 +6,32 @@ import { Button } from './Button'
 const meta: Meta<typeof Button> = {
     title: 'shared/Button',
     component: Button,
-    decorators: [CenterDecorator]
+    decorators: [CenterDecorator],
 }
 
 export default meta
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof Button>
 
-export const Primary: Story = {
+export const Filled: Story = {
     args: {
-        variant: 'primary',
+        variant: 'filled',
         children: 'Text',
     },
 }
 
-export const Dashed: Story = {
+export const FilledError: Story = {
     args: {
-        variant: 'dashed',
+        variant: 'filled',
+        color: 'error',
         children: 'Text',
     },
 }
 
-export const Transparent: Story = {
+export const FilledSuccess: Story = {
     args: {
-        variant: 'transparent',
+        variant: 'filled',
+        color: 'success',
         children: 'Text',
     },
 }
@@ -37,6 +39,45 @@ export const Transparent: Story = {
 export const Outline: Story = {
     args: {
         variant: 'outline',
+        children: 'Text',
+    },
+}
+
+export const OutlineError: Story = {
+    args: {
+        variant: 'outline',
+        color: 'error',
+        children: 'Text',
+    },
+}
+
+export const OutlineSuccess: Story = {
+    args: {
+        variant: 'outline',
+        color: 'success',
+        children: 'Text',
+    },
+}
+
+export const Clear: Story = {
+    args: {
+        variant: 'clear',
+        children: 'Text',
+    },
+}
+
+export const ClearError: Story = {
+    args: {
+        variant: 'clear',
+        color: 'error',
+        children: 'Text',
+    },
+}
+
+export const ClearSuccess: Story = {
+    args: {
+        variant: 'clear',
+        color: 'success',
         children: 'Text',
     },
 }

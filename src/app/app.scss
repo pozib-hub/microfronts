@@ -15,20 +15,13 @@ html {
 }
 
 .app {
-  position: relative;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  overflow: hidden;
-  height: 100%;
+  background: var(--bg-color);
+  min-height: 100vh;
+  font: var(--font-m);
+  color: var(--text-color);
 }
 
 #scroll-layout {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin-left: var(--width-close-sidebar);
-  padding: 20px;
   height: 100%;
   overflow: auto;
 }

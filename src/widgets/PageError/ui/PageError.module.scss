@@ -3,6 +3,7 @@
   height: 100%;
   padding-top: 5%;
   padding-inline: calc(var(--spacing) * 4);
+  color: var(--text-color);
 }
 
 .title {
@@ -20,6 +21,8 @@
 }
 
 .button {
+  color: var(--save-color);
+
   &:hover {
     opacity: 0.8;
   }

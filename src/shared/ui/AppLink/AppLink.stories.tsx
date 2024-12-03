@@ -15,7 +15,7 @@ const meta: Meta<typeof AppLink> = {
 
 export default meta
 
-type Story = StoryObj<typeof AppLink>;
+type Story = StoryObj<typeof AppLink>
 
 export const Primary: Story = {
     args: {
@@ -25,6 +25,6 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
     args: {
-        variant: 'secondary',
+        variant: 'primary',
     },
 }

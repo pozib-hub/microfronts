@@ -2,13 +2,14 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cn from '@shared/lib/classNames/classNames'
-import { Text } from '@shared/ui/Text/Text'
-import { Loader } from '@shared/ui/Loader/Loader'
-import { Flex } from '@shared/ui/Stack/Flex/Flex'
+import { Text } from '@shared/ui/Text'
+import { Input } from '@shared/ui/Input'
+import { Avatar } from '@shared/ui/Avatar'
+import { HStack, VStack } from '@shared/ui/Stack'
+import { Card } from '@shared/ui/Card'
+import { Skeleton } from '@shared/ui/Skeleton'
 
 import { IProfile } from '../../model/types/profile'
-import { Input } from '@shared/ui/Input/Input'
-import { Avatar } from '@shared/ui/Avatar/Avatar'
 
 import styles from './ProfileCard.module.scss'
 
@@ -17,13 +18,13 @@ export interface IProfileCardProps {
     data?: IProfile
     isLoading?: boolean
     error?: string
-    readonly?: boolean,
-    onChangeLastname: (value: string) => void;
-    onChangeFirstname: (value: string) => void;
-    onChangeCity: (value: string) => void;
-    onChangeAge: (value?: number) => void;
-    onChangeUsername: (value: string) => void;
-    onChangeAvatar: (value: string) => void;
+    readonly?: boolean
+    onChangeLastname: (value: string) => void
+    onChangeFirstname: (value: string) => void
+    onChangeCity: (value: string) => void
+    onChangeAge: (value?: number) => void
+    onChangeUsername: (value: string) => void
+    onChangeAvatar: (value: string) => void
 }
 export const ProfileCard: FC<IProfileCardProps> = (props) => {
     const {
@@ -42,111 +43,108 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
         // onChangeCurrency,
     } = props
 
-    const { t } = useTranslation("profile")
+    const { t } = useTranslation('profile')
 
     if (isLoading) {
         return (
-            <div
-                className={cn(
-                    styles.ProfileCard,
-                    { [styles.loading]: isLoading },
-                    className)}
-            >
-                <Loader />
-            </div>
+            <Card fullWidth className={className} padding={6}>
+                <VStack gap={8}>
+                    <HStack fullWidth justify="center">
+                        <Skeleton border="100%" width={128} height={128} />
+                    </HStack>
+                    <HStack gap={8} fullWidth>
+                        <VStack gap={4} fullWidth>
+                            <Skeleton width="100%" height={38} border="48px" />
+                            <Skeleton width="100%" height={38} border="48px" />
+                            <Skeleton width="100%" height={38} border="48px" />
+                            <Skeleton width="100%" height={38} border="48px" />
+                        </VStack>
+
+                        <VStack gap={4} fullWidth>
+                            <Skeleton width="100%" height={38} border="48px" />
+                            <Skeleton width="100%" height={38} border="48px" />
+                            <Skeleton width="100%" height={38} border="48px" />
+                            <Skeleton width="100%" height={38} border="48px" />
+                        </VStack>
+                    </HStack>
+                </VStack>
+            </Card>
         )
     }
 
     if (error) {
         return (
-            <div className={cn(styles.ProfileCard, className, styles.error)}>
-                <Flex direction='column' justify='center' gap='16'>
-                    <Text
-                        variant='h1'
-                    >
-                        {t('profileCard.errors.loadProfile')}
-                    </Text>
-                    <Text >
-                        {t('profileCard.solutionError')}
-                    </Text>
-                </Flex>
-            </div>
+            <HStack justify="center" fullWidth>
+                <Text variant="error" title={t('profileCard.errors.loadProfile')} align="center">
+                    {t('profileCard.errors.solutionError')}
+                </Text>
+            </HStack>
         )
     }
 
-
     return (
-        <div
-            className={cn(
-                styles.ProfileCard,
-                { [styles.editing]: !readonly },
-                className)
-            }
-        >
-            <div className={styles.data}>
+        <Card className={className} fullWidth padding={6} border="partial">
+            <VStack gap={8}>
                 {data?.avatar && (
-                    <div className={styles.avatarWrapper}>
-                        <Avatar src={data?.avatar} />
-                    </div>
+                    <HStack justify="center" fullWidth>
+                        <Avatar size={128} src={data?.avatar} />
+                    </HStack>
                 )}
-                <div className={styles.col}>
-                    <div className={styles.row}>
+                <HStack gap={4} fullWidth>
+                    <VStack gap={4} fullWidth>
                         <Input
-                            data-testid="ProfileCard.firstname"
-                            classNameWrapper={styles.input}
-                            readOnly={readonly}
-                            label={t("profileCard.inputs.firstname")}
                             value={data?.firstname}
+                            label={t('profileCard.inputs.firstname')}
                             onChange={(e) => onChangeFirstname(e.target.value)}
+                            readonly={readonly}
+                            data-testid="ProfileCard.firstname"
                         />
                         <Input
-                            data-testid="ProfileCard.lastname"
-                            classNameWrapper={styles.input}
-                            readOnly={readonly}
-                            label={t("profileCard.inputs.lastname")}
                             value={data?.lastname}
+                            label={t('profileCard.inputs.lastname')}
                             onChange={(e) => onChangeLastname(e.target.value)}
+                            readonly={readonly}
+                            data-testid="ProfileCard.lastname"
                         />
-                        <Input
-                            data-testid="ProfileCard.age"
-                            classNameWrapper={styles.input}
-                            type='number'
-                            readOnly={readonly}
-                            label={t("profileCard.inputs.age")}
+                        {/* <Input
                             value={data?.age}
-                            onChange={(e) => onChangeAge(Number(e.target.value) || undefined)}
-                        />
-                    </div>
-
-                    <div className={styles.row}>
-                        <Input
-                            data-testid="ProfileCard.city"
-                            classNameWrapper={styles.input}
-                            readOnly={readonly}
-                            label={t("profileCard.inputs.city")}
-                            value={data?.address?.city}
-                            onChange={(e) => onChangeCity(e.target.value)}
+                            label={{t("profileCard.inputs.firstname") t('Возраст')}
+                            onChange={onChangeAge}
+                            readonly={readonly}
                         />
                         <Input
-                            data-testid="ProfileCard.username"
-                            classNameWrapper={styles.input}
-                            readOnly={readonly}
-                            label={t("profileCard.inputs.username")}
+                            value={data?.city}
+                            label={{t("profileCard.inputs.firstname") t('Город')}
+                            onChange={onChangeCity}
+                            readonly={readonly}
+                        /> */}
+                    </VStack>
+                    <VStack gap={4} fullWidth>
+                        <Input
                             value={data?.username}
+                            label={t('profileCard.inputs.username')}
                             onChange={(e) => onChangeUsername(e.target.value)}
+                            readonly={readonly}
                         />
                         <Input
-                            data-testid="ProfileCard.avatar"
-                            classNameWrapper={styles.input}
-                            readOnly={readonly}
-                            label={t("profileCard.inputs.avatar")}
                             value={data?.avatar}
+                            label={t('profileCard.inputs.avatar')}
                             onChange={(e) => onChangeAvatar(e.target.value)}
+                            readonly={readonly}
                         />
-                    </div>
-                </div>
-            </div>
-        </div>
+                        {/* <CurrencySelect
+                            value={data?.currency}
+                            onChange={onChangeCurrency}
+                            readonly={readonly}
+                        />
+                        <CountrySelect
+                            value={data?.country}
+                            onChange={onChangeCountry}
+                            readonly={readonly}
+                        /> */}
+                    </VStack>
+                </HStack>
+            </VStack>
+        </Card>
     )
 }
-

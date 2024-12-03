@@ -1,13 +1,14 @@
-import { DetailedHTMLProps, HtmlHTMLAttributes, ReactNode } from 'react'
+import { CSSProperties, DetailedHTMLProps, HtmlHTMLAttributes, ReactNode } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Flex.module.scss'
 
-export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
-export type FlexDirection = 'row' | 'column';
-export type FlexGap = '4' | '8' | '16' | '32';
+export type FlexJustify = 'start' | 'center' | 'end' | 'between'
+export type FlexAlign = 'start' | 'center' | 'end' | 'baseLine'
+export type FlexDirection = 'row' | 'column'
+
+export type FlexGap = number
 
 type DivProps = DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
@@ -22,6 +23,7 @@ const alignClasses: Record<FlexAlign, string> = {
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
+    baseLine: styles.alignBaseLine,
 }
 
 const directionClasses: Record<FlexDirection, string> = {
@@ -29,29 +31,16 @@ const directionClasses: Record<FlexDirection, string> = {
     column: styles.directionColumn,
 }
 
-const gapClasses: Record<FlexGap, string> = {
-    4: styles.gap4,
-    8: styles.gap8,
-    16: styles.gap16,
-    32: styles.gap32,
-}
-
-const paddingClasses: Record<FlexGap, string> = {
-    4: styles.padding4,
-    8: styles.padding8,
-    16: styles.padding16,
-    32: styles.padding32,
-}
-
 export interface FlexProps extends DivProps {
-    className?: string;
-    children: ReactNode;
-    justify?: FlexJustify;
-    align?: FlexAlign;
-    direction: FlexDirection;
-    gap?: FlexGap;
+    className?: string
+    children: ReactNode
+    justify?: FlexJustify
+    align?: FlexAlign
+    direction: FlexDirection
+    gap?: FlexGap
     padding?: FlexGap
-    max?: boolean;
+    fullWidth?: boolean
+    fullHeight?: boolean
 }
 
 export const Flex = (props: FlexProps) => {
@@ -61,9 +50,10 @@ export const Flex = (props: FlexProps) => {
         justify = 'start',
         align = 'center',
         direction = 'row',
-        gap,
-        padding,
-        max,
+        gap = 0,
+        padding = 0,
+        fullWidth,
+        fullHeight,
     } = props
 
     const classes = [
@@ -72,16 +62,25 @@ export const Flex = (props: FlexProps) => {
         justifyClasses[justify],
         alignClasses[align],
         directionClasses[direction],
-        gap && gapClasses[gap],
-        padding && paddingClasses[padding]
     ]
 
     const mods = {
-        [styles.max]: max,
+        [styles.fullWidth]: fullWidth,
+        [styles.fullHeight]: fullHeight,
+    }
+
+    const style: CSSProperties = {}
+
+    if (gap) {
+        style.gap = gap * 4
+    }
+
+    if (padding) {
+        style.padding = padding * 4
     }
 
     return (
-        <div className={cn(classes, mods)}>
+        <div className={cn(classes, mods)} style={style}>
             {children}
         </div>
     )

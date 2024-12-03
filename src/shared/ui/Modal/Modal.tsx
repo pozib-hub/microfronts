@@ -1,7 +1,4 @@
-import React, {
-    FC, useCallback, useEffect, useRef,
-    useState,
-} from 'react'
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 
 import cn from '@shared/lib/classNames/classNames'
 import { Portal } from '../Portal/Portal'
@@ -10,19 +7,19 @@ import Dialog from 'rc-dialog'
 import { Icon } from '../Icon/Icon'
 // import 'rc-dialog/assets/index.css'
 import styles from './Modal.module.scss'
-import "./kek.scss"
+import './kek.scss'
 import CSSMotion from './CSSMotion'
 
 export type ContentRef = {
-    focus: () => void;
-    changeActive: (next: boolean) => void;
-};
+    focus: () => void
+    changeActive: (next: boolean) => void
+}
 
 const DEFAULT_ANIMATION_DELAY = 300
 
 type MousePosition = {
-    x: number,
-    y: number,
+    x: number
+    y: number
 } | null
 
 let mousePosition: MousePosition = null
@@ -41,7 +38,7 @@ document.documentElement.addEventListener('click', getClickPosition, true)
 
 function getScroll(w: Window, top?: boolean): number {
     let ret = w[`page${top ? 'Y' : 'X'}Offset`]
-    const method = `scroll${top ? 'Top' : 'Left'}` as "scrollTop" | "scrollLeft"
+    const method = `scroll${top ? 'Top' : 'Left'}` as 'scrollTop' | 'scrollLeft'
     if (typeof ret !== 'number') {
         const d = w.document
         ret = d.documentElement[method]
@@ -63,7 +60,7 @@ function offset(el: Element) {
         top: rect.top,
     }
     const doc = el.ownerDocument as CompatibleDocument
-    const w = doc.defaultView as Window || doc.parentWindow
+    const w = (doc.defaultView as Window) || doc.parentWindow
     if (w) {
         pos.left += getScroll(w)
         pos.top += getScroll(w, true)
@@ -82,20 +79,21 @@ interface IModalProps {
     width?: string | number
     height?: string | number
     variant?: 'default' | 'medium' | 'full'
-    orientation?: "center" | 'right'
+    orientation?: 'center' | 'right'
     animationDelay?: number
     isMobile?: boolean
     isOpen: boolean
     onClose?: () => void
     onChangeClose?: (open: boolean) => void
     children?: React.ReactNode
+    lazy?: boolean
 }
 
 enum KeyCode {
-    TAB = "Tab",
-    ESCAPE = "Escape",
-    ENTER = "Enter",
-    SPACE = " ",
+    TAB = 'Tab',
+    ESCAPE = 'Escape',
+    ENTER = 'Enter',
+    SPACE = ' ',
 }
 
 export const Modal: FC<IModalProps> = (props) => {
@@ -107,7 +105,7 @@ export const Modal: FC<IModalProps> = (props) => {
         isOpen,
         onClose,
         onChangeClose,
-        orientation = "center",
+        orientation = 'center',
         width,
         height,
     } = props
@@ -125,12 +123,11 @@ export const Modal: FC<IModalProps> = (props) => {
 
         const elementOffset = offset(dialogRef.current)
 
-
         // setTransformOrigin(mousePosition ? `${mousePosition.x}px ${mousePosition.y}px` : "")
         setTransformOrigin(
             mousePosition
-                // eslint-disable-next-line max-len
-                ? `${mousePosition.x - elementOffset.left}px ${mousePosition.y - elementOffset.top}px`
+                ? // eslint-disable-next-line max-len
+                  `${mousePosition.x - elementOffset.left}px ${mousePosition.y - elementOffset.top}px`
                 : '',
         )
     }
@@ -145,11 +142,14 @@ export const Modal: FC<IModalProps> = (props) => {
         }
     }, [animationDelay, onClose])
 
-    const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === KeyCode.ESCAPE) {
-            handlerClose()
-        }
-    }, [handlerClose])
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === KeyCode.ESCAPE) {
+                handlerClose()
+            }
+        },
+        [handlerClose],
+    )
 
     useEffect(() => {
         window.addEventListener('keydown', onKeyDown)
@@ -173,7 +173,7 @@ export const Modal: FC<IModalProps> = (props) => {
     const sentinelEndRef = useRef<HTMLDivElement>(null)
 
     const contentStyle: React.CSSProperties = {
-        width: 500
+        width: 500,
     }
 
     if (width !== undefined) {
@@ -188,7 +188,7 @@ export const Modal: FC<IModalProps> = (props) => {
     }
 
     function onWrapperKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
-        if (e.key === "Escape") {
+        if (e.key === 'Escape') {
             e.stopPropagation()
             onInternalClose(e)
             return
@@ -216,21 +216,23 @@ export const Modal: FC<IModalProps> = (props) => {
         classNamesProps.wrapper,
     ]
 
-    const Mask = () => <>
-        <CSSMotion
-            visible={isOpen}
-            motionName={"rc-dialog-fade"}
-            leavedClassName={`rc-dialog-mask-hidden`}
-        >
-            {({ className: motionClassName, style: motionStyle }, ref) => (
-                <div
-                    ref={ref}
-                    style={{ ...motionStyle }}
-                    className={cn(`rc-dialog-mask`, motionClassName)}
-                />
-            )}
-        </CSSMotion>
-    </>
+    const Mask = () => (
+        <>
+            <CSSMotion
+                visible={isOpen}
+                motionName={'rc-dialog-fade'}
+                leavedClassName={`rc-dialog-mask-hidden`}
+            >
+                {({ className: motionClassName, style: motionStyle }, ref) => (
+                    <div
+                        ref={ref}
+                        style={{ ...motionStyle }}
+                        className={cn(`rc-dialog-mask`, motionClassName)}
+                    />
+                )}
+            </CSSMotion>
+        </>
+    )
 
     if (!isOpen) {
         return null
@@ -239,90 +241,89 @@ export const Modal: FC<IModalProps> = (props) => {
     const entityStyle = { outline: 'none' }
     const sentinelStyle = { width: 0, height: 0, overflow: 'hidden', outline: 'none' }
 
-    return <Portal>
-        <div
-            className={cn(classes)}
-        >
-            <div
-                role="presentation"
-                className={cn(styles.overlay, classNamesProps.overlay)}
-                onClick={handlerClose}
-            >
+    return (
+        <Portal>
+            <div className={cn(classes)}>
                 <div
                     role="presentation"
-                    className={cn(styles.body, classNamesProps.body)}
-                    onClick={(e) => e.stopPropagation()}
+                    className={cn(styles.overlay, classNamesProps.overlay)}
+                    onClick={handlerClose}
                 >
-                    {children}
+                    <div
+                        role="presentation"
+                        className={cn(styles.body, classNamesProps.body)}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
-    </Portal>
+        </Portal>
+    )
 
-    return <Portal>
-        <div
-            className={cn(`rc-dialog-root`)}
-        >
-            <Mask />
-            <div
-                tabIndex={-1}
-                // onKeyDown={onWrapperKeyDown}
-                // className={classNames(`${prefixCls}-wrap`, wrapClassName, modalClassNames?.wrapper)}
-                className={cn(`rc-dialog-wrap`)}
-                // ref={wrapperRef}
-                // onClick={onWrapperClick}
-                // style={mergedStyle}
-                onClick={onClose}
-            >
-                <CSSMotion
-                    visible={isOpen}
-                    onVisibleChanged={onChangeClose}
-                    onAppearPrepare={onPrepare}
-                    onEnterPrepare={onPrepare}
-                    motionName={"rc-dialog-zoom"}
-                    forceRender={false}
-                    removeOnLeave={false}
-                    ref={dialogRef}
+    return (
+        <Portal>
+            <div className={cn(`rc-dialog-root`)}>
+                <Mask />
+                <div
+                    tabIndex={-1}
+                    // onKeyDown={onWrapperKeyDown}
+                    // className={classNames(`${prefixCls}-wrap`, wrapClassName, modalClassNames?.wrapper)}
+                    className={cn(`rc-dialog-wrap`)}
+                    // ref={wrapperRef}
+                    // onClick={onWrapperClick}
+                    // style={mergedStyle}
+                    onClick={onClose}
                 >
-                    {({ className: motionClassName, style: motionStyle }, motionRef) => (
-                        <div
-                            key="dialog-element"
-                            role="dialog"
-                            aria-modal="true"
-                            ref={motionRef}
-                            style={{ ...motionStyle, ...contentStyle }}
-                            className={cn("ant-modal", motionClassName)}
-                        // onMouseDown={onMouseDown}
-                        // onMouseUp={onMouseUp}
-                        >
-                            <div ref={sentinelStartRef} tabIndex={0} style={entityStyle}>
-                                {/* <MemoChildren shouldUpdate={visible || forceRender}>
+                    <CSSMotion
+                        visible={isOpen}
+                        onVisibleChanged={onChangeClose}
+                        onAppearPrepare={onPrepare}
+                        onEnterPrepare={onPrepare}
+                        motionName={'rc-dialog-zoom'}
+                        forceRender={false}
+                        removeOnLeave={false}
+                        ref={dialogRef}
+                    >
+                        {({ className: motionClassName, style: motionStyle }, motionRef) => (
+                            <div
+                                key="dialog-element"
+                                role="dialog"
+                                aria-modal="true"
+                                ref={motionRef}
+                                style={{ ...motionStyle, ...contentStyle }}
+                                className={cn('ant-modal', motionClassName)}
+                                // onMouseDown={onMouseDown}
+                                // onMouseUp={onMouseUp}
+                            >
+                                <div ref={sentinelStartRef} tabIndex={0} style={entityStyle}>
+                                    {/* <MemoChildren shouldUpdate={visible || forceRender}>
                                     {modalRender ? modalRender(content) : content}
                                 </MemoChildren> */}
-                                <div
-                                    className={cn(`rc-dialog-content`)}
-                                // style={modalStyles?.content}
-                                >
-                                    {/* {closerNode} */}
-                                    {/* {headerNode} */}
                                     <div
-                                        className={cn(`rc-dialog-body`)}
-                                    // style={{ ...bodyStyle, ...modalStyles?.body }}
-                                    // {...bodyProps}
+                                        className={cn(`rc-dialog-content`)}
+                                        // style={modalStyles?.content}
                                     >
-                                        {children}
+                                        {/* {closerNode} */}
+                                        {/* {headerNode} */}
+                                        <div
+                                            className={cn(`rc-dialog-body`)}
+                                            // style={{ ...bodyStyle, ...modalStyles?.body }}
+                                            // {...bodyProps}
+                                        >
+                                            {children}
+                                        </div>
+                                        {/* {footerNode} */}
                                     </div>
-                                    {/* {footerNode} */}
                                 </div>
+                                <div tabIndex={0} ref={sentinelEndRef} style={sentinelStyle} />
                             </div>
-                            <div tabIndex={0} ref={sentinelEndRef} style={sentinelStyle} />
-                        </div>
-
-                    )}
-                </CSSMotion>
+                        )}
+                    </CSSMotion>
+                </div>
             </div>
-        </div >
-    </Portal >
+        </Portal>
+    )
 
     // return (
     //     <Portal>

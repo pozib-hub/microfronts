@@ -8,22 +8,22 @@ import { Button } from '../Button/Button'
 import styles from './ListBox.module.scss'
 
 export interface ListBoxItem {
-    value: string;
-    content: ReactNode;
-    disabled?: boolean;
+    value: string
+    content: ReactNode
+    disabled?: boolean
 }
 
-type DropdownDirection = 'top' | 'bottom';
+type DropdownDirection = 'top' | 'bottom'
 
 interface ListBoxProps {
-    items?: ListBoxItem[];
-    className?: string;
-    value?: string;
-    defaultValue?: string;
-    onChange: (value: string) => void;
-    readonly?: boolean;
-    direction?: DropdownDirection;
-    label?: string;
+    items?: ListBoxItem[]
+    className?: string
+    value?: string
+    defaultValue?: string
+    onChange: (value: string) => void
+    readonly?: boolean
+    direction?: DropdownDirection
+    label?: string
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
@@ -47,7 +47,7 @@ export function ListBox(props: ListBoxProps) {
     const optionsClasses = [mapDirectionClass[direction]]
 
     return (
-        <HStack gap="4">
+        <HStack gap={1}>
             {label && <span>{`${label}>`}</span>}
             <HListBox
                 disabled={readonly}
@@ -56,10 +56,8 @@ export function ListBox(props: ListBoxProps) {
                 value={value}
                 onChange={onChange}
             >
-                <HListBox.Button disabled={readonly} className={styles.trigger}>
-                    <Button disabled={readonly}>
-                        {value ?? defaultValue}
-                    </Button>
+                <HListBox.Button className={styles.trigger} disabled={readonly} as={Button}>
+                    {value ?? defaultValue}
                 </HListBox.Button>
                 <HListBox.Options className={cn(styles.options, optionsClasses)}>
                     {items?.map((item) => (
@@ -71,13 +69,10 @@ export function ListBox(props: ListBoxProps) {
                         >
                             {({ active, selected }) => (
                                 <li
-                                    className={cn(
-                                        styles.item,
-                                        {
-                                            [styles.active]: active,
-                                            [styles.disabled]: item.disabled,
-                                        },
-                                    )}
+                                    className={cn(styles.item, {
+                                        [styles.active]: active,
+                                        [styles.disabled]: item.disabled,
+                                    })}
                                 >
                                     {selected && '!!!'}
                                     {item.content}

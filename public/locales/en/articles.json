@@ -7,5 +7,33 @@
     "rating": {
         "rateArticle": "Rate this article",
         "pleaseLeaveReview": "Leave your feedback on the article, this will help improve the quality"
+    },
+    "details": {
+        "error": "There was an error loading the article.",
+        "readMore": "Read more...",
+        "createdAt": "Created at",
+        "views": "{{count}} views",
+        "views_plural": "{{count}} views"
+    },
+    "filtersTitle": "Order by:",
+    "filtersTopicsTitle": "Topics of articles:",
+    "filters": {
+        "fields": {
+            "title": "title",
+            "createdAt": "date create",
+            "views": "views"
+        },
+        "thematics": {
+            "science": "Sience",
+            "it": "IT",
+            "backend": "Backend",
+            "frontend": "Frontend",
+            "development": "Development",
+            "tech": "Tech"
+        }
+    },
+    "order": {
+        "asc": "ascending",
+        "desc": "descending"
     }
 }
