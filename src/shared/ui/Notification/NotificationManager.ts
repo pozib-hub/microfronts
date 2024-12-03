@@ -1,6 +1,5 @@
 import { EventEmitter } from 'events'
 
-import createNotificationsWrapper from './createNotificationsWrapper'
 import { INotification } from './Notification'
 
 const createUUID = () => {
@@ -38,10 +37,6 @@ class NotificationManager extends EventEmitter {
         } else {
             this.listNotify.push(Object.assign(defaultNotify, notify))
         }
-
-        // if (!document.getElementById('notifications')) {
-        //     await createNotificationsWrapper()
-        // }
 
         this.emitChange()
     }
