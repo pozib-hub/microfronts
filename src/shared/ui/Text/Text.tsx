@@ -4,7 +4,7 @@ import cn from '@shared/lib/classNames/classNames'
 
 import styles from './Text.module.scss'
 
-export type TextVariant = 'primary' | 'error' | 'accent'
+export type TextVariant = 'primary' | 'error' | 'accent' | 'hint'
 export type TextAlign = 'right' | 'left' | 'center'
 export type TextSize = 's' | 'm' | 'l'
 

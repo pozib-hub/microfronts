@@ -26,6 +26,16 @@
     }
 }
 
+.hint {
+    .title {
+        color: var(--hint-color);
+    }
+
+    .text {
+        color: var(--hint-color);
+    }
+}
+
 
 .left {
     text-align: left;
