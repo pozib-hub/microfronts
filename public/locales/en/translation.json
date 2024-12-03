@@ -31,7 +31,8 @@
             "about": "About",
             "profile": "Profile",
             "articles": "Articles",
-            "articleCreate": "Create article"
+            "articleCreate": "Create article",
+            "subdivisions": "Subdivisions"
         }
     },
     "navbar": {

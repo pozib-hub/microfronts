@@ -1,5 +1,8 @@
 import { UserRole } from '@entities/user'
 
+import { AppRoutesProps } from '@shared/types/router'
+import { routePath } from '@shared/const/router'
+
 import { AboutPage } from '@pages/AboutPage'
 import { MainPage } from '@pages/MainPage'
 import { NotFoundPage } from '@pages/NotFoundPage'
@@ -10,8 +13,9 @@ import { CharacteristicsUVHDPage } from '@pages/CharacteristicsUVHD'
 import { ArticleEditPage } from '@pages/ArticleEditPage'
 import { AdminPanelPage } from '@pages/AdminPanelPage'
 import { ForbiddenPage } from '@pages/ForbiddenPage'
-import { routePath } from '@shared/const/router'
-import { AppRoutesProps } from '@shared/types/router'
+import { SubdivisionsListPage } from '@pages/SubdivisionsListPage'
+import { SubdivisionCreatePage } from '@pages/SubdivisionCreatePage'
+import { SubdivisionEditPage } from '@pages/SubdivisionEditPage'
 
 export const routeConfig: AppRoutesProps[] = [
     {
@@ -37,6 +41,7 @@ export const routeConfig: AppRoutesProps[] = [
         element: <ArticlesPage />,
     },
     {
+        // TODO
         path: routePath.articles + '/:id',
         element: <ArticleDetailsPage />,
     },
@@ -56,6 +61,24 @@ export const routeConfig: AppRoutesProps[] = [
     {
         path: routePath.adminPanel,
         element: <AdminPanelPage />,
+        authOnly: true,
+        roles: [UserRole.ADMIN],
+    },
+    {
+        path: routePath.subdivisionsList,
+        element: <SubdivisionsListPage />,
+        authOnly: true,
+        roles: [UserRole.ADMIN],
+    },
+    {
+        path: routePath.subdivisionCreate,
+        element: <SubdivisionCreatePage />,
+        authOnly: true,
+        roles: [UserRole.ADMIN],
+    },
+    {
+        path: routePath.subdivisionEdit(':id'),
+        element: <SubdivisionEditPage />,
         authOnly: true,
         roles: [UserRole.ADMIN],
     },

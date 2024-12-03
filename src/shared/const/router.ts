@@ -9,6 +9,10 @@ export const routePath = {
     articleCreate: '/articles/create',
     adminPanel: '/admin/panel',
 
+    subdivisionsList: '/subdivisions',
+    subdivisionEdit: (id: string) => `/subdivisions/${id}/edit`,
+    subdivisionCreate: `/subdivisions/create`,
+
     CharacteristicsUVHD: '/CharacteristicsUVHD',
     test: '/test',
 }

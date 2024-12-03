@@ -44,5 +44,18 @@
                 }
             }
         }
+    },
+    "pageListSubdivisions": {
+        "header": "Directory subdivisions"
+    },
+    "pageEditSubdivision": {
+        "header": "Edit {{name}}",
+        "errors": {
+            "fetch": "The subdivision was not found"
+        }
+    },
+    "pageCreateSubdivision": {
+        "header": "Create new subdivision",
+        "errors": {}
     }
 }

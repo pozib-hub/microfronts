@@ -1,0 +1,42 @@
+{
+    "list": {
+        "empty": "There are no divisions yet",
+        "title": "Subdivisions",
+        "addresses": {
+            "title": "Addresses",
+            "default": "default"
+        },
+        "errors": {
+            "fetch": "An error occurred while loading",
+            "delete": "An error occurred while deleting"
+        },
+        "confirmDelete": "Are you sure you want to delete \"{{name}}\"?"
+    },
+    "edit": {
+        "errors": {
+            "update": "Failed to change subdivision"
+        }
+    },
+    "create": {
+        "errors": {}
+    },
+    "form": {
+        "mainTitle": "General information",
+        "addressTitle": "Addresses",
+        "countAddress": "Address {{count}}",
+        "inputs": {
+            "name": "Name",
+            "defaultAddress": "Default address",
+            "address": {
+                "name": "Name address",
+                "startWork": "Start work",
+                "finishWork": "Finish work",
+                "startBreak": "Start break",
+                "finishBreak": "Finish break"
+            }
+        },
+        "btns": {
+            "add": "+ Add a new address"
+        }
+    }
+}
