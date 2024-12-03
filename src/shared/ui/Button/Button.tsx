@@ -8,7 +8,7 @@ export type ButtonColor = 'normal' | 'success' | 'error'
 
 export type ButtonSize = 's' | 'm' | 'l' | 'xl'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     /**
      * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
@@ -42,7 +42,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean
 }
 
-export const Button = forwardRef((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
+export const Button = forwardRef((props: IButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
         className,
         children,

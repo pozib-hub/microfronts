@@ -57,6 +57,10 @@
     border: none;
     background: none;
     outline: none;
+
+    &.success {
+        color: var(--save-color);
+    }
 }
 
 .filled {
@@ -65,6 +69,16 @@
     outline: none;
     border-radius: 34px;
     border: 2px solid transparent;
+
+
+    &.success {
+        background-color: var(--save-color);
+        color: white;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
 }
 
 .outline {
