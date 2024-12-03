@@ -47,6 +47,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(function AddCommentForm(pr
             <div data-testid="AddCommentForm" className={cn(styles.wrapper, className)}>
                 <Input
                     className={styles.input}
+                    width={'100%'}
                     placeholder={t('addForm.enterCommentText', { ns: 'comments' })}
                     value={text}
                     onChange={(e) => onCommentTextChange(e.target.value)}
