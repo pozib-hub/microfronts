@@ -31,7 +31,8 @@
             "about": "О нас",
             "profile": "Профиль",
             "articles": "Статьи",
-            "articleCreate": "Создать статью"
+            "articleCreate": "Создать статью",
+            "subdivisions": "Подразделения"
         }
     },
     "navbar": {

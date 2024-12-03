@@ -39,6 +39,12 @@ export const useSidebarItems = () => {
                 authOnly: true,
                 size: 38,
             },
+            {
+                path: routePath.subdivisionsList,
+                text: 'subdivisions',
+                iconId: 'MapLocation',
+                authOnly: true,
+            },
         )
     }
 

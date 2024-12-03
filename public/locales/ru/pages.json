@@ -44,5 +44,18 @@
                 }
             }
         }
+    },
+    "pageListSubdivisions": {
+        "header": "Справочник подразделений"
+    },
+    "pageEditSubdivision": {
+        "header": "Редактирование {{name}}",
+        "errors": {
+            "fetch": "Подразделение не найдено"
+        }
+    },
+    "pageCreateSubdivision": {
+        "header": "Создание нового подразделения",
+        "errors": {}
     }
 }
