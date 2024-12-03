@@ -19,5 +19,30 @@
     },
     "pageProfile": {
         "header": "Профиль"
+    },
+    "pageHome": {
+        "header": "Главная",
+        "navigations": {
+            "items": {
+                "about": {
+                    "title": "О нас",
+                    "caption": "Для информации о нас"
+                },
+                "profile": {
+                    "title": "Профиль",
+                    "caption": "Для перехода в свой профиль"
+                },
+                "catalog": {
+                    "title": "Каталог",
+                    "caption": "Для совершений покупок",
+                    "subitems": {
+                        "main": "Главная каталога",
+                        "kit": "Форменная одежда",
+                        "clothes": "Одежда",
+                        "office": "Канцелярия"
+                    }
+                }
+            }
+        }
     }
 }

@@ -5,8 +5,8 @@ export function buildCssLoaders(isDev: boolean) {
     return [
         {
             test: /\.css$/i,
-            exclude: /node_modules/,
-            use: ["style-loader", "css-loader"],
+            // exclude: /node_modules/,
+            use: ['style-loader', 'css-loader'],
         },
         {
             test: /\.s[ac]ss$/i,
@@ -30,9 +30,9 @@ export function buildCssLoaders(isDev: boolean) {
             exclude: /node_modules/,
             use: [
                 // compiles Less to CSS
-                "style-loader",
-                "css-loader",
-                "less-loader",
+                'style-loader',
+                'css-loader',
+                'less-loader',
             ],
         },
     ]

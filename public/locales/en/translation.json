@@ -47,5 +47,10 @@
     "ratingCard": {
         "yourReview": "Your review",
         "thanksRating": "Thanks for your rating! Спасибо за оценку!"
+    },
+    "navigateTileCards": {
+        "backContent": {
+            "caption": "Select a subsection"
+        }
     }
 }
