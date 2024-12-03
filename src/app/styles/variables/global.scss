@@ -21,9 +21,10 @@
 
   // Z - Индексы
   --z-index-modal: 10;
+  --overlay-z-index: 2000;
 
   // Цвета
-  --color-overlay: rgba(0 0 0 / 60%);
+  --overlay-color: rgba(0 0 0 / 60%);
   --red-light-color: #f00;
   --red-dark-color: #ce0505;
   --color-danger-color: rgb(225, 87, 86);
