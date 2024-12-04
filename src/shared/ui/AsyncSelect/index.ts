@@ -1,2 +1,2 @@
 export { AsyncSelect } from './AsyncSelect'
-export type { AsyncSelectProps } from './AsyncSelect'
+export type { AsyncSelectProps, Variants, TAdditional } from './types'

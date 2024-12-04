@@ -1,4 +1,4 @@
-import { IProfile } from "@entities/profile"
+import { IProfile } from '@entities/profile'
 import { ValidateProfileError } from '../../../model/const/const'
 
 export const validateProfileData = (profile?: IProfile) => {
@@ -6,12 +6,7 @@ export const validateProfileData = (profile?: IProfile) => {
         return [ValidateProfileError.NO_DATA]
     }
 
-    const {
-        firstname,
-        lastname,
-        age,
-        address,
-    } = profile
+    const { firstname, lastname, age, address } = profile
 
     const errors: ValidateProfileError[] = []
 
@@ -21,10 +16,6 @@ export const validateProfileData = (profile?: IProfile) => {
 
     if (!age || !Number.isInteger(age)) {
         errors.push(ValidateProfileError.INCORRECT_AGE)
-    }
-
-    if (!address?.city) {
-        errors.push(ValidateProfileError.INCORRECT_CITY)
     }
 
     return errors

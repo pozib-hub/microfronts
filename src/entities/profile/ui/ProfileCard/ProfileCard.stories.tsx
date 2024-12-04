@@ -10,41 +10,27 @@ const meta: Meta<typeof ProfileCard> = {
 export default meta
 
 const Template: StoryFn<IProfileCardProps> = (args) => {
-    const [data, setData] = useState<IProfileCardProps['data']>({
-        ...args.data,
-    })
-
-    const handleChange = (field: string, value: any) => {
-        setData((prevData) => ({
-            ...prevData,
-            [field]: value,
-        }))
-    }
-
-    return (
-        <ProfileCard
-            {...args}
-            data={data}
-            onChangeFirstname={(value) => handleChange('firstname', value)}
-            onChangeLastname={(value) => handleChange('lastname', value)}
-            onChangeCity={(value) => handleChange('address', { city: value })}
-            onChangeAge={(value) => handleChange('age', value)}
-            onChangeUsername={(value) => handleChange('username', value)}
-            onChangeAvatar={(value) => handleChange('avatar', value)}
-        />
-    )
+    return <ProfileCard {...args} />
 }
 
 // Основное состояние с данными
 export const Primary = Template.bind({})
 Primary.args = {
     data: {
+        id: '1',
         username: 'John Doe',
         firstname: 'John',
-        lastname: "Doe",
+        lastname: 'Doe',
         avatar: AvatarImg,
-        address: { city: "New York" },
         age: 30,
+        address: {
+            id: '1',
+            name: 'Московская д 8',
+        },
+        subdivision: {
+            id: '1',
+            name: 'Курская',
+        },
     },
     readonly: false,
 }
@@ -65,11 +51,19 @@ Error.args = {
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
     data: {
+        id: '1',
         username: 'Jane Doe',
         firstname: 'Jane',
         lastname: 'Doe',
         avatar: AvatarImg,
-        address: { city: 'Los Angeles' },
+        address: {
+            id: '1',
+            name: 'Московская д 8',
+        },
+        subdivision: {
+            id: '1',
+            name: 'Курская',
+        },
         age: 28,
     },
     readonly: true,

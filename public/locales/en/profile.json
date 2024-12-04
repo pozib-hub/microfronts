@@ -5,11 +5,17 @@
             "lastname": "Lastname",
             "age": "Age",
             "city": "City",
-            "address": "Address",
             "username": "Username",
-            "avatar": "Link to avatar"
+            "avatar": "Link to avatar",
+            "address": {
+                "name": "Subdivision address"
+            },
+            "subdivision": {
+                "name": "Subdivision"
+            }
         },
         "errors": {
+            "solution": "Try refreshing the page",
             "loadProfile": "There was an error loading profile",
             "formEdit": {
                 "server": "Server error when saving",
@@ -18,7 +24,6 @@
                 "userData": "First and last name are required",
                 "age": "Incorrect age"
             }
-        },
-        "solutionError": "Try refreshing the page"
+        }
     }
 }

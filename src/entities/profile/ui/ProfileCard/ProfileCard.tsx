@@ -1,17 +1,17 @@
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Controller, useFormContext } from 'react-hook-form'
 
-import cn from '@shared/lib/classNames/classNames'
 import { Text } from '@shared/ui/Text'
 import { Input } from '@shared/ui/Input'
 import { Avatar } from '@shared/ui/Avatar'
 import { HStack, VStack } from '@shared/ui/Stack'
 import { Card } from '@shared/ui/Card'
 import { Skeleton } from '@shared/ui/Skeleton'
+import { SubdivisionSelect } from '@features/SubdivisionSelect'
+import { AddressSubdivisionSelect } from '@features/AddressSubdivisionSelect'
 
 import { IProfile } from '../../model/types/profile'
-
-import styles from './ProfileCard.module.scss'
 
 export interface IProfileCardProps {
     className?: string
@@ -19,31 +19,14 @@ export interface IProfileCardProps {
     isLoading?: boolean
     error?: string
     readonly?: boolean
-    onChangeLastname: (value: string) => void
-    onChangeFirstname: (value: string) => void
-    onChangeCity: (value: string) => void
-    onChangeAge: (value?: number) => void
-    onChangeUsername: (value: string) => void
-    onChangeAvatar: (value: string) => void
+    onSubmit: (form: IProfile) => void
 }
 export const ProfileCard: FC<IProfileCardProps> = (props) => {
-    const {
-        className,
-        data,
-        isLoading,
-        error,
-        readonly,
-        onChangeFirstname,
-        onChangeLastname,
-        onChangeAge,
-        onChangeCity,
-        onChangeAvatar,
-        onChangeUsername,
-        // onChangeCountry,
-        // onChangeCurrency,
-    } = props
+    const { className, data, isLoading, error, readonly = true } = props
 
     const { t } = useTranslation('profile')
+
+    const { control, watch, setValue } = useFormContext<IProfile>()
 
     if (isLoading) {
         return (
@@ -76,7 +59,7 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
         return (
             <HStack justify="center" fullWidth>
                 <Text variant="error" title={t('profileCard.errors.loadProfile')} align="center">
-                    {t('profileCard.errors.solutionError')}
+                    {t('profileCard.errors.solution')}
                 </Text>
             </HStack>
         )
@@ -90,60 +73,164 @@ export const ProfileCard: FC<IProfileCardProps> = (props) => {
                         <Avatar size={128} src={data?.avatar} />
                     </HStack>
                 )}
-                <HStack gap={4} fullWidth>
-                    <VStack gap={4} fullWidth>
-                        <Input
-                            value={data?.firstname}
-                            label={t('profileCard.inputs.firstname')}
-                            onChange={(e) => onChangeFirstname(e.target.value)}
-                            readonly={readonly}
-                            data-testid="ProfileCard.firstname"
+                <VStack gap={6} fullWidth>
+                    <HStack gap={8} fullWidth justify="between">
+                        <Controller
+                            name="firstname"
+                            control={control}
+                            rules={{
+                                required: true,
+                            }}
+                            render={({ field, fieldState }) => (
+                                <Input
+                                    {...field}
+                                    data-testid="ProfileCard.firstname"
+                                    required
+                                    readonly={readonly}
+                                    isError={Boolean(fieldState.error)}
+                                    errorMessage={Boolean(fieldState.error)}
+                                    width={'100%'}
+                                    label={t('profileCard.inputs.firstname')}
+                                    variant="outline"
+                                />
+                            )}
                         />
-                        <Input
-                            value={data?.lastname}
-                            label={t('profileCard.inputs.lastname')}
-                            onChange={(e) => onChangeLastname(e.target.value)}
-                            readonly={readonly}
-                            data-testid="ProfileCard.lastname"
+                        <Controller
+                            name="lastname"
+                            control={control}
+                            rules={{
+                                required: true,
+                            }}
+                            render={({ field, fieldState }) => (
+                                <Input
+                                    {...field}
+                                    data-testid="ProfileCard.lastname"
+                                    required
+                                    readonly={readonly}
+                                    isError={Boolean(fieldState.error)}
+                                    errorMessage={Boolean(fieldState.error)}
+                                    width={'100%'}
+                                    label={t('profileCard.inputs.lastname')}
+                                    variant="outline"
+                                />
+                            )}
                         />
-                        {/* <Input
-                            value={data?.age}
-                            label={{t("profileCard.inputs.firstname") t('Возраст')}
-                            onChange={onChangeAge}
-                            readonly={readonly}
+                    </HStack>
+                    <HStack gap={8} fullWidth justify="between">
+                        <Controller
+                            name="username"
+                            control={control}
+                            rules={{
+                                required: true,
+                            }}
+                            render={({ field, fieldState }) => (
+                                <Input
+                                    {...field}
+                                    data-testid="ProfileCard.username"
+                                    required
+                                    readonly={readonly}
+                                    isError={Boolean(fieldState.error)}
+                                    errorMessage={Boolean(fieldState.error)}
+                                    width={'100%'}
+                                    label={t('profileCard.inputs.username')}
+                                    variant="outline"
+                                />
+                            )}
                         />
-                        <Input
-                            value={data?.city}
-                            label={{t("profileCard.inputs.firstname") t('Город')}
-                            onChange={onChangeCity}
-                            readonly={readonly}
-                        /> */}
-                    </VStack>
-                    <VStack gap={4} fullWidth>
-                        <Input
-                            value={data?.username}
-                            label={t('profileCard.inputs.username')}
-                            onChange={(e) => onChangeUsername(e.target.value)}
-                            readonly={readonly}
+                        <Controller
+                            name="avatar"
+                            control={control}
+                            render={({ field }) => (
+                                <Input
+                                    {...field}
+                                    data-testid="ProfileCard.avatar"
+                                    readonly={readonly}
+                                    width={'100%'}
+                                    label={t('profileCard.inputs.avatar')}
+                                    variant="outline"
+                                />
+                            )}
                         />
-                        <Input
-                            value={data?.avatar}
-                            label={t('profileCard.inputs.avatar')}
-                            onChange={(e) => onChangeAvatar(e.target.value)}
-                            readonly={readonly}
-                        />
-                        {/* <CurrencySelect
-                            value={data?.currency}
-                            onChange={onChangeCurrency}
-                            readonly={readonly}
-                        />
-                        <CountrySelect
-                            value={data?.country}
-                            onChange={onChangeCountry}
-                            readonly={readonly}
-                        /> */}
-                    </VStack>
-                </HStack>
+                    </HStack>
+                    {readonly ? (
+                        <HStack gap={8} fullWidth justify="between">
+                            <Input
+                                data-testid="ProfileCard.subdivision.name"
+                                readonly={readonly}
+                                width={'100%'}
+                                label={t('profileCard.inputs.subdivision.name')}
+                                value={data?.subdivision?.name}
+                                variant="outline"
+                            />
+                            <Input
+                                data-testid="ProfileCard.address.name"
+                                readonly={readonly}
+                                width={'100%'}
+                                label={t('profileCard.inputs.address.name')}
+                                value={data?.address?.name}
+                                variant="outline"
+                            />
+                        </HStack>
+                    ) : (
+                        <HStack gap={8} fullWidth>
+                            <Controller
+                                name="subdivision"
+                                control={control}
+                                rules={{
+                                    required: true,
+                                }}
+                                render={({ field, fieldState }) => {
+                                    return (
+                                        <SubdivisionSelect
+                                            data-testid="ProfileCard.subdivision"
+                                            width="100%"
+                                            label={t('profileCard.inputs.subdivision.name')}
+                                            isError={Boolean(fieldState.error)}
+                                            errorMessage={Boolean(fieldState.error)}
+                                            value={field.value}
+                                            onChange={(option) => {
+                                                console.log(option)
+
+                                                field.onChange({
+                                                    id: option?.id,
+                                                    name: option?.name,
+                                                })
+                                                setValue('address', null)
+                                            }}
+                                        />
+                                    )
+                                }}
+                            />
+                            <Controller
+                                name="address"
+                                control={control}
+                                rules={{
+                                    required: true,
+                                }}
+                                render={({ field, fieldState }) => {
+                                    return (
+                                        <AddressSubdivisionSelect
+                                            key={`subdivisionId:${watch('subdivision')?.id}`}
+                                            data-testid="ProfileCard.address"
+                                            width="100%"
+                                            label={t('profileCard.inputs.address.name')}
+                                            subdivisionId={watch('subdivision.id')}
+                                            isError={Boolean(fieldState.error)}
+                                            errorMessage={Boolean(fieldState.error)}
+                                            value={field.value}
+                                            onChange={(option) => {
+                                                field.onChange({
+                                                    id: option?.id,
+                                                    name: option?.name,
+                                                })
+                                            }}
+                                        />
+                                    )
+                                }}
+                            />
+                        </HStack>
+                    )}
+                </VStack>
             </VStack>
         </Card>
     )

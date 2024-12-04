@@ -21,33 +21,32 @@ const prepareProfileData = (profile?: IProfile) => {
 
 export const updateProfileData = createAsyncThunk<
     IProfile,
-    string,
+    undefined,
     ThunkConfig<ValidateProfileError[]>
->(
-    'profile/updateProfileData',
-    async (id, thunkApi) => {
-        const { extra, rejectWithValue, getState } = thunkApi
+>('profile/updateProfileData', async (_, thunkApi) => {
+    const { extra, rejectWithValue, getState } = thunkApi
 
-        let formData = getProfileFormSelector(getState())
+    let formData = getProfileFormSelector(getState())
 
-        formData = prepareProfileData(formData)
-        const errors = validateProfileData(formData)
+    formData = prepareProfileData(formData)
+    const errors = validateProfileData(formData)
 
-        if (errors.length) {
-            return rejectWithValue(errors)
+    if (errors.length || !formData) {
+        return rejectWithValue(errors)
+    }
+
+    const { id } = formData
+
+    try {
+        const response = await extra.api.put<IProfile>('/profile/' + id, { form: formData })
+
+        if (!response.data) {
+            throw new Error('error')
         }
 
-        try {
-            const response = await extra.api.put<IProfile>('/profile/' + id, { form: formData })
-
-            if (!response.data) {
-                throw new Error('error')
-            }
-
-            return response.data
-        } catch (e) {
-            console.log(e)
-            return rejectWithValue([ValidateProfileError.SERVER_ERROR])
-        }
-    },
-)
+        return response.data
+    } catch (e) {
+        console.log(e)
+        return rejectWithValue([ValidateProfileError.SERVER_ERROR])
+    }
+})
