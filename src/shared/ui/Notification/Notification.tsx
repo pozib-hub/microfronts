@@ -23,7 +23,7 @@ const icon = {
 export interface INotification {
     id?: string
     variant: 'success' | 'info' | 'warning' | 'error'
-    text: string | string[]
+    text?: string | string[]
     title?: string
     priority?: boolean
     timeOut?: number
@@ -36,16 +36,7 @@ interface INotificationProps extends INotification {
 }
 
 const Notification: FC<INotificationProps> = (props) => {
-    const {
-        id,
-        variant,
-        text, title,
-        priority,
-        timeOut,
-        onRequestHide,
-        onClick,
-        callback,
-    } = props
+    const { id, variant, text, title, priority, timeOut, onRequestHide, onClick, callback } = props
 
     const timer = useRef<ReturnType<typeof setInterval> | null>(null)
     const { t } = useTranslation()
@@ -79,7 +70,11 @@ const Notification: FC<INotificationProps> = (props) => {
                 <div>
                     <div className={styles.title}>{title || t(titles[variant])}</div>
                     {Array.isArray(text) ? (
-                        text.map((t) => <div key={t} className={styles.text}>{t}</div>)
+                        text.map((t) => (
+                            <div key={t} className={styles.text}>
+                                {t}
+                            </div>
+                        ))
                     ) : (
                         <div className={styles.text}>{text}</div>
                     )}
