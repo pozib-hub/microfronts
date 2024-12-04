@@ -12,7 +12,6 @@ import { Card } from '@shared/ui/Card'
 import { HStack } from '@shared/ui/Stack'
 
 import { editProfileActions } from '../../model/slice/profileSlice'
-import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 
 import styles from './EditableProfilePageHeader.module.scss'
 
@@ -25,7 +24,6 @@ export const EditableProfilePageHeader = (props: EditableProfilePageHeaderProps)
 
     const { t } = useTranslation(['translation', 'pages'])
 
-    // const readonly = useSelector(getProfileReadonly)
     const { readonly, data, isLoading } = useAppSelector((state) => state.editProfile) || {}
     const { id: currentUserId } = useAppSelector((state) => state.user.authData) || {}
     const dispatch = useAppDispatch()
@@ -37,10 +35,6 @@ export const EditableProfilePageHeader = (props: EditableProfilePageHeaderProps)
     const onCancelEdit = useCallback(() => {
         dispatch(editProfileActions.cancelEdit())
     }, [dispatch])
-
-    const onSave = useCallback(() => {
-        dispatch(updateProfileData(data?.id || ''))
-    }, [dispatch, data])
 
     const isEditProfile = currentUserId == data?.id
 
@@ -86,7 +80,7 @@ export const EditableProfilePageHeader = (props: EditableProfilePageHeaderProps)
                                     data-testid="EditableProfileCardHeader.SaveButton"
                                     className={styles.saveBtn}
                                     variant="filled"
-                                    onClick={onSave}
+                                    type="submit"
                                 >
                                     {t('save')}
                                 </Button>

@@ -1,9 +1,10 @@
 import { memo, useCallback, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import cn from '@shared/lib/classNames/classNames'
-import { ProfileCard } from '@entities/profile'
+import { IProfile, ProfileCard } from '@entities/profile'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 import { showNotification } from '@shared/ui/Notification'
 
@@ -14,6 +15,7 @@ import { fetchProfileData } from '../../model/services/fetchProfileData/fetchPro
 import { editProfileActions, editProfileReducer } from '../../model/slice/profileSlice'
 import { ValidateProfileError } from '../../model/const/const'
 import { EditableProfilePageHeader } from '../EditableProfilePageHeader/EditableProfilePageHeader'
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 
 import styles from './EditableProfileCard.module.scss'
 
@@ -29,7 +31,22 @@ interface IEditableProfileCardProps {
 export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
     const { className, id } = props
 
+    const methods = useForm<IProfile>({
+        defaultValues: {
+            id: '',
+            firstname: '',
+            username: '',
+            lastname: '',
+            avatar: '',
+            age: NaN,
+            hobbies: [],
+            subdivision: {},
+            address: {},
+        },
+    })
+
     const { t } = useTranslation('profile')
+
     const dispatch = useAppDispatch()
 
     const location = useLocation()
@@ -69,44 +86,16 @@ export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
         )
     }, [t, validateErrors])
 
-    const onChangeFirstname = useCallback(
-        (value: string) => {
-            dispatch(editProfileActions.updateProfile({ firstname: value || '' }))
-        },
-        [dispatch],
-    )
+    useEffect(() => {
+        if (profile) {
+            methods.reset(profile.data)
+        }
+    }, [methods, profile])
 
-    const onChangeLastname = useCallback(
-        (value: string) => {
-            dispatch(editProfileActions.updateProfile({ lastname: value || '' }))
-        },
-        [dispatch],
-    )
-
-    const onChangeCity = useCallback(
-        (value: string) => {
-            dispatch(editProfileActions.updateProfile({ address: { city: value || '' } }))
-        },
-        [dispatch],
-    )
-
-    const onChangeAge = useCallback(
-        (value?: number) => {
-            dispatch(editProfileActions.updateProfile({ age: value }))
-        },
-        [dispatch],
-    )
-
-    const onChangeUsername = useCallback(
-        (value: string) => {
-            dispatch(editProfileActions.updateProfile({ username: value || '' }))
-        },
-        [dispatch],
-    )
-
-    const onChangeAvatar = useCallback(
-        (value: string) => {
-            dispatch(editProfileActions.updateProfile({ avatar: value || '' }))
+    const onSubmit = useCallback(
+        (form: IProfile) => {
+            dispatch(editProfileActions.updateProfile(form))
+            dispatch(updateProfileData())
         },
         [dispatch],
     )
@@ -114,20 +103,19 @@ export const EditableProfileCard = memo((props: IEditableProfileCardProps) => {
     return (
         <div data-testid="EditableProfileCard" className={cn(styles.wrapper, className)}>
             <DynamicModuleLoader reducers={reducers}>
-                <EditableProfilePageHeader />
+                <FormProvider {...methods}>
+                    <form onSubmit={methods.handleSubmit(onSubmit)}>
+                        <EditableProfilePageHeader />
 
-                <ProfileCard
-                    isLoading={isLoading}
-                    readonly={readonly}
-                    data={form}
-                    error={error}
-                    onChangeFirstname={onChangeFirstname}
-                    onChangeLastname={onChangeLastname}
-                    onChangeAge={onChangeAge}
-                    onChangeCity={onChangeCity}
-                    onChangeUsername={onChangeUsername}
-                    onChangeAvatar={onChangeAvatar}
-                />
+                        <ProfileCard
+                            isLoading={isLoading}
+                            readonly={readonly}
+                            data={form}
+                            error={error}
+                            onSubmit={onSubmit}
+                        />
+                    </form>
+                </FormProvider>
             </DynamicModuleLoader>
         </div>
     )

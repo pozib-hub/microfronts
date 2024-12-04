@@ -1,27 +1,12 @@
-import React from 'react'
-import { AsyncPaginate, AsyncPaginateProps } from 'react-select-async-paginate'
+import { AsyncPaginate } from 'react-select-async-paginate'
 import { GroupBase } from 'react-select'
 
 import cn from '@shared/lib/classNames/classNames'
 
 import { InputContainer } from '../Input'
+import { AsyncSelectProps } from './types'
 
 import styles from './AsyncSelect.module.scss'
-
-type Variants = 'filled' | 'outline' | 'default'
-
-interface AsyncSelectProps<
-    OptionType,
-    Group extends GroupBase<OptionType>,
-    Additional,
-    IsMulti extends boolean = false,
-> extends AsyncPaginateProps<OptionType, Group, Additional, IsMulti> {
-    label?: string
-    isError?: boolean
-    errorMessage?: boolean | string
-    variant?: Variants
-    width?: string | number
-}
 
 export function AsyncSelect<
     OptionType,
